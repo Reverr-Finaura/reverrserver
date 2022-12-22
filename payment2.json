@@ -1,0 +1,46 @@
+{
+    "entity": "event",
+    "account_id": "acc_J3IhX8g8otyaIw",
+    "event": "payment.captured",
+    "contains": [
+        "payment"
+    ],
+    "payload": {
+        "payment": {
+            "entity": {
+                "id": "pay_J5HGEHjEQeSyLB",
+                "entity": "payment",
+                "amount": 500,
+                "currency": "INR",
+                "status": "captured",
+                "order_id": "order_J5HFhubgXPWTZ2",
+                "invoice_id": null,
+                "international": false,
+                "method": "upi",
+                "amount_refunded": 0,
+                "refund_status": null,
+                "captured": true,
+                "description": "Thank you for nothing. Please give us some money",
+                "card_id": null,
+                "bank": null,
+                "wallet": null,
+                "vpa": "8375077668@ibl",
+                "email": "akshay2wo@gmail.com",
+                "contact": "+918375077668",
+                "notes": [],
+                "fee": 12,
+                "tax": 2,
+                "error_code": null,
+                "error_description": null,
+                "error_source": null,
+                "error_step": null,
+                "error_reason": null,
+                "acquirer_data": {
+                    "rrn": "206944710445"
+                },
+                "created_at": 1646891534
+            }
+        }
+    },
+    "created_at": 1646891574
+}

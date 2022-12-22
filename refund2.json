@@ -1,0 +1,66 @@
+{
+    "entity": "event",
+    "account_id": "acc_J3IhX8g8otyaIw",
+    "event": "refund.processed",
+    "contains": [
+        "refund",
+        "payment"
+    ],
+    "payload": {
+        "refund": {
+            "entity": {
+                "id": "rfnd_J5HDE5frY7VA8L",
+                "entity": "refund",
+                "amount": 100,
+                "currency": "INR",
+                "payment_id": "pay_J5GsDmNOdGWlbx",
+                "notes": [],
+                "receipt": null,
+                "acquirer_data": {
+                    "rrn": null
+                },
+                "created_at": 1646891363,
+                "batch_id": null,
+                "status": "processed",
+                "speed_processed": "normal",
+                "speed_requested": "normal"
+            }
+        },
+        "payment": {
+            "entity": {
+                "id": "pay_J5GsDmNOdGWlbx",
+                "entity": "payment",
+                "amount": 100,
+                "currency": "INR",
+                "status": "refunded",
+                "order_id": "order_J5Gs3KTaG8Dyrx",
+                "invoice_id": null,
+                "international": false,
+                "method": "upi",
+                "amount_refunded": 100,
+                "refund_status": "full",
+                "captured": true,
+                "description": "Thank you for nothing. Please give us some money",
+                "card_id": null,
+                "bank": null,
+                "wallet": null,
+                "vpa": "mauricerana@upi",
+                "email": "mauricerana@gmail.com",
+                "contact": "+919599341246",
+                "notes": [],
+                "fee": 2,
+                "tax": 0,
+                "error_code": null,
+                "error_description": null,
+                "error_source": null,
+                "error_step": null,
+                "error_reason": null,
+                "acquirer_data": {
+                    "rrn": "206911930116"
+                },
+                "created_at": 1646890171
+            }
+        }
+    },
+    "created_at": 1646891363
+}

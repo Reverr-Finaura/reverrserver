@@ -1,0 +1,66 @@
+{
+    "entity": "event",
+    "account_id": "acc_J3IhX8g8otyaIw",
+    "event": "refund.processed",
+    "contains": [
+        "refund",
+        "payment"
+    ],
+    "payload": {
+        "refund": {
+            "entity": {
+                "id": "rfnd_J5HI0DJ2EOjRMq",
+                "entity": "refund",
+                "amount": 500,
+                "currency": "INR",
+                "payment_id": "pay_J5HGEHjEQeSyLB",
+                "notes": [],
+                "receipt": null,
+                "acquirer_data": {
+                    "rrn": null
+                },
+                "created_at": 1646891635,
+                "batch_id": null,
+                "status": "processed",
+                "speed_processed": "normal",
+                "speed_requested": "normal"
+            }
+        },
+        "payment": {
+            "entity": {
+                "id": "pay_J5HGEHjEQeSyLB",
+                "entity": "payment",
+                "amount": 500,
+                "currency": "INR",
+                "status": "refunded",
+                "order_id": "order_J5HFhubgXPWTZ2",
+                "invoice_id": null,
+                "international": false,
+                "method": "upi",
+                "amount_refunded": 500,
+                "refund_status": "full",
+                "captured": true,
+                "description": "Thank you for nothing. Please give us some money",
+                "card_id": null,
+                "bank": null,
+                "wallet": null,
+                "vpa": "8375077668@ibl",
+                "email": "akshay2wo@gmail.com",
+                "contact": "+918375077668",
+                "notes": [],
+                "fee": 12,
+                "tax": 2,
+                "error_code": null,
+                "error_description": null,
+                "error_source": null,
+                "error_step": null,
+                "error_reason": null,
+                "acquirer_data": {
+                    "rrn": "206944710445"
+                },
+                "created_at": 1646891534
+            }
+        }
+    },
+    "created_at": 1646891635
+}
