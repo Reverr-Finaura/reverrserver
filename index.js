@@ -272,6 +272,49 @@ app.post("/webcftoken", (req, res) => {
 	  });
   });
 
+app.post("/webSplitPayment",(req,res)=>{
+	const{orderId,vendorId,amount,secrett}=req.body;
+	if(secrett==="2V7W@ODU6HTRS1GY$54JQ*EP0F8N%9!BI&AXKML3#ZCQ!$3U"){
+	
+const options={
+	 method: "POST",
+	  url: `https://api.cashfree.com/api/v2/easy-split/orders/${orderId}/split`,
+	  headers: {
+    'Content-Type': 'application/json',
+    "X-Client-Id":"21235619dae90a7c71fa82b24c653212",
+    "X-Client-Secret":"b3fcd2aee2a93a9d7efedcd88936046a43506c5c",
+  },
+  data:{
+	"split": [
+        {
+              "vendorId":vendorId,
+              "amount":amount,
+              // "vendorId":"ansh123456bansal",
+              // "amount":(1)*0.9,
+              "percentage": null
+          }
+      ],
+      "splitType": "ORDER_AMOUNT"
+  }
+};
+axios
+	  .request(options)
+	  .then(function (response) {
+		res.json({ message: response.data });
+	  })
+	  .catch(function (error) {
+		console.error(error);
+	  });
+	  
+}
+else{
+res.status(401);
+res.json({message:"UnAuthenticated!"})
+}
+}
+
+)
+
 app.listen(PORT, () => {
 	const date = new Date();
 	// console.log(date.getDate()+"|"+(1+date.getMonth())+"|"+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes()+" "+getRandomString(8));
