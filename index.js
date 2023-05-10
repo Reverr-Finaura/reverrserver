@@ -12,7 +12,9 @@ const axios = require('axios');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 var secret = "pZDneOGeFBwtF3B5MtUcfNkgbQUYcRAZOvARifwxDb5eBTWG2hn7Wte10KxKAuji3OvCCwfzweVdsqvih2ASw1uaYXL8KPiVqAWTYqVa2kdch1uUWrMjbSAnBNIDpNl2";
-
+let sid="AC1bf27cece467fd7bf4b71450765daf05"
+let auth_token="585b53313437defb488d9aaf0aefa92a"
+let twilio=require("twilio")(sid,auth_token)
 //server domain
 //https://reverrserver.herokuapp.com/
 
@@ -314,6 +316,15 @@ res.json({message:"UnAuthenticated!"})
 }
 
 )
+
+app.post('/sendSms',(req,res)=>{
+    const{to,message}=req.body
+  twilio.messages.create({
+    from:"+12706067949",
+    to:`+91${to}`,
+    body:message
+  }).then((r)=>{console.log(r);res.send({status:true,message:"Message Send to your Number"})}).catch((err)=>console.log(err))
+  })
 
 app.listen(PORT, () => {
 	const date = new Date();
