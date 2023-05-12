@@ -11,9 +11,11 @@ const { json } = require('body-parser');
 const axios = require('axios');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+require('dotenv').config()
 var secret = "pZDneOGeFBwtF3B5MtUcfNkgbQUYcRAZOvARifwxDb5eBTWG2hn7Wte10KxKAuji3OvCCwfzweVdsqvih2ASw1uaYXL8KPiVqAWTYqVa2kdch1uUWrMjbSAnBNIDpNl2";
-let sid="AC1bf27cece467fd7bf4b71450765daf05"
-let auth_token="585b53313437defb488d9aaf0aefa92a"
+
+let sid=process.env.ACCOUNT_SID
+let auth_token=process.env.AUTH_TOKKEN
 let twilio=require("twilio")(sid,auth_token)
 //server domain
 //https://reverrserver.herokuapp.com/
@@ -320,6 +322,7 @@ res.json({message:"UnAuthenticated!"})
 app.post('/sendSms',(req,res)=>{
     const{to,message}=req.body
   twilio.messages.create({
+
     from:"+12706067949",
     to:`+91${to}`,
     body:message
