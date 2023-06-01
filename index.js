@@ -328,7 +328,15 @@ app.post('/sendSms',(req,res)=>{
     body:message
   }).then((r)=>{console.log(r);res.send({status:true,message:"Message Send to your Number"})}).catch((err)=>console.log(err))
   })
+app.post('/sendSmsCode',(req,res)=>{
+    const{to,message,code}=req.body
+  twilio.messages.create({
 
+    from:"+12706067949",
+    to:`+${code}${to}`,
+    body:message
+  }).then((r)=>{console.log(r);res.send({status:true,message:"Message Send to your Number"})}).catch((err)=>console.log(err))
+  })
 app.listen(PORT, () => {
 	const date = new Date();
 	// console.log(date.getDate()+"|"+(1+date.getMonth())+"|"+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes()+" "+getRandomString(8));
