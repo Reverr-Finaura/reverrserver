@@ -2,17 +2,19 @@ const app = require('express')();
 const path = require('path')
 const shortid = require('shortid')
 const Razorpay = require('razorpay')
+require('dotenv').config()
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const {RtcTokenBuilder, RtcRole} = require('agora-access-token');
-const PORT = process.env.PORT||3000;
 const {Payment,Refund}=  require('./config');
 const { json } = require('body-parser');
 const axios = require('axios');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-require('dotenv').config()
+const PORT = process.env.SERVER_PORT||3000;
 var secret = "pZDneOGeFBwtF3B5MtUcfNkgbQUYcRAZOvARifwxDb5eBTWG2hn7Wte10KxKAuji3OvCCwfzweVdsqvih2ASw1uaYXL8KPiVqAWTYqVa2kdch1uUWrMjbSAnBNIDpNl2";
+const {Authorization,Redirect,SignupAuthorization,SignupRedirect}=require("./authHelper")
+
 
 let sid=process.env.ACCOUNT_SID
 let auth_token=process.env.AUTH_TOKKEN
@@ -335,10 +337,27 @@ app.post('/sendSmsCode',(req,res)=>{
     from:"+12706067949",
     to:`+${code}${to}`,
     body:message
-  }).then((r)=>{console.log(r);res.send({status:true,message:"Message Send to your Number"})}).catch((err)=>console.log(err))
+  }).then((r)=>{console.log(r);res.send({status:true,message:"Message Send to your Number"})}).catch((err)=>res.status(400).send({status:false,message:err.message}))
   })
+
+  app.get('/api/linkedin/authorize',(req,res)=>{
+	return res.redirect(Authorization());
+  })
+  app.get('/api/linkedin/signup/authorize',(req,res)=>{
+	return res.redirect(SignupAuthorization());
+  })
+app.post('/getUserDataFromLinkedin',async(req,res)=>{
+	const {code}=req.body
+	await (Redirect(code,res))
+	
+})
+app.post('/getUserDataFromLinkedin/signup',async(req,res)=>{
+	const {code}=req.body
+	await (SignupRedirect(code,res))
+	
+})
+
 app.listen(PORT, () => {
 	const date = new Date();
-	// console.log(date.getDate()+"|"+(1+date.getMonth())+"|"+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes()+" "+getRandomString(8));
 	console.log('Listening on '+PORT)
 })
