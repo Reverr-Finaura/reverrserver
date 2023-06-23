@@ -9,4 +9,6 @@ initializeApp({
 const db = getFirestore();
   const Payment=db.collection("Payments");
   const Refund=db.collection("Refunds");
-  module.exports = {Payment, Refund};
+  const MessagesSend = db.collection("WhatsAppSend");
+  const MessagesReceived = db.collection("WhatsAppReceived");
+  module.exports = {Payment, Refund,MessagesSend,MessagesReceived};

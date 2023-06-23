@@ -6,14 +6,16 @@ require('dotenv').config()
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const {RtcTokenBuilder, RtcRole} = require('agora-access-token');
-const {Payment,Refund}=  require('./config');
+const {Payment,Refund, MessagesSend, MessagesReceived}=  require('./config');
 const { json } = require('body-parser');
 const axios = require('axios');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const PORT = process.env.SERVER_PORT||3000;
 var secret = "pZDneOGeFBwtF3B5MtUcfNkgbQUYcRAZOvARifwxDb5eBTWG2hn7Wte10KxKAuji3OvCCwfzweVdsqvih2ASw1uaYXL8KPiVqAWTYqVa2kdch1uUWrMjbSAnBNIDpNl2";
-const {Authorization,Redirect,SignupAuthorization,SignupRedirect}=require("./authHelper")
+const {Authorization,Redirect,SignupAuthorization,SignupRedirect}=require("./authHelper");
+const sendMessage = require('./helper/message');
+const messageHelper = require('./helper/helper')
 
 
 let sid=process.env.ACCOUNT_SID
@@ -355,6 +357,63 @@ app.post('/getUserDataFromLinkedin/signup',async(req,res)=>{
 	const {code}=req.body
 	await (SignupRedirect(code,res))
 	
+})
+
+app.post('/webhook',async(req,res)=>{
+  const { payload } = req.body;
+
+  await MessagesReceived.add({
+    data: payload.jsonPayload.entry[0].changes[0].value,
+  });
+
+  const messageReceived = payload.jsonPayload.entry[0].changes[0].value.messages;
+  const messageText = messageReceived[0].text.body;
+  const messageFrom = messageReceived[0].from;
+
+  if(messageText == "Hi" || messageText == "hii" || messageText == "hello" || messageText == "HI" || messageText == "Hii"){
+    const messageInput = messageHelper.getCustomTextInput(
+      messageFrom,
+      "Hello, How can I help you?"
+    );
+    try {
+      const { data } = await sendMessage(messageInput);
+      await MessagesSend.add({
+        messageId: data.messages[0].id,
+        message: JSON.parse(messageInput),
+      });
+      res.json({
+        status: "success",
+        response: data,
+      });
+    } catch (error) {
+      // console.log(error);
+	  res.status(400).json({
+		  status:"error",
+		  message:error.message
+	  })
+    }
+  }else{
+    const messageInput = messageHelper.getCustomTextInput(
+      messageFrom,
+      "Thank you for your message. We will get back to you soon."
+    );
+    try {
+      const { data } = await sendMessage(messageInput);
+      await MessagesSend.add({
+        messageId: data.messages[0].id,
+        message: JSON.parse(messageInput),
+      });
+      res.json({
+        status: "success",
+        response: data,
+      });
+    } catch (error) {
+		res.status(400).json({
+			status:"error",
+			message:error.message
+		})
+    }
+  }
 })
 
 app.listen(PORT, () => {
