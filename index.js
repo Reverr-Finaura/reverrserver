@@ -250,7 +250,7 @@ app.post("/webcftoken", (req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
-    // res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
 	const { id, amount, currency, customer_id, customer_phone } = req.body;
 	const options = {
 	  method: "POST",
