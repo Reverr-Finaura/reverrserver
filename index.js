@@ -24,9 +24,7 @@ let twilio=require("twilio")(sid,auth_token)
 //server domain
 //https://reverrserver.herokuapp.com/
 
-app.use(cors({
-    origin: '*'
-}))
+app.use(cors())
 app.use(bodyParser.json())
 
 const razorpay = new Razorpay({
@@ -249,6 +247,8 @@ app.post("/cftoken",(req,res)=>{
 });
 
 app.post("/webcftoken", (req, res) => {
+	res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 	const { id, amount, currency, customer_id, customer_phone } = req.body;
 	const options = {
 	  method: "POST",
