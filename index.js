@@ -24,7 +24,9 @@ let twilio=require("twilio")(sid,auth_token)
 //server domain
 //https://reverrserver.herokuapp.com/
 
-app.use(cors())
+app.use(cors({
+    origin: ['https://founder.reverr.io']
+}))
 app.use(bodyParser.json())
 
 const razorpay = new Razorpay({
