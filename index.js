@@ -25,7 +25,7 @@ let twilio=require("twilio")(sid,auth_token)
 //https://reverrserver.herokuapp.com/
 
 app.use(cors({
-    origin: ['https://founder.reverr.io/']
+    origin: 'https://founder.reverr.io/'
 }))
 app.use(bodyParser.json())
 
