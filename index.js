@@ -25,6 +25,10 @@ let twilio=require("twilio")(sid,auth_token)
 //https://reverrserver.herokuapp.com/
 var corsOptions = {
     origin: '*',
+	optionsSuccessStatus: 200,
+	methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
+	allowedHeaders:"Content-Type,Authorization",
+	credentials:true
   }
 app.use(cors(corsOptions))
 // app.options('*', cors())
