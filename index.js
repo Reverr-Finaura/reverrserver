@@ -276,10 +276,11 @@ app.post("/webcftoken", (req, res) => {
 		order_currency: currency,
 	  },
 	};
-  
+	console.log("reached")
 	axios
 	  .request(options)
 	  .then(function (response) {
+		console.log(response.data.order_token)
 		// res.setHeader("Access-Control-Allow-Origin", "*");
 		// res.header('Access-Control-Allow-Methods', '*');
 		// res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -289,6 +290,8 @@ app.post("/webcftoken", (req, res) => {
 	  .catch(function (error) {
 		console.error(error);
 	  });
+
+
   });
 
 app.post("/webSplitPayment",(req,res)=>{
