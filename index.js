@@ -26,7 +26,7 @@ let twilio=require("twilio")(sid,auth_token)
 var corsOptions = {
     origin: '*',
 	optionsSuccessStatus: 200,
-	methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
+	methods:"GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
 	allowedHeaders:"Content-Type,Authorization",
 	credentials:true
   }
