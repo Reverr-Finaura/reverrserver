@@ -274,6 +274,10 @@ app.post("/webcftoken", (req, res) => {
 	axios
 	  .request(options)
 	  .then(function (response) {
+		res.setHeader("Access-Control-Allow-Origin", "*");
+		res.header('Access-Control-Allow-Methods', '*');
+		res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+		res.header('Access-Control-Allow-Credentials', true);
 		res.json({ token: response.data.order_token });
 	  })
 	  .catch(function (error) {
