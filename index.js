@@ -259,7 +259,7 @@ app.post("/webcftoken", (req, res) => {
 	  method: "POST",
 	  url: "https://api.cashfree.com/pg/orders",
 	  headers: {
-		accept: "application/json",
+		"accept": "application/json",
 		"x-client-id": "21235619dae90a7c71fa82b24c653212",
 		"x-client-secret": "b3fcd2aee2a93a9d7efedcd88936046a43506c5c",
 		"x-api-version": "2022-01-01",
