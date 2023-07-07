@@ -24,7 +24,8 @@ let twilio=require("twilio")(sid,auth_token)
 //server domain
 //https://reverrserver.herokuapp.com/
 
-app.use(cors())
+// app.use(cors())
+app.options('*', cors())
 app.use(bodyParser.json())
 
 const razorpay = new Razorpay({
