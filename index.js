@@ -253,20 +253,9 @@ app.post("/cftoken",(req,res)=>{
 
 });
 
-app.post("/webcftoken", (req, res) => {
+app.post("/webcftoken", async(req, res) => {
 	const { id, amount, currency, customer_id, customer_phone } = req.body;
-	const options = {
-	  method: "POST",
-	  url: "https://api.cashfree.com/pg/orders",
-	  headers: {
-		"accept": "application/json",
-		"x-client-id": "21235619dae90a7c71fa82b24c653212",
-		"x-client-secret": "b3fcd2aee2a93a9d7efedcd88936046a43506c5c",
-		"x-api-version": "2022-01-01",
-		"content-type": "application/json",
-		"Access-Control-Allow-Origin": "*",
-	  },
-	  data: {
+	let dt = {
 		customer_details: {
 		  customer_id: customer_id,
 		  customer_phone: customer_phone,
@@ -274,22 +263,54 @@ app.post("/webcftoken", (req, res) => {
 		order_id: id,
 		order_amount: amount,
 		order_currency: currency,
-	  },
-	};
-	console.log("reached")
-	axios
-	  .request(options)
-	  .then(function (response) {
-		console.log(response.data.order_token)
-		// res.setHeader("Access-Control-Allow-Origin", "*");
-		// res.header('Access-Control-Allow-Methods', '*');
-		// res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-		// res.header('Access-Control-Allow-Credentials', true);
-		res.json({ token: response.data.order_token });
-	  })
-	  .catch(function (error) {
-		console.error(error);
-	  });
+	  }
+	  try{
+		let resp = await axios.post("https://api.cashfree.com/pg/orders",dt,{
+			headers: {
+				"x-client-id": "21235619dae90a7c71fa82b24c653212",
+				"x-client-secret": "b3fcd2aee2a93a9d7efedcd88936046a43506c5c",
+				"x-api-version": "2022-01-01",
+			}}
+			)
+		res.json({ token: resp?.data?.order_token });
+	  }catch(err){
+		console.log('err',err)
+	  }
+	// const options = {
+	//   method: "POST",
+	//   url: "https://api.cashfree.com/pg/orders",
+	//   headers: {
+	// 	"accept": "application/json",
+	// 	"x-client-id": "21235619dae90a7c71fa82b24c653212",
+	// 	"x-client-secret": "b3fcd2aee2a93a9d7efedcd88936046a43506c5c",
+	// 	"x-api-version": "2022-01-01",
+	// 	"content-type": "application/json",
+	// 	"Access-Control-Allow-Origin": "*",
+	//   },
+	//   data: {
+	// 	customer_details: {
+	// 	  customer_id: customer_id,
+	// 	  customer_phone: customer_phone,
+	// 	},
+	// 	order_id: id,
+	// 	order_amount: amount,
+	// 	order_currency: currency,
+	//   },
+	// };
+	// console.log("reached")
+	// axios
+	//   .request(options)
+	//   .then(function (response) {
+	// 	console.log(response.data.order_token)
+	// 	// res.setHeader("Access-Control-Allow-Origin", "*");
+	// 	// res.header('Access-Control-Allow-Methods', '*');
+	// 	// res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+	// 	// res.header('Access-Control-Allow-Credentials', true);
+	// 	res.json({ token: response.data.order_token });
+	//   })
+	//   .catch(function (error) {
+	// 	console.error(error);
+	//   });
 
 
   });
