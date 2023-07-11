@@ -142,6 +142,14 @@ app.post('/refund',Authorize, async(req,res)=>{
 	}
 })
 
+app.get("/test",async(req,res)=>{
+try{
+	console.log('test')
+}catch(err){
+console.log('Error',err)
+}
+})
+
 app.post('/verification', async(req, res) => {
 	// do a validation
 	const secret = 'G7brM8xQ6$RtNYs'
