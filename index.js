@@ -402,62 +402,109 @@ app.post('/getUserDataFromLinkedin/signup',async(req,res)=>{
 	
 })
 
-app.post('/webhook',async(req,res)=>{
-  const { payload } = req.body;
+// app.post('/webhook',async(req,res)=>{
+//   const { payload } = req.body;
 
-  await MessagesReceived.add({
-    data: payload.jsonPayload.entry[0].changes[0].value,
+//   await MessagesReceived.add({
+//     data: payload.jsonPayload.entry[0].changes[0].value,
+//   });
+
+//   const messageReceived = payload.jsonPayload.entry[0].changes[0].value.messages;
+//   const messageText = messageReceived[0].text.body;
+//   const messageFrom = messageReceived[0].from;
+
+//   if(messageText == "Hi" || messageText == "hii" || messageText == "hello" || messageText == "HI" || messageText == "Hii"){
+//     const messageInput = messageHelper.getCustomTextInput(
+//       messageFrom,
+//       "Hello, How can I help you?"
+//     );
+//     try {
+//       const { data } = await sendMessage(messageInput);
+//       await MessagesSend.add({
+//         messageId: data.messages[0].id,
+//         message: JSON.parse(messageInput),
+//       });
+//       res.json({
+//         status: "success",
+//         response: data,
+//       });
+//     } catch (error) {
+//       // console.log(error);
+// 	  res.status(400).json({
+// 		  status:"error",
+// 		  message:error.message
+// 	  })
+//     }
+//   }else{
+//     const messageInput = messageHelper.getCustomTextInput(
+//       messageFrom,
+//       "Thank you for your message. We will get back to you soon."
+//     );
+//     try {
+//       const { data } = await sendMessage(messageInput);
+//       await MessagesSend.add({
+//         messageId: data.messages[0].id,
+//         message: JSON.parse(messageInput),
+//       });
+//       res.json({
+//         status: "success",
+//         response: data,
+//       });
+//     } catch (error) {
+// 		res.status(400).json({
+// 			status:"error",
+// 			message:error.message
+// 		})
+//     }
+//   }
+// })
+
+app.post("/webhook", async (req, res) => {
+	try {
+	  const { payload } = req.body;
+  
+	  const messageReceived = payload.entry[0].changes[0].value.messages;
+	  const messageText = messageReceived[0].text.body;
+	  const messageFrom = messageReceived[0].from;
+  
+	  let messageInput;
+  
+	  if (["hi", "hii", "hello"].includes(messageText.toLowerCase())) {
+		// Use a template or custom message here
+		messageInput = messageHelper.getTemplateTextInput(
+		  // "917007393348",
+		  messageFrom,
+		  "hello_world"
+		);
+	  } else {
+		messageInput = messageHelper.getCustomTextInput(
+		  // "917007393348",
+		  messageFrom,
+		  "Thank you for your message. We will get back to you soon."
+		);
+	  }
+  
+	  const { data } = await sendMessage(messageInput);
+	
+	  // Store in Firestore if needed
+	  await db.collection("WhatsappMessages").add({
+		status: "success",
+		messageId: data.messages[0].id,
+		message: JSON.parse(messageInput),
+	  });
+  
+	  res.json({
+		status: "success",
+		response: data,
+	  });
+	} catch (error) {
+	  console.error("Error:", error);
+	  const statusCode = error.response ? error.response.status : 500;
+	  res.status(statusCode).json({
+		message: error.message,
+	  });
+	}
   });
-
-  const messageReceived = payload.jsonPayload.entry[0].changes[0].value.messages;
-  const messageText = messageReceived[0].text.body;
-  const messageFrom = messageReceived[0].from;
-
-  if(messageText == "Hi" || messageText == "hii" || messageText == "hello" || messageText == "HI" || messageText == "Hii"){
-    const messageInput = messageHelper.getCustomTextInput(
-      messageFrom,
-      "Hello, How can I help you?"
-    );
-    try {
-      const { data } = await sendMessage(messageInput);
-      await MessagesSend.add({
-        messageId: data.messages[0].id,
-        message: JSON.parse(messageInput),
-      });
-      res.json({
-        status: "success",
-        response: data,
-      });
-    } catch (error) {
-      // console.log(error);
-	  res.status(400).json({
-		  status:"error",
-		  message:error.message
-	  })
-    }
-  }else{
-    const messageInput = messageHelper.getCustomTextInput(
-      messageFrom,
-      "Thank you for your message. We will get back to you soon."
-    );
-    try {
-      const { data } = await sendMessage(messageInput);
-      await MessagesSend.add({
-        messageId: data.messages[0].id,
-        message: JSON.parse(messageInput),
-      });
-      res.json({
-        status: "success",
-        response: data,
-      });
-    } catch (error) {
-		res.status(400).json({
-			status:"error",
-			message:error.message
-		})
-    }
-  }
-})
 
 app.listen(PORT, () => {
 	const date = new Date();
