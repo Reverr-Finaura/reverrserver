@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -23,6 +22,7 @@
     "jsonwebtoken": "^9.0.0",
     "razorpay": "^2.0.6",
     "shortid": "^2.2.15",
-    "twilio": "^4.11.0"
+    "twilio": "^4.11.0",
+    "uuid": "^9.0.0"
   }
 }
