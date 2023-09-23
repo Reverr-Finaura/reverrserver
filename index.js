@@ -640,7 +640,7 @@ app.post("/webhook", async (req, res) => {
 	  }
 	});
 
-	app.post("/webhooktest", async (req, res) => {
+	app.get("/webhooktest", async (req, res) => {
 		
 		try{
 			//for text below
