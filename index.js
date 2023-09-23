@@ -26,7 +26,7 @@ const { v4: uuidv4 } = require('uuid');
 const uuid = uuidv4();
 let sid=process.env.ACCOUNT_SID
 let auth_token=process.env.AUTH_TOKKEN
-let twilio=require("twilio")(sid,auth_token)
+// let twilio=require("twilio")(sid,auth_token)
 //server domain
 //https://reverrserver.herokuapp.com/
 var corsOptions = {
@@ -511,6 +511,7 @@ async function uploadFile(path, filename,mediaid,messageFrom,mediatype) {
 
 app.post("/webhook", async (req, res) => {
 	try {
+		// console.log(req.body)
 		const  {payload}  = req.body;
 		const messageReceived = payload.entry[0].changes[0].value.messages;
 		// console.log(messageReceived);
@@ -581,7 +582,7 @@ app.post("/webhook", async (req, res) => {
 	
 		let messageInput;
 	   
-		if (["hi", "hii", "hello"].includes(messageText.toLowerCase())) {
+		if (["hi", "hii", "hello", "Hi"].includes(messageText.toLowerCase())) {
 		  // Use a template or custom message here
 		  messageInput = messageHelper.getTemplateTextInput(
 			// "917007393348",
@@ -595,7 +596,9 @@ app.post("/webhook", async (req, res) => {
 			"Thank you for your message. We will get back to you soon."
 		  );
 		}
-	
+		// console.log("DATA")
+		// console.log(messageInput)
+		// console.log("DATA END")
 		const { data } = await sendMessage(messageInput);
 	  
 	
@@ -639,33 +642,6 @@ app.post("/webhook", async (req, res) => {
 		});
 	  }
 	});
-
-	app.get("/webhooktest", async (req, res) => {
-		
-		try{
-			//for text below
-			const messageText = "hi";
-			const messageFrom = "919599341246";
-			const usermessage = "hi";
-			let messageInput;
-			messageInput = messageHelper.getTemplateTextInput(
-				// "917007393348",
-				messageFrom,
-				"hello_world"
-			);
-			
-		   
-			const { data } = await sendMessage(messageInput);
-		  
-		   console.log("working")
-			
-		} catch(Err){
-			console.log(Err)
-			res.send(Err)
-		}
-
-	});
-			
 
 app.listen(PORT, () => {
 	const date = new Date();

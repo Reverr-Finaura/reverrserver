@@ -15,9 +15,9 @@ function getCustomTextInput(recipient, text) {
     return JSON.stringify({
       messaging_product: "whatsapp",
       to: recipient,
-      type: templateName,
+      type: "template",
       template: {
-        name: "hello_world",
+        name: templateName,
         language: {
           code: "en_US",
         },

@@ -7,7 +7,7 @@ async function sendMessage(data) {
     method: "post",
     url: `https://graph.facebook.com/${process.env.VERSION}/${process.env.PHONE_NUMBER_ID}/messages`,
     headers: {
-      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+      "Authorization": `Bearer ${process.env.ACCESS_TOKEN}`,
       "Content-Type": "application/json",
     },
     data: data,
