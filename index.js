@@ -640,6 +640,33 @@ app.post("/webhook", async (req, res) => {
 	  }
 	});
 
+	app.post("/webhooktest", async (req, res) => {
+		
+		try{
+			//for text below
+			const messageText = "hi";
+			const messageFrom = "919599341246";
+			const usermessage = "hi";
+			let messageInput;
+			messageInput = messageHelper.getTemplateTextInput(
+				// "917007393348",
+				messageFrom,
+				"hello_world"
+			);
+			
+		   
+			const { data } = await sendMessage(messageInput);
+		  
+		   console.log("working")
+			
+		} catch(Err){
+			console.log(Err)
+			res.send(Err)
+		}
+
+	});
+			
+
 app.listen(PORT, () => {
 	const date = new Date();
 	console.log('Listening on '+PORT)
