@@ -509,7 +509,21 @@ async function uploadFile(path, filename,mediaid,messageFrom,mediatype) {
   return  storage[0].metadata.mediaLink;
 }
 
+const checkmsgalreadyreplied =  (id)=>{
+ const msgRec = db.collection("meta").doc("msgRec").get()
+if(msgRec.includes(id)){
+	console.log(true)
+}else{
+	console.log(false)
+}
+}
+
 app.post("/webhook", async (req, res) => {
+
+	const msg_id = payload.entry[0].id;
+	if(msg_id)
+	checkmsgalreadyreplied(msg_id)
+
 	try {
 		// console.log(req.body)
 		const  {payload}  = req.body;
