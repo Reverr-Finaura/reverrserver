@@ -509,8 +509,9 @@ async function uploadFile(path, filename,mediaid,messageFrom,mediatype) {
   return  storage[0].metadata.mediaLink;
 }
 
-const checkmsgalreadyreplied =  (id)=>{
- const msgRec = db.collection("meta").doc("msgRec").get()
+const checkmsgalreadyreplied = async (id)=>{
+ const msgRec = await db.collection("meta").doc("msgRec").get();
+ console.log(msgRec);
 if(msgRec.includes(id)){
 	console.log(true)
 }else{
