@@ -615,7 +615,14 @@ app.post("/webhook", async (req, res) => {
 		  messageInput = messageHelper.getCustomTextInput(
 			// "917007393348",
 			messageFrom,
-			"Thank you for your message. We will get back to you soon."
+			```Hi, there!
+			Welcome to Reverr. We hope you are doing great.
+			
+			Reverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯
+			
+			Tell us about yourself and allow us to cater to all your needs.
+			Type 1 if you’re a Startup Founder
+			Type 2 if you’re a Professional ```
 		  );
 		}
 		// console.log("DATA")
