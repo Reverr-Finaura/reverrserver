@@ -513,7 +513,7 @@ const checkmsgalreadyreplied = async (id)=>{
  var msgRef = await db.collection("meta").doc("msgRec").get();
  const msgRec = msgRef.data();
  console.log(msgRec)
-if(msgRec.includes(id)){
+if(msgRec.id.includes(id)){
 	console.log(true)
 }else{
 	console.log(false)
