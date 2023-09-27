@@ -520,13 +520,14 @@ if(msgRec.includes(id)){
 
 app.post("/webhook", async (req, res) => {
 
+	const  {payload}  = req.body;
 	const msg_id = payload.entry[0].id;
 	if(msg_id)
 	checkmsgalreadyreplied(msg_id)
 
 	try {
 		// console.log(req.body)
-		const  {payload}  = req.body;
+		// const  {payload}  = req.body;
 		const messageReceived = payload.entry[0].changes[0].value.messages;
 		// console.log(messageReceived);
 		const messageFrom = messageReceived[0].from;
