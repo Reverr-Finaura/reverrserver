@@ -104,6 +104,10 @@ const cashfree = {
 	 next();
  }
 
+const name=""
+const linkedin=""
+const bio=""
+
 // <---- CUSTOM MSG---->
 const msg_hello = "Hi, there! \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \nType 1 if you’re a Startup Founder \nType 2 if you’re a Professional "
 const msg_askName = "We are happy that you're here.🤗 \nHow should we address you? Please type in your full name."
