@@ -104,6 +104,16 @@ const cashfree = {
 	 next();
  }
 
+// <---- CUSTOM MSG---->
+const msg_hello = "Hi, there! \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \nType 1 if you’re a Startup Founder \nType 2 if you’re a Professional "
+const msg_askName = "We are happy that you're here.🤗 \nHow should we address you? Please type in your full name."
+const msg_confirmName = `So your name is ${name}? \nType 1 to confirm \nType 0 to retry`
+const msg_askLinkedin = "Let's build your profile first.📑\nKindly share your LinkedIn URL."
+const msg_confirmLinkedin = `So your linkedin url is ${linkedin}? \nType 1 to confirm \nType 0 to retry`
+const msg_askbio = "We have noted it.\nNow please write down a one-liner bio for yourself mentioning your expertise, experience, and interests. 👩🏻‍💼👨🏻‍💼 \n\nExample-I’m the founder of a digital marketing agency. We work with up-and-coming e-commerce businesses."
+const msg_confirmBio = `${bio} , Is this right? \nType 1 to confirm \nType 0 to retry`
+const msg_askStage = "That sounds good.🤩\nNow pick what resonates with you the most.\n\nType 1 if you have an idea and wish to execute it.🗣️\nType 2 if you are running a successful startup 😎\nType 3 if you have an idea but lack the necessary resources/ guidance🫣\nType 4 if you are running a startup and wish to grow & expand it further🤑\nType 5 if you are exploring your options 🤔"
+const msg_askOffering = "Type in the number of offering that suits your needs the best and let us take care of the rest. \n\n1. Get funding from VCs, Angels, and relevant Investors\n2. Discover networking opportunities \n3. Seek knowledge in bite-sized portions\n4. Connect with service providers for assistance"
 app.post('/accesstoken',nocache,generateAccessToken);
 
 app.get('/logo.svg', (req, res) => {
@@ -603,21 +613,35 @@ app.post("/webhook", async (req, res) => {
 		const usermessage = messageReceived[0].text.body;
 	
 		let messageInput;
+		if (["hi", "hii", "hello", "Hi", "hie", "Hello", "hey", "Hey", "Hie", "Hii"].includes(messageText.toLowerCase())) {
+			// Use a template or custom message here
+			messageInput = messageHelper.getCustomTextInput(
+			  // "917007393348",
+			  messageFrom,
+			  msg_hello
+			);
+		  } else {
+			  messageInput = messageHelper.getCustomTextInput(
+				// "917007393348",
+				messageFrom,
+				"Thank you for your message. We will get back to you soon."
+			  );
+			}
 	   
-		if (["hi", "hii", "hello", "Hi"].includes(messageText.toLowerCase())) {
-		  // Use a template or custom message here
-		  messageInput = messageHelper.getTemplateTextInput(
-			// "917007393348",
-			messageFrom,
-			"hello_world"
-		  );
-		} else {
-		  messageInput = messageHelper.getCustomTextInput(
-			// "917007393348",
-			messageFrom,
-			"Hi, there! \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \nType 1 if you’re a Startup Founder \nType 2 if you’re a Professional "
-		  );
-		}
+		// if (["hi", "hii", "hello", "Hi"].includes(messageText.toLowerCase())) {
+		//   // Use a template or custom message here
+		//   messageInput = messageHelper.getTemplateTextInput(
+		// 	// "917007393348",
+		// 	messageFrom,
+		// 	"hello_world"
+		//   );
+		// } else {
+		//   messageInput = messageHelper.getCustomTextInput(
+		// 	// "917007393348",
+		// 	messageFrom,
+		// 	"Thank you for your message. We will get back to you soon."
+		//   );
+		// }
 		// console.log("DATA")
 		// console.log(messageInput)
 		// console.log("DATA END")
