@@ -523,6 +523,9 @@ if(msgRec.id.includes(id)){
 app.post("/webhook", async (req, res) => {
 	
 	const  {payload}  = req.body;
+	console.log(payload)
+	console.log(payload.entry[0])
+	console.log(payload.entry[0].id)
 	console.log(payload.entry[0].changes[0].value.contacts)
 	console.log(payload.entry[0].changes[0].value.messages)
 	const msg_id = payload.entry[0].id;
