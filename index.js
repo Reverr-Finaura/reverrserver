@@ -510,8 +510,9 @@ async function uploadFile(path, filename,mediaid,messageFrom,mediatype) {
 }
 
 const checkmsgalreadyreplied = async (id)=>{
- const msgRec = await db.collection("meta").doc("msgRec").get();
- console.log(msgRec);
+ var msgRec = await db.collection("meta").doc("msgRec").get();
+ msgRec = msgRec.data();
+ console.log(msgRec)
 if(msgRec.includes(id)){
 	console.log(true)
 }else{
