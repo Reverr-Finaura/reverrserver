@@ -559,8 +559,11 @@ app.post("/webhook", async (req, res) => {
 			userChat = userChat.data();
 			// console.log("user data", userChat)
 			console.log(userChat.messages.length)
-			var lastMsg = userChat.messages[userChat.messages.length -1];
-			 console.log(lastMsg.usermessage)
+			// var lastMsg = userChat.messages[userChat.messages.length -1];
+			var lastMsg = userChat.messages[2];
+			 console.log(lastMsg.usermessage) // last msg that user send
+			 
+			 console.log( lastMsg.message.type =="template"?lastMsg.message.template.name: lastMsg.message.text.body) // last msg that user send
 		}
 		// console.log(req.body)
 		// const  {payload}  = req.body;
