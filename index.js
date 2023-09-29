@@ -590,7 +590,7 @@ app.post("/webhook", async (req, res) => {
 	const msg_dontUnderstand= "Sorry, I dont understand what do you mean by that?. \n\nType 1 to try again!"
 	const msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. Please try again."
 
-	const sendMsg = async(res)=>{
+	const sendMsg = async()=>{
 		const { data } = await sendMessage(messageInput);
 
 		const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
@@ -618,11 +618,9 @@ app.post("/webhook", async (req, res) => {
 		  })
 		});
 	   }
-	   res.json({
-		status: "success",
-	  });
+	   
 	}
-	const resendLastToLastMsg = (res)=>{
+	const resendLastToLastMsg = ()=>{
 		var ltlMsg = userChat.messages[userChat.messages.length -2];
 		if(ltlMsg.message.type =="template"){
 			var ltlMsgSend = ltlMsg.message.template.name;
@@ -632,7 +630,8 @@ app.post("/webhook", async (req, res) => {
 				ltlMsgSend
 			);
 			
-			sendMsg();
+			sendMsg()
+			
 		} else {
 			var ltlMsgSend = ltlMsg.message.text.body;
 
@@ -641,7 +640,8 @@ app.post("/webhook", async (req, res) => {
 				ltlMsgSend
 			)
 
-			sendMsg(res);
+			sendMsg()
+			
 		}
 		
 	}
@@ -679,7 +679,10 @@ app.post("/webhook", async (req, res) => {
 				messageFrom,
 				msg_hello
 			  );
-			sendMsg(res)
+			sendMsg()
+			res.json({
+					status: "success",
+				});
 		}
 		else if (res = "msg_hello"){
 			if(usermessage == "1"){
@@ -689,7 +692,10 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					msg_askName
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}else if(usermessage == "2"){
 				var userType = "professional"
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({userType})
@@ -697,13 +703,19 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					msg_askName
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}else{
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_dontUnderstand
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}
 
 		}
@@ -714,7 +726,10 @@ app.post("/webhook", async (req, res) => {
 				messageFrom,
 				msg_confirmName
 			  ); 
-			  sendMsg(res)
+			  sendMsg()
+			  res.json({
+					status: "success",
+				});
 		}
 		else if (res = "msg_confirmName"){
 			if(usermessage == "1"){
@@ -722,19 +737,28 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					msg_askLinkedin
 				);
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}else if(usermessage=="0"){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_askName
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}else {
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_dontUnderstand
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}
 		}
 		else if (res = "msg_askLinkedin"){
@@ -744,7 +768,10 @@ app.post("/webhook", async (req, res) => {
 				messageFrom,
 				msg_confirmLinkedin
 			  ); 
-			  sendMsg(res)
+			  sendMsg()
+			  res.json({
+					status: "success",
+				});
 		}
 		else if (res = "msg_confirmLinkedin"){
 			if(usermessage == "1"){
@@ -752,19 +779,28 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					msg_askbio
 				);
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}else if(usermessage=="0"){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_askLinkedin
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}else {
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_dontUnderstand
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}
 		}
 		else if (res = "msg_askbio"){
@@ -774,7 +810,10 @@ app.post("/webhook", async (req, res) => {
 				messageFrom,
 				msg_confirmBio
 			  ); 
-			  sendMsg(res)
+			  sendMsg()
+			  res.json({
+					status: "success",
+				});
 		}
 		else if (res = "msg_confirmBio"){
 			if(usermessage == "1"){
@@ -782,19 +821,28 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					msg_askStage
 				);
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}else if(usermessage=="0"){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_askbio
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}else {
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_dontUnderstand
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}
 		}
 		else if (res = "msg_askStage"){
@@ -805,7 +853,10 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					msg_askOffering
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			} else if (usermessage=="2"){
 				var stage = "are running a successful startup 😎"
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage});
@@ -813,7 +864,10 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					msg_askOffering
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}  else if (usermessage=="3"){
 				var stage = "have an idea but lack the necessary resources/ guidance🫣"
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage});
@@ -821,7 +875,10 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					msg_askOffering
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			} else if (usermessage=="4"){
 				var stage = "are running a startup and wish to grow & expand it further🤑"
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage});
@@ -829,7 +886,10 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					msg_askOffering
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			} else if (usermessage=="5"){
 				var stage = "are exploring your options 🤔"
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage});
@@ -837,13 +897,19 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					msg_askOffering
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			} else {
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_dontUnderstand
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}
 		}
 		else if (res = "msg_askOffering"){
@@ -854,7 +920,10 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					"Thank you for reaching out!"
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			} else if (usermessage=="2"){
 				var currentNeed = "Discover networking opportunities"
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
@@ -862,7 +931,10 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					"Thank you for reaching out!"
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}  else if (usermessage=="3"){
 				var currentNeed = "Seek knowledge in bite-sized portions"
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
@@ -870,7 +942,10 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					"Thank you for reaching out!"
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			} else if (usermessage=="4"){
 				var currentNeed = " Connect with service providers for assistance"
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
@@ -878,19 +953,25 @@ app.post("/webhook", async (req, res) => {
 					messageFrom,
 					"Thank you for reaching out!"
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			} else {
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_dontUnderstand
 				  );
-				sendMsg(res)
+				sendMsg()
+				res.json({
+					status: "success",
+				});
 			}
 		}
 		else if (res = "msg_dontUnderstand"){
 			if(usermessage == "1"){
 				// Resend last to last msg
-				resendLastToLastMsg(res)
+				resendLastToLastMsg()
 			}
 		}
 	}else{
@@ -899,13 +980,19 @@ app.post("/webhook", async (req, res) => {
 				messageFrom,
 				msg_hello
 			  );
-			sendMsg(res)
+			sendMsg()
+			res.json({
+					status: "success",
+				});
 		}else{
 			messageInput = messageHelper.getCustomTextInput(
 				messageFrom,
 				msg_dontUnderstandNoAction
 			  );
-			sendMsg(res)
+			sendMsg()
+			res.json({
+					status: "success",
+				});
 		}
 	}
 
