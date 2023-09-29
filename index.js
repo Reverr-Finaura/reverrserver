@@ -590,7 +590,7 @@ app.post("/webhook", async (req, res) => {
 	const msg_dontUnderstand= "Sorry, I dont understand what do you mean by that?. \n\nType 1 to try again!"
 	const msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. Please try again."
 
-	const sendMsg = ()=>{
+	const sendMsg = async()=>{
 		const { data } = await sendMessage(messageInput);
 
 		const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
@@ -598,7 +598,7 @@ app.post("/webhook", async (req, res) => {
 		console.log("no doc");
 		await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
 		 {exists: "true"})
-		 await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+		await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
 		  messages: FieldValue.arrayUnion(
 			{status: "success",
 			   messageId: data.messages[0].id,
@@ -620,8 +620,30 @@ app.post("/webhook", async (req, res) => {
 	   }
 	   res.json({
 		status: "success",
-	   
 	  });
+	}
+	const resendLastToLastMsg = ()=>{
+		var ltlMsg = userChat.messages[userChat.messages.length -2];
+		if(ltlMsg.message.type =="template"){
+			var ltlMsgSend = ltlMsg.message.template.name;
+
+			messageInput = messageHelper.getTemplateTextInput(
+				messageFrom,
+				ltlMsgSend
+			);
+			
+			sendMsg();
+		} else {
+			var ltlMsgSend = ltlMsg.message.text.body;
+
+			messageInput = messageHelper.getTemplateTextInput(
+				messageFrom,
+				ltlMsgSend
+			)
+
+			sendMsg();
+		}
+		
 	}
 
 	const msgMatcher = (lastMsgSend)=>{
@@ -646,6 +668,7 @@ app.post("/webhook", async (req, res) => {
 			result = "msg_askOffering"
 		}else if(lastMsgSend == msg_dontUnderstand){
 			result = "msg_dontUnderstand"
+		}
 		return result;
 	}
 	
@@ -685,31 +708,190 @@ app.post("/webhook", async (req, res) => {
 
 		}
 		else if (res = "msg_askName"){
-
+			name = usermessage;
+			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({name});
+			messageInput = messageHelper.getCustomTextInput(
+				messageFrom,
+				msg_confirmName
+			  ); 
+			  sendMsg()
 		}
 		else if (res = "msg_confirmName"){
-
+			if(usermessage == "1"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askLinkedin
+				);
+				sendMsg()
+			}else if(usermessage=="0"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askName
+				  );
+				sendMsg()
+			}else {
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
 		}
 		else if (res = "msg_askLinkedin"){
-
+			linkedin = usermessage;
+			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({linkedin});
+			messageInput = messageHelper.getCustomTextInput(
+				messageFrom,
+				msg_confirmLinkedin
+			  ); 
+			  sendMsg()
 		}
 		else if (res = "msg_confirmLinkedin"){
-
+			if(usermessage == "1"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askbio
+				);
+				sendMsg()
+			}else if(usermessage=="0"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askLinkedin
+				  );
+				sendMsg()
+			}else {
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
 		}
 		else if (res = "msg_askbio"){
-
+			bio = usermessage;
+			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bio});
+			messageInput = messageHelper.getCustomTextInput(
+				messageFrom,
+				msg_confirmBio
+			  ); 
+			  sendMsg()
 		}
 		else if (res = "msg_confirmBio"){
-
+			if(usermessage == "1"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askStage
+				);
+				sendMsg()
+			}else if(usermessage=="0"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askbio
+				  );
+				sendMsg()
+			}else {
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
 		}
 		else if (res = "msg_askStage"){
-
+			if(usermessage=="1"){
+				var stage = "have an idea and wish to execute it.🗣️"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage});
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askOffering
+				  );
+				sendMsg()
+			} else if (usermessage=="2"){
+				var stage = "are running a successful startup 😎"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage});
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askOffering
+				  );
+				sendMsg()
+			}  else if (usermessage=="3"){
+				var stage = "have an idea but lack the necessary resources/ guidance🫣"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage});
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askOffering
+				  );
+				sendMsg()
+			} else if (usermessage=="4"){
+				var stage = "are running a startup and wish to grow & expand it further🤑"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage});
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askOffering
+				  );
+				sendMsg()
+			} else if (usermessage=="5"){
+				var stage = "are exploring your options 🤔"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage});
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askOffering
+				  );
+				sendMsg()
+			} else {
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
 		}
 		else if (res = "msg_askOffering"){
-
+			if(usermessage=="1"){
+				var currentNeed = "Get funding from VCs, Angels, and relevant Investors"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					"Thank you for reaching out!"
+				  );
+				sendMsg()
+			} else if (usermessage=="2"){
+				var currentNeed = "Discover networking opportunities"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					"Thank you for reaching out!"
+				  );
+				sendMsg()
+			}  else if (usermessage=="3"){
+				var currentNeed = "Seek knowledge in bite-sized portions"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					"Thank you for reaching out!"
+				  );
+				sendMsg()
+			} else if (usermessage=="4"){
+				var currentNeed = " Connect with service providers for assistance"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					"Thank you for reaching out!"
+				  );
+				sendMsg()
+			} else {
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
 		}
 		else if (res = "msg_dontUnderstand"){
-
+			if(usermessage == "1"){
+				// Resend last to last msg
+				resendLastToLastMsg()
+			}
 		}
 	}else{
 		if (["hi", "hii", "hello", "hie", "hey"].includes(messageText.toLowerCase())){
@@ -789,9 +971,6 @@ app.post("/webhook", async (req, res) => {
 	
 		else{
 	
-		
-	
-	
 		//for text CASES below
 		
 	
@@ -869,7 +1048,7 @@ app.post("/webhook", async (req, res) => {
 		  message: error.message,
 		 
 		});
-	  }
+		}
 	});
 
 app.listen(PORT, () => {
