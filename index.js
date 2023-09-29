@@ -618,7 +618,7 @@ app.post("/webhook", async (req, res) => {
 		  })
 		});
 	   }
-	   res.json({
+	   res.send({
 		status: "success",
 	  });
 	}
