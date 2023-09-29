@@ -683,7 +683,7 @@ app.post("/webhook", async (req, response) => {
 			  );
 			sendMsg()
 		}
-		else if (res = "msg_hello"){
+		else if (res == "msg_hello"){
 			console.log("f1")
 			if(usermessage == "1"){
 				var userType = "founder";
@@ -710,7 +710,7 @@ app.post("/webhook", async (req, response) => {
 			}
 
 		}
-		else if (res = "msg_askName"){
+		else if (res == "msg_askName"){
 			console.log("f2")
 			name = usermessage;
 			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({name});
@@ -720,7 +720,7 @@ app.post("/webhook", async (req, response) => {
 			  ); 
 			  sendMsg()
 		}
-		else if (res = "msg_confirmName"){
+		else if (res == "msg_confirmName"){
 			console.log("f3")
 			if(usermessage == "1"){
 				messageInput = messageHelper.getCustomTextInput(
@@ -742,7 +742,7 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 		}
-		else if (res = "msg_askLinkedin"){
+		else if (res == "msg_askLinkedin"){
 			console.log("f4")
 			linkedin = usermessage;
 			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({linkedin});
@@ -752,7 +752,7 @@ app.post("/webhook", async (req, response) => {
 			  ); 
 			  sendMsg()
 		}
-		else if (res = "msg_confirmLinkedin"){
+		else if (res == "msg_confirmLinkedin"){
 			console.log("f5")
 			if(usermessage == "1"){
 				messageInput = messageHelper.getCustomTextInput(
@@ -774,7 +774,7 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 		}
-		else if (res = "msg_askbio"){
+		else if (res == "msg_askbio"){
 			console.log("f6")
 			bio = usermessage;
 			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bio});
@@ -784,7 +784,7 @@ app.post("/webhook", async (req, response) => {
 			  ); 
 			  sendMsg()
 		}
-		else if (res = "msg_confirmBio"){
+		else if (res == "msg_confirmBio"){
 			console.log("f7")
 			if(usermessage == "1"){
 				messageInput = messageHelper.getCustomTextInput(
@@ -806,7 +806,7 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 		}
-		else if (res = "msg_askStage"){
+		else if (res == "msg_askStage"){
 			console.log("f8")
 			if(usermessage=="1"){
 				var stage = "have an idea and wish to execute it.🗣️"
@@ -856,7 +856,7 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 		}
-		else if (res = "msg_askOffering"){
+		else if (res == "msg_askOffering"){
 			console.log("f9")
 			if(usermessage=="1"){
 				var currentNeed = "Get funding from VCs, Angels, and relevant Investors"
@@ -898,7 +898,7 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 		}
-		else if (res = "msg_dontUnderstand"){
+		else if (res == "msg_dontUnderstand"){
 			console.log("f10")
 			if(usermessage == "1"){
 				// Resend last to last msg
