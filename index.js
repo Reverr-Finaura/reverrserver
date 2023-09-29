@@ -547,6 +547,15 @@ app.post("/webhook", async (req, res) => {
 	checkmsgalreadyreplied(msg_id)
 
 	try {
+		var userChat = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
+		if(!userChat.exists){
+			console.log("No doc found!")
+
+		}else{
+			userChat = userChat.data();
+			console.log("user data", userChat)
+			console.log(userChat.message.length) 
+		}
 		// console.log(req.body)
 		// const  {payload}  = req.body;
 		const messageReceived = payload.entry[0].changes[0].value.messages;
