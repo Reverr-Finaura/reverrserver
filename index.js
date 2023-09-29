@@ -104,20 +104,6 @@ const cashfree = {
 	 next();
  }
 
-const name=""
-const linkedin=""
-const bio=""
-
-// <---- CUSTOM MSG---->
-const msg_hello = "Hi, there! \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \nType 1 if you’re a Startup Founder \nType 2 if you’re a Professional "
-const msg_askName = "We are happy that you're here.🤗 \nHow should we address you? Please type in your full name."
-const msg_confirmName = `So your name is ${name}? \nType 1 to confirm \nType 0 to retry`
-const msg_askLinkedin = "Let's build your profile first.📑\nKindly share your LinkedIn URL."
-const msg_confirmLinkedin = `So your linkedin url is ${linkedin}? \nType 1 to confirm \nType 0 to retry`
-const msg_askbio = "We have noted it.\nNow please write down a one-liner bio for yourself mentioning your expertise, experience, and interests. 👩🏻‍💼👨🏻‍💼 \n\nExample-I’m the founder of a digital marketing agency. We work with up-and-coming e-commerce businesses."
-const msg_confirmBio = `${bio} , Is this right? \nType 1 to confirm \nType 0 to retry`
-const msg_askStage = "That sounds good.🤩\nNow pick what resonates with you the most.\n\nType 1 if you have an idea and wish to execute it.🗣️\nType 2 if you are running a successful startup 😎\nType 3 if you have an idea but lack the necessary resources/ guidance🫣\nType 4 if you are running a startup and wish to grow & expand it further🤑\nType 5 if you are exploring your options 🤔"
-const msg_askOffering = "Type in the number of offering that suits your needs the best and let us take care of the rest. \n\n1. Get funding from VCs, Angels, and relevant Investors\n2. Discover networking opportunities \n3. Seek knowledge in bite-sized portions\n4. Connect with service providers for assistance"
 app.post('/accesstoken',nocache,generateAccessToken);
 
 app.get('/logo.svg', (req, res) => {
@@ -534,8 +520,9 @@ if(msgRec.id.includes(id)){
 }
 }
 
+
+
 app.post("/webhook", async (req, res) => {
-	
 	const  {payload}  = req.body;
 	console.log(payload)
 	console.log(payload.entry[0])
@@ -546,25 +533,202 @@ app.post("/webhook", async (req, res) => {
 	if(msg_id)
 	checkmsgalreadyreplied(msg_id)
 
-	try {
-		const messageReceived = payload.entry[0].changes[0].value.messages;
-		const messageText = messageReceived[0].text.body;
-		const messageFrom = messageReceived[0].from;
-		const usermessage = messageReceived[0].text.body;
-		var userChat = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
-		if(!userChat.exists){
-			console.log("No doc found!")
+	var lastMsgNotEmpty = false;	
+	var name=""
+	var linkedin=""
+	var bio=""
+	var lastMsg=""
+	var lastMsgSend=""
+	var lastMsgRec=""
+	let messageInput;
 
-		}else{
-			userChat = userChat.data();
-			// console.log("user data", userChat)
-			console.log(userChat.messages.length)
-			// var lastMsg = userChat.messages[userChat.messages.length -1];
-			var lastMsg = userChat.messages[2];
-			 console.log(lastMsg.usermessage) // last msg that user send
-			 
-			 console.log( lastMsg.message.type =="template"?lastMsg.message.template.name: lastMsg.message.text.body) // last msg that user send
+	const messageReceived = payload.entry[0].changes[0].value.messages;
+	const messageText = messageReceived[0].text.body;
+	const messageFrom = messageReceived[0].from;
+	const usermessage = messageReceived[0].text.body;
+	var userChat = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
+	if(!userChat.exists){
+		console.log("No doc found!")
+
+	}else{
+		userChat = userChat.data();
+		// console.log("user data", userChat)
+		// console.log(userChat.messages.length)
+		var lastMsg = userChat.messages[userChat.messages.length -1];
+		if(lastMsg != undefined && lastMsg != ""){
+			lastMsgNotEmpty = true;
 		}
+		// lastMsg = userChat.messages[2]; checking template
+		//  console.log(lastMsg.usermessage) // last msg that we recieved from user 
+		//  console.log( lastMsg.message.type =="template"?lastMsg.message.template.name: lastMsg.message.text.body) // last msg that we send to user
+		lastMsgSend = lastMsg.message.type =="template"?lastMsg.message.template.name: lastMsg.message.text.body;
+		lastMsgRec = lastMsg.usermessage;
+		
+		//initializing values
+		if(userChat.name){
+			name = userChat.name;
+		}
+		if(userChat.linkedin){
+			linkedin = userChat.linkedin;
+		}
+		if(userChat.bio){
+			bio = userChat.bio;
+		}
+
+	}
+		
+	// <---- CUSTOM MSG---->
+	const msg_hello = "Hi, there! \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \nType 1 if you’re a Startup Founder \nType 2 if you’re a Professional "
+	const msg_askName = "We are happy that you're here.🤗 \nHow should we address you? Please type in your full name."
+	const msg_confirmName = `So your name is ${name}? \nType 1 to confirm \nType 0 to retry`
+	const msg_askLinkedin = "Let's build your profile first.📑\nKindly share your LinkedIn URL."
+	const msg_confirmLinkedin = `So your linkedin url is ${linkedin}? \nType 1 to confirm \nType 0 to retry`
+	const msg_askbio = "We have noted it.\nNow please write down a one-liner bio for yourself mentioning your expertise, experience, and interests. 👩🏻‍💼👨🏻‍💼 \n\nExample-I’m the founder of a digital marketing agency. We work with up-and-coming e-commerce businesses."
+	const msg_confirmBio = `${bio} , Is this right? \nType 1 to confirm \nType 0 to retry`
+	const msg_askStage = "That sounds good.🤩\nNow pick what resonates with you the most.\n\nType 1 if you have an idea and wish to execute it.🗣️\nType 2 if you are running a successful startup 😎\nType 3 if you have an idea but lack the necessary resources/ guidance🫣\nType 4 if you are running a startup and wish to grow & expand it further🤑\nType 5 if you are exploring your options 🤔"
+	const msg_askOffering = "Type in the number of offering that suits your needs the best and let us take care of the rest. \n\n1. Get funding from VCs, Angels, and relevant Investors\n2. Discover networking opportunities \n3. Seek knowledge in bite-sized portions\n4. Connect with service providers for assistance"
+	const msg_dontUnderstand= "Sorry, I dont understand what do you mean by that?. \n\nType 1 to try again!"
+	const msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. Please try again."
+
+	const sendMsg = ()=>{
+		const { data } = await sendMessage(messageInput);
+
+		const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
+	   if(!userexist.exists){
+		console.log("no doc");
+		await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
+		 {exists: "true"})
+		 await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+		  messages: FieldValue.arrayUnion(
+			{status: "success",
+			   messageId: data.messages[0].id,
+		   message: JSON.parse(messageInput),
+		   date: Timestamp.now(),
+		   usermessage,
+		  })
+		}) 
+	   }else{
+		await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+		  messages: FieldValue.arrayUnion(
+			{status: "success",
+			   messageId: data.messages[0].id,
+		   message: JSON.parse(messageInput),
+		   date: Timestamp.now(),
+		   usermessage,
+		  })
+		});
+	   }
+	   res.json({
+		status: "success",
+	   
+	  });
+	}
+
+	const msgMatcher = (lastMsgSend)=>{
+		var result = "not found"
+		if(lastMsgSend == msg_hello){
+			result = "msg_hello"
+		}else if(lastMsgSend == msg_askName){
+			result = "msg_askName"
+		}else if(lastMsgSend == msg_confirmName){
+			result = "msg_confirmName"
+		}else if(lastMsgSend == msg_askLinkedin){
+			result = "msg_askLinkedin"
+		}else if(lastMsgSend == msg_confirmLinkedin){
+			result = "msg_confirmLinkedin"
+		}else if(lastMsgSend == msg_askbio){
+			result = "msg_askbio"
+		}else if(lastMsgSend == msg_confirmBio){
+			result = "msg_confirmBio"
+		}else if(lastMsgSend == msg_askStage){
+			result = "msg_askStage"
+		}else if(lastMsgSend == msg_askOffering){
+			result = "msg_askOffering"
+		}else if(lastMsgSend == msg_dontUnderstand){
+			result = "msg_dontUnderstand"
+		return result;
+	}
+	
+	if(lastMsgNotEmpty){
+		var res = msgMatcher(lastMsgSend);
+		if (["hi", "hii", "hello", "hie", "hey"].includes(messageText.toLowerCase())){
+			messageInput = messageHelper.getCustomTextInput(
+				messageFrom,
+				msg_hello
+			  );
+			sendMsg()
+		}
+		else if (res = "msg_hello"){
+			if(usermessage == "1"){
+				var userType = "founder";
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({userType}) 
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askName
+				  );
+				sendMsg()
+			}else if(usermessage == "2"){
+				var userType = "professional"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({userType})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askName
+				  );
+				sendMsg()
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
+
+		}
+		else if (res = "msg_askName"){
+
+		}
+		else if (res = "msg_confirmName"){
+
+		}
+		else if (res = "msg_askLinkedin"){
+
+		}
+		else if (res = "msg_confirmLinkedin"){
+
+		}
+		else if (res = "msg_askbio"){
+
+		}
+		else if (res = "msg_confirmBio"){
+
+		}
+		else if (res = "msg_askStage"){
+
+		}
+		else if (res = "msg_askOffering"){
+
+		}
+		else if (res = "msg_dontUnderstand"){
+
+		}
+	}else{
+		if (["hi", "hii", "hello", "hie", "hey"].includes(messageText.toLowerCase())){
+			messageInput = messageHelper.getCustomTextInput(
+				messageFrom,
+				msg_hello
+			  );
+			sendMsg()
+		}else{
+			messageInput = messageHelper.getCustomTextInput(
+				messageFrom,
+				msg_dontUnderstandNoAction
+			  );
+			sendMsg()
+		}
+	}
+
+	try {
+	
 		// console.log(req.body)
 		// const  {payload}  = req.body;
 		// console.log(messageReceived);
@@ -628,75 +792,75 @@ app.post("/webhook", async (req, res) => {
 		
 	
 	
-		//for text below
+		//for text CASES below
 		
 	
-		let messageInput;
-		if (["hi", "hii", "hello", "Hi", "hie", "Hello", "hey", "Hey", "Hie", "Hii"].includes(messageText.toLowerCase())) {
-			// Use a template or custom message here
-			messageInput = messageHelper.getCustomTextInput(
-			  // "917007393348",
-			  messageFrom,
-			  msg_hello
-			);
-		  } else {
-			  messageInput = messageHelper.getCustomTextInput(
-				// "917007393348",
-				messageFrom,
-				"Thank you for your message. We will get back to you soon."
-			  );
-			}
+		
+
+		// <---------- BASIC MSG SEND -------------->
+
+		// if (["hi", "hii", "hello", "Hi", "hie", "Hello", "hey", "Hey", "Hie", "Hii"].includes(messageText.toLowerCase())) {
+		// 	// Use a template or custom message here
+		// 	messageInput = messageHelper.getCustomTextInput(
+		// 	  // "917007393348",
+		// 	  messageFrom,
+		// 	  msg_hello
+		// 	);
+		//   } else {
+		// 	  messageInput = messageHelper.getCustomTextInput(
+		// 		// "917007393348",
+		// 		messageFrom,
+		// 		"Thank you for your message. We will get back to you soon."
+		// 	  );
+		// 	}
 	   
-		// if (["hi", "hii", "hello", "Hi"].includes(messageText.toLowerCase())) {
-		//   // Use a template or custom message here
-		//   messageInput = messageHelper.getTemplateTextInput(
-		// 	// "917007393348",
-		// 	messageFrom,
-		// 	"hello_world"
-		//   );
-		// } else {
-		//   messageInput = messageHelper.getCustomTextInput(
-		// 	// "917007393348",
-		// 	messageFrom,
-		// 	"Thank you for your message. We will get back to you soon."
-		//   );
-		// }
-		// console.log("DATA")
-		// console.log(messageInput)
-		// console.log("DATA END")
-		const { data } = await sendMessage(messageInput);
-	  
+						// if (["hi", "hii", "hello", "Hi"].includes(messageText.toLowerCase())) {
+						//   // Use a template or custom message here
+						//   messageInput = messageHelper.getTemplateTextInput(
+						// 	// "917007393348",
+						// 	messageFrom,
+						// 	"hello_world"
+						//   );
+						// } else {
+						//   messageInput = messageHelper.getCustomTextInput(
+						// 	// "917007393348",
+						// 	messageFrom,
+						// 	"Thank you for your message. We will get back to you soon."
+						//   );
+						// }
+						// console.log("DATA")
+						// console.log(messageInput)
+						// console.log("DATA END")
+
+	// 	const { data } = await sendMessage(messageInput);
 	
-	   const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
-	   if(!userexist.exists){
-		console.log("no doc");
-		await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
-		 {exists: "true"})
-		 await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
-		  messages: FieldValue.arrayUnion(
-			{status: "success",
-			   messageId: data.messages[0].id,
-		   message: JSON.parse(messageInput),
-		   date: Timestamp.now(),
-		   usermessage,
-		  })
-		}) 
-	   }else{
-		await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
-		  messages: FieldValue.arrayUnion(
-			{status: "success",
-			   messageId: data.messages[0].id,
-		   message: JSON.parse(messageInput),
-		   date: Timestamp.now(),
-		   usermessage,
-		  })
-		});
-	   }
+	//    const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
+	//    if(!userexist.exists){
+	// 	console.log("no doc");
+	// 	await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
+	// 	 {exists: "true"})
+	// 	 await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+	// 	  messages: FieldValue.arrayUnion(
+	// 		{status: "success",
+	// 		   messageId: data.messages[0].id,
+	// 	   message: JSON.parse(messageInput),
+	// 	   date: Timestamp.now(),
+	// 	   usermessage,
+	// 	  })
+	// 	}) 
+	//    }else{
+	// 	await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+	// 	  messages: FieldValue.arrayUnion(
+	// 		{status: "success",
+	// 		   messageId: data.messages[0].id,
+	// 	   message: JSON.parse(messageInput),
+	// 	   date: Timestamp.now(),
+	// 	   usermessage,
+	// 	  })
+	// 	});
+	//    }
 		 
-		res.json({
-		  status: "success",
-		 
-		});
+		
 	  }} catch (error) {
 	 
 		console.error("Error:", error);
