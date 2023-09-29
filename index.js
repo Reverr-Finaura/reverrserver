@@ -547,6 +547,10 @@ app.post("/webhook", async (req, res) => {
 	checkmsgalreadyreplied(msg_id)
 
 	try {
+		const messageReceived = payload.entry[0].changes[0].value.messages;
+		const messageText = messageReceived[0].text.body;
+		const messageFrom = messageReceived[0].from;
+		const usermessage = messageReceived[0].text.body;
 		var userChat = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
 		if(!userChat.exists){
 			console.log("No doc found!")
@@ -558,9 +562,8 @@ app.post("/webhook", async (req, res) => {
 		}
 		// console.log(req.body)
 		// const  {payload}  = req.body;
-		const messageReceived = payload.entry[0].changes[0].value.messages;
 		// console.log(messageReceived);
-		const messageFrom = messageReceived[0].from;
+		// const messageFrom = messageReceived[0].from;
 		let mediaid = " "
 		let mediatype = " "
 		//for media files start
@@ -621,9 +624,7 @@ app.post("/webhook", async (req, res) => {
 	
 	
 		//for text below
-		const messageText = messageReceived[0].text.body;
-		const messageFrom = messageReceived[0].from;
-		const usermessage = messageReceived[0].text.body;
+		
 	
 		let messageInput;
 		if (["hi", "hii", "hello", "Hi", "hie", "Hello", "hey", "Hey", "Hie", "Hii"].includes(messageText.toLowerCase())) {
