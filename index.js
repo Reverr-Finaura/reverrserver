@@ -647,6 +647,7 @@ app.post("/webhook", async (req, response) => {
 	}
 
 	const msgMatcher = (lastMsgSend)=>{
+		console.log(lastMsgSend);
 		var result = "not found"
 		if(lastMsgSend == msg_hello){
 			result = "msg_hello"
@@ -669,6 +670,7 @@ app.post("/webhook", async (req, response) => {
 		}else if(lastMsgSend == msg_dontUnderstand){
 			result = "msg_dontUnderstand"
 		}
+		console.log(result)
 		return result;
 	}
 	
