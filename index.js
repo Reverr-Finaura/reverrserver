@@ -583,7 +583,6 @@ app.post("/webhook", async (req, response) => {
 	var msg_confirmName1 = "So your name is "
 	var msg_confirmName3 = "? \nType 1 to confirm \nType 0 to retry"
 	var msg_confirmName = msg_confirmName1+name+msg_confirmName3
-	
 	var msg_askLinkedin = "Let's build your profile first.📑\nKindly share your LinkedIn URL."
 	var msg_confirmLinkedin = `So your linkedin url is ${linkedin}? \nType 1 to confirm \nType 0 to retry`
 	var msg_askbio = "We have noted it.\nNow please write down a one-liner bio for yourself mentioning your expertise, experience, and interests. 👩🏻‍💼👨🏻‍💼 \n\nExample-I’m the founder of a digital marketing agency. We work with up-and-coming e-commerce businesses."
@@ -592,6 +591,9 @@ app.post("/webhook", async (req, response) => {
 	var msg_askOffering = "Type in the number of offering that suits your needs the best and let us take care of the rest. \n\n1. Get funding from VCs, Angels, and relevant Investors\n2. Discover networking opportunities \n3. Seek knowledge in bite-sized portions\n4. Connect with service providers for assistance"
 	var msg_dontUnderstand= "Sorry, I dont understand what do you mean by that?. \n\nType 1 to try again!"
 	var msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. Please try again."
+	var msg_fundingForm = "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and furnish a few essential details for us to proceed with building your deal's case.📂\nLink to the form: https://forms.gle/3DvvAsVzq6HXHLNn6\n\nOur team will get back to you soon.\n\nType 1 if you’ve filled out the form.\nType 0 to go Back"
+	var msg_fundingFormFilled = "Thank you for sharing the Details.\n\nOur team will do a manual review and will connect with you in case the deal seems doable.🙌🏻Your patience is highly valued. Have a great day ahead! 😉 \n\nType Menu to open main menu."
+	var msg_professionalOfferings = "Type in the number of offering that suits your needs the best and let us take care of the rest.\n1. Discover networking opportunities \n2. Seek knowledge in bite-sized portions"
 
 	const sendMsg = async()=>{
 		const { data } = await sendMessage(messageInput);
@@ -672,6 +674,12 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_askOffering"
 		}else if(lastMsgSend == msg_dontUnderstand){
 			result = "msg_dontUnderstand"
+		}else if(lastMsgSend == msg_fundingForm){
+			result = "msg_fundingForm"
+		}else if(lastMsgSend == msg_fundingFormFilled){
+			result = "msg_fundingFormFilled"
+		}else if(lastMsgSend == msg_professionalOfferings){
+			result = "msg_professionalOfferings"
 		}
 		console.log(result)
 		return result;
@@ -793,10 +801,18 @@ app.post("/webhook", async (req, response) => {
 		else if (res == "msg_confirmBio"){
 			console.log("f7")
 			if(usermessage == "1"){
+				if(userChat.userType=="founder"){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_askStage
-				);
+				)} else if(userChat.userType == "professional"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_professionalOfferings
+					)
+					var profile = true;
+					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({profile});
+				}
 				sendMsg()
 			}else if(usermessage=="0"){
 				messageInput = messageHelper.getCustomTextInput(
@@ -866,10 +882,12 @@ app.post("/webhook", async (req, response) => {
 			console.log("f9")
 			if(usermessage=="1"){
 				var currentNeed = "Get funding from VCs, Angels, and relevant Investors"
+				var profile = true
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({profile});
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
-					"Thank you for reaching out!"
+					msg_fundingForm
 				  );
 				sendMsg()
 			} else if (usermessage=="2"){
@@ -907,8 +925,17 @@ app.post("/webhook", async (req, response) => {
 		else if (res == "msg_dontUnderstand"){
 			console.log("f10")
 			if(usermessage == "1"){
-				// Resend last to last msg
-				resendLastToLastMsg()
+				resendLastToLastMsg() // Resend last to last msg
+			}
+		}else if(res == "msg_fundingForm"){
+			if(usermessage == "1"){
+				var fundingForm = true;
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({fundingForm});
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fundingFormFilled
+				  );
+				sendMsg()
 			}
 		}
 	}else{
