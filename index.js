@@ -591,23 +591,24 @@ app.post("/webhook", async (req, response) => {
 	var msg_askOffering = "Type in the number of offering that suits your needs the best and let us take care of the rest. \n\n1. Get funding from VCs, Angels, and relevant Investors\n2. Discover networking opportunities \n3. Seek knowledge in bite-sized portions\n4. Connect with service providers for assistance"
 	var msg_dontUnderstand= "Sorry, I dont understand what do you mean by that?. \n\nType 1 to try again!"
 	var msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. Please try again."
-	var msg_fundingForm = "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and furnish a few essential details for us to proceed with building your deal's case.📂\nLink to the form: https://forms.gle/3DvvAsVzq6HXHLNn6\n\nOur team will get back to you soon.\n\nType 1 if you’ve filled out the form.\nType 0 to go Back"
+	var msg_fundingForm = "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and furnish a few essential details for us to proceed with building your deal's case.📂\nLink to the form: https://forms.gle/3DvvAsVzq6HXHLNn6\n\nOur team will get back to you soon.\n\nType 1 if you’ve filled out the form.\nType Menu to open main menu."
 	var msg_fundingFormFilled = "Thank you for sharing the Details.\n\nOur team will do a manual review and will connect with you in case the deal seems doable.🙌🏻Your patience is highly valued. Have a great day ahead! 😉 \n\nType Menu to open main menu."
 	var msg_professionalOfferings = "Type in the number of offering that suits your needs the best and let us take care of the rest.\n1. Discover networking opportunities \n2. Seek knowledge in bite-sized portions"
 	var msg_professionalNetworking = " Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences.\n\n1. Check out the latest 'Refreshed by Reverr' offline events being conducted\n2. Join Reverr Spaces (Communities)\n3. Connect one-on-one with like-minded people"
 	var msg_createProfile = "First please create your profile inorder to continue. \nType hi to start onboarding."
 	var msg_errorProfile = "Some error occured please create your profile again to continue. \nType hi to start onboarding."
 	var msg_networkingOptions = "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences.\n\n1. Check out the 'Refreshed by Reverr' offline events\n2. Join Reverr Spaces (Communities)\n3. Book a seat for Reverr School's Free Online webinars\n4. Connect one-on-one with like-minded people"
-	var msg_rbrRegisterLink = "Here’s the link to register for the next Refreshed by Reverr event!\n\nRefreshed by Rever is not just your run-of-the-mill startup gathering; it's an exclusive convention tailored to empower emerging entrepreneurs by fostering connections, knowledge-sharing, and business growth.\n📈 Propel your startup to new heights,\n👥 Connect with potential business connections who believe in your vision,\n🎁 And access real good bonuses!\n\nBook your seat now: https://www.townscript.com/e/refereshed-by-reverr-344412\n\nType 1 if you’ve registered for RBR\nType 0 to go back to Menu"
+	var msg_rbrRegisterLink = "Here’s the link to register for the next Refreshed by Reverr event!\n\nRefreshed by Rever is not just your run-of-the-mill startup gathering; it's an exclusive convention tailored to empower emerging entrepreneurs by fostering connections, knowledge-sharing, and business growth.\n📈 Propel your startup to new heights,\n👥 Connect with potential business connections who believe in your vision,\n🎁 And access real good bonuses!\n\nBook your seat now: https://www.townscript.com/e/refereshed-by-reverr-344412\n\nType 1 if you’ve registered for RBR\nType menu to go back to Menu"
 	var msg_rbrRegistered="Yay! See you there. \n\nType menu to go back to menu."
 	var msg_reverrSpacesCommunity = "Great choice!\nHere is the link to join the community of budding & seasoned entrepreneurs.\nLink to Reverrites: https://chat.whatsapp.com/GYG93rm4dVSH5521jNvtej \n\nType menu to go back to menu."
 	var msg_webinar = "Sorry currently there are no webinar taking place \n\nType menu to go back to menu."
 	var msg_knowledge = "Upskilling and continuous knowledge enhancement are essential in today's competitive world.\nWorry not, we are here to your rescue.\nCheck out our bite-sized courses that you can indulge in on the go.\n\nType 1 to access content around different niches📑 \nType 2 to access educational content around entrepreneurship😎"
-	var msg_knowledgecontent = "Tell us your interest areas. What would you like to learn more about?\nPick your interest area(s).\n\n1. Idea validation\n2. Business collaterals\n3. Funding options\n4. Startup Financing\n5. Growth strategies\n6. Startup scaling\n7. Incubators & Accelerators\n8. Mentorship\n9. Product Development\n10. Customer Acquisition"
-	var msg_knowledgeYt = "Smart choice!\nThere you go: https://www.youtube.com/@YourStartupGuy \n\nBinge on some content that’s actually worth your time.🥳"
-	var msg_serviceProvider = "Sure thing!\nWe have many service providers listed on our platform.\n\nWhat kind of service(s) are you looking to avail?\n\nType 1 if you’re looking for legal assistance\nType 2 if you’re looking for assistance with accounting, taxation, and/ or audit \nType 3 if you’re looking for technological assistance\nType 4 if you’re looking for assistance with creating pitch decks, business plans, and/ or financial model\nType 5 if you’re looking for assistance with Marketing"
+	var msg_knowledgecontent = "Tell us your interest areas. What would you like to learn more about?\nPick your interest area(s).\n\n1. Idea validation\n2. Business collaterals\n3. Funding options\n4. Startup Financing\n5. Growth strategies\n6. Startup scaling\n7. Incubators & Accelerators\n8. Mentorship\n9. Product Development\n10. Customer Acquisition \n\nType menu to go back to Menu"
+	var msg_knowledgeYt = "Smart choice!\nThere you go: https://www.youtube.com/@YourStartupGuy \n\nBinge on some content that’s actually worth your time.🥳 \n\nType menu to go back to Menu"
+	var msg_serviceProvider = "Sure thing!\nWe have many service providers listed on our platform.\n\nWhat kind of service(s) are you looking to avail?\n\nType 1 if you’re looking for legal assistance\nType 2 if you’re looking for assistance with accounting, taxation, and/ or audit \nType 3 if you’re looking for technological assistance\nType 4 if you’re looking for assistance with creating pitch decks, business plans, and/ or financial model\nType 5 if you’re looking for assistance with Marketing \n\nType menu to go back to Menu"
 	var msg_moreSp = "Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: <name>\nProfile: <website/ linkedin url>\nExpertise: <domain>\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu"
 	var msg_unavailable = "Apologies, this is currently unavailable. We will let you know when it is available. \nType menu to go back to Menu."
+	var msg_bie = "See you soon, Byeee... 👋"
 
 	const sendMsg = async()=>{
 		const { data } = await sendMessage(messageInput);
@@ -733,6 +734,8 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_unavailable"
 		}else if(lastMsgSend == msg_rbrRegistered){
 			result = "msg_rbrRegistered"
+		}else if(lastMsgSend == msg_bie){
+			result = "msg_bie"
 		}
 		console.log(result)
 		return result;
@@ -744,6 +747,12 @@ app.post("/webhook", async (req, response) => {
 			messageInput = messageHelper.getCustomTextInput(
 				messageFrom,
 				msg_hello
+			  );
+			sendMsg()
+		}else if(["bie", "bye", "byeee", "byee", "biee", "biee"].includes(messageText.toLowerCase())){
+			messageInput = messageHelper.getCustomTextInput(
+				messageFrom,
+				msg_bie
 			  );
 			sendMsg()
 		}else if(["menu"].includes(messageText.toLowerCase())){
@@ -1017,6 +1026,12 @@ app.post("/webhook", async (req, response) => {
 					msg_fundingFormFilled
 				  );
 				sendMsg()
+			}else {
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
 			}
 		}else if(res == "msg_networkingOptions"){
 			if(usermessage == "1"){
@@ -1079,7 +1094,7 @@ app.post("/webhook", async (req, response) => {
 				  );
 				sendMsg()
 			}
-		}else if(res ="msg_serviceProvider"){
+		}else if(res =="msg_serviceProvider"){
 			if(usermessage == "1"){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
@@ -1102,6 +1117,26 @@ app.post("/webhook", async (req, response) => {
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_moreSp
+				  );
+				sendMsg()
+			}else {
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
+		}else if(res == "msg_moreSp"){
+			if(usermessage == "1"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_moreSp
+				  );
+				sendMsg()
+			}else if(usermessage == "2"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_serviceProvider
 				  );
 				sendMsg()
 			}else {
