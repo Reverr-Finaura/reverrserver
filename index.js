@@ -716,6 +716,7 @@ app.post("/webhook", async (req, response) => {
 		else if (res == "msg_askName"){
 			console.log("f2")
 			name = usermessage;
+			msg_confirmName = msg_confirmName1+name+msg_confirmName3
 			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({name});
 			messageInput = messageHelper.getCustomTextInput(
 				messageFrom,
@@ -748,6 +749,7 @@ app.post("/webhook", async (req, response) => {
 		else if (res == "msg_askLinkedin"){
 			console.log("f4")
 			linkedin = usermessage;
+			msg_confirmLinkedin = `So your linkedin url is ${linkedin}? \nType 1 to confirm \nType 0 to retry`
 			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({linkedin});
 			messageInput = messageHelper.getCustomTextInput(
 				messageFrom,
@@ -780,6 +782,7 @@ app.post("/webhook", async (req, response) => {
 		else if (res == "msg_askbio"){
 			console.log("f6")
 			bio = usermessage;
+			msg_confirmBio = `${bio} , Is this right? \nType 1 to confirm \nType 0 to retry`
 			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bio});
 			messageInput = messageHelper.getCustomTextInput(
 				messageFrom,
