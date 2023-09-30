@@ -746,6 +746,34 @@ app.post("/webhook", async (req, response) => {
 				msg_hello
 			  );
 			sendMsg()
+		}else if(["menu"].includes(messageText.toLowerCase())){
+			if(userChat.profile){
+				if(userChat.userType== "founder"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_askOffering
+					  );
+					sendMsg()
+				}else if(userChat.userType == "professional"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_professionalOfferings
+					  );
+					sendMsg()
+				}else{
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_errorProfile
+					  );
+					sendMsg()
+				}
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_createProfile
+				  );
+				sendMsg()
+			}
 		}
 		else if (res == "msg_hello"){
 			console.log("f1")
@@ -987,34 +1015,6 @@ app.post("/webhook", async (req, response) => {
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_fundingFormFilled
-				  );
-				sendMsg()
-			}
-		}else if(["menu"].includes(messageText.toLowerCase())){
-			if(userChat.profile){
-				if(userChat.userType== "founder"){
-					messageInput = messageHelper.getCustomTextInput(
-						messageFrom,
-						msg_askOffering
-					  );
-					sendMsg()
-				}else if(userChat.userType == "professional"){
-					messageInput = messageHelper.getCustomTextInput(
-						messageFrom,
-						msg_professionalOfferings
-					  );
-					sendMsg()
-				}else{
-					messageInput = messageHelper.getCustomTextInput(
-						messageFrom,
-						msg_errorProfile
-					  );
-					sendMsg()
-				}
-			}else{
-				messageInput = messageHelper.getCustomTextInput(
-					messageFrom,
-					msg_createProfile
 				  );
 				sendMsg()
 			}
