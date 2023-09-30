@@ -747,7 +747,7 @@ app.post("/webhook", async (req, response) => {
 			  );
 			sendMsg()
 		}else if(["menu"].includes(messageText.toLowerCase())){
-			if(userChat.profile){
+			if(userChat.profile==true){
 				if(userChat.userType== "founder"){
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
