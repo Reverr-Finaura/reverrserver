@@ -523,13 +523,13 @@ if(msgRec.id.includes(id)){
 
 
 app.post("/webhook", async (req, response) => {
-	const  {payload}  = req.body;
+	var  {payload}  = req.body;
 	console.log(payload)
 	console.log(payload.entry[0])
 	console.log(payload.entry[0].id)
 	console.log(payload.entry[0].changes[0].value.contacts)
 	console.log(payload.entry[0].changes[0].value.messages)
-	const msg_id = payload.entry[0].id;
+	var msg_id = payload.entry[0].id;
 	if(msg_id)
 	checkmsgalreadyreplied(msg_id)
 
@@ -542,10 +542,10 @@ app.post("/webhook", async (req, response) => {
 	var lastMsgRec=""
 	let messageInput;
 
-	const messageReceived = payload.entry[0].changes[0].value.messages;
-	const messageText = messageReceived[0].text.body;
-	const messageFrom = messageReceived[0].from;
-	const usermessage = messageReceived[0].text.body;
+	var messageReceived = payload.entry[0].changes[0].value.messages;
+	var messageText = messageReceived[0].text.body;
+	var messageFrom = messageReceived[0].from;
+	var usermessage = messageReceived[0].text.body;
 	var userChat = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
 	if(!userChat.exists){
 		console.log("No doc found!")
