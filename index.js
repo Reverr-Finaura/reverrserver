@@ -1021,6 +1021,8 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			} else if (usermessage=="2"){
 				var currentNeed = "Discover networking opportunities"
+				var profile = true
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({profile});
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
@@ -1029,6 +1031,8 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}  else if (usermessage=="3"){
 				var currentNeed = "Seek knowledge in bite-sized portions"
+				var profile = true
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({profile});
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
@@ -1037,6 +1041,8 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			} else if (usermessage=="4"){
 				var currentNeed = " Connect with service providers for assistance"
+				var profile = true
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({profile});
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
