@@ -666,13 +666,14 @@ app.post("/webhook", async (req, response) => {
 			
 		// 	sendMsg();
 		// } else {
+			console.log(ltlMsg)
 			var ltlMsgSend = ltlMsg.message.text.body;
 
 			messageInput = messageHelper.getTemplateTextInput(
 				messageFrom,
 				ltlMsgSend
 			)
-
+			console.log(ltlMsgSend)
 			sendMsg();
 		// }
 		
