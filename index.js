@@ -656,26 +656,25 @@ app.post("/webhook", async (req, response) => {
 	}
 	const resendLastToLastMsg = ()=>{
 		var ltlMsg = userChat.messages[userChat.messages.length -2];
-		// if(ltlMsg.message.type =="template"){
-		// 	var ltlMsgSend = ltlMsg.message.template.name;
-
-		// 	messageInput = messageHelper.getTemplateTextInput(
-		// 		messageFrom,
-		// 		ltlMsgSend
-		// 	);
-			
-		// 	sendMsg();
-		// } else {
-			console.log(ltlMsg)
-			var ltlMsgSend = ltlMsg.message.text.body;
+		if(ltlMsg.message.type =="template"){
+			var ltlMsgSend = ltlMsg.message.template.name;
 
 			messageInput = messageHelper.getTemplateTextInput(
 				messageFrom,
 				ltlMsgSend
-			)
-			console.log(ltlMsgSend)
+			);
+			
 			sendMsg();
-		// }
+		} else {
+			var ltlMsgSend = ltlMsg.message.text.body;
+
+			messageInput = messageHelper.getCustomTextInput(
+				messageFrom,
+				ltlMsgSend
+			)
+
+			sendMsg();
+		}
 		
 	}
 
