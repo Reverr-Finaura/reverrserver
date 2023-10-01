@@ -594,7 +594,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_fundingForm = "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and furnish a few essential details for us to proceed with building your deal's case.📂\nLink to the form: https://forms.gle/3DvvAsVzq6HXHLNn6\n\nOur team will get back to you soon.\n\nType 1 if you’ve filled out the form.\nType Menu to open main menu."
 	var msg_fundingFormFilled = "Thank you for sharing the Details.\n\nOur team will do a manual review and will connect with you in case the deal seems doable.🙌🏻Your patience is highly valued. Have a great day ahead! 😉 \n\nType Menu to open main menu."
 	var msg_professionalOfferings = "Type in the number of offering that suits your needs the best and let us take care of the rest.\n1. Discover networking opportunities \n2. Seek knowledge in bite-sized portions"
-	var msg_professionalNetworking = "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences.\n\n1. Check out the latest 'Refreshed by Reverr' offline events being conducted\n2. Join Reverr Spaces (Communities)\n3. Connect one-on-one with like-minded people"
+	var msg_professionalNetworking = "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences.\n\n1. Check out the latest 'Refreshed by Reverr' offline events being conducted\n2. Join Reverr Spaces (Communities)\n3. Connect one-on-one with like-minded people\n\nType menu to go back to menu."
 	var msg_createProfile = "First please create your profile inorder to continue. \nType hi to start onboarding."
 	var msg_errorProfile = "Some error occured please create your profile again to continue. \nType hi to start onboarding."
 	var msg_networkingOptions = "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences.\n\n1. Check out the 'Refreshed by Reverr' offline events\n2. Join Reverr Spaces (Communities)\n3. Book a seat for Reverr School's Free Online webinars\n4. Connect one-on-one with like-minded people"
@@ -609,6 +609,18 @@ app.post("/webhook", async (req, response) => {
 	var msg_moreSp = "Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: <name>\nProfile: <website/ linkedin url>\nExpertise: <domain>\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu"
 	var msg_unavailable = "Apologies, this is currently unavailable. We will let you know once it is available. \nType menu to go back to Menu."
 	var msg_bie = "See you soon, Byeee... 👋"
+
+	//knowledge msgs
+	var msg_ideaValidation = "Idea Validation:\n1. How to Test Your Startup Idea (https://www.youtube.com/watch?v=J4e0OogLpOo) (YouTube Video)\n2. The Ultimate Guide to Idea Validation for Startups (https://www.startups.com/library/expert-advice/idea-validation-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
+	var msg_businessCollaterals = "Business Collaterals:\n1. Understanding Business Collateral (https://www.businessloans.com/guides/business-collateral/) (Article)\n2. Business Collateral: What It Is and How It Works (https://www.nav.com/blog/business-collateral-422422/) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
+	var msg_fundingOptions = "Funding Options:\n1. Startup Funding Options Explained\n(https://www.youtube.com/watch?v=7wvGmY4EQrE) (YouTube Video)\n2. A Comprehensive Guide to Startup Funding (https://www.startups.com/library/expert-advice/startup-funding-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
+	var msg_startupFinancing = "Startup Financing:\n1. Startup Financing: What You Need to Know (https://www.youtube.com/watch?v=vkGX6ziLuVU) (YouTube Video)\n2. A Beginner's Guide to Startup Financing (https://www.entrepreneur.com/article/324041) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
+	var msg_growthStrategies = "Growth Strategies:\n1. Strategies for Startup Growth (https://www.youtube.com/watch?v=9Vp8TJiIIOk) (YouTube Video)\n2. 10 Proven Strategies for Scaling Your Startup (https://www.startups.com/library/expert-advice/scaling-strategies) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
+	var msg_startupscaling = "Startup Scaling:\n1. Scaling Your Startup: Tips and Advice (https://www.youtube.com/watch?v=uxquHcYy5dU) (YouTube Video)\n2. The Art of Scaling: A Guide for Startups (https://www.startups.com/library/expert-advice/scaling-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
+	var msg_incubators = "Incubators & Accelerators:\n1. Startup Incubators vs. Accelerators Explained (https://www.youtube.com/watch?v=kxXauPPCYnE) (YouTube Video)\n2. How to Choose the Right Incubator or Accelerator (https://www.techstars.com/the-line/startup-basics/how-choose-right-incubator-or-accelerator-your-startup) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
+	var msg_mentorship = "Mentorship:\n1. The Power of Mentorship (https://www.youtube.com/watch?v=nfWgX4C3B0k) (YouTube Video)\n2. Why Mentorship is Essential for Your Career  (https://www.forbes.com/sites/janbruce/2021/11/01/why-mentorship-is-essential-for-your-career/?sh=29076e3d4300) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
+	var msg_productDvp = "Product Development:\n1. Product Development Process Explained (https://www.youtube.com/watch?v=2XebzSDxIKg) (YouTube Video)\n2. The Complete Guide to Product Development (https://www.startups.com/library/expert-advice/product-development-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
+	var msg_customerAcq = "Customer Acquisition:\n1. Customer Acquisition Strategies for Startups (https://www.youtube.com/watch?v=6T5VXULd9yI) (YouTube Video)\n2. The Ultimate Guide to Customer Acquisition (https://www.startups.com/library/expert-advice/customer-acquisition-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
 
 	const sendMsg = async()=>{
 		const { data } = await sendMessage(messageInput);
@@ -736,6 +748,33 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_rbrRegistered"
 		}else if(lastMsgSend == msg_bie){
 			result = "msg_bie"
+		}else if(lastMsgSend == msg_ideaValidation){
+			result = "msg_ideaValidation"
+		
+		}else if(lastMsgSend == msg_businessCollaterals){
+			result = "msg_businessCollaterals"
+		
+		}else if(lastMsgSend == msg_fundingOptions){
+			result = "msg_fundingOptions"
+		
+		}else if(lastMsgSend == msg_startupFinancing){
+			result = "msg_startupFinancing"
+		
+		}else if(lastMsgSend == msg_growthStrategies){
+			result = "msg_growthStrategies"
+		
+		}else if(lastMsgSend == msg_startupscaling){
+			result = "msg_startupscaling"
+		
+		}else if(lastMsgSend == msg_incubators){
+			result = "msg_incubators"
+		
+		}else if(lastMsgSend == msg_mentorship){
+			result = "msg_mentorship"
+		}else if(lastMsgSend == msg_productDvp){
+			result = "msg_productDvp"
+		}else if(lastMsgSend == msg_customerAcq){
+			result = "msg_customerAcq"
 		}
 		console.log(result)
 		return result;
@@ -1192,7 +1231,98 @@ app.post("/webhook", async (req, response) => {
 				  );
 				sendMsg()
 			}
-		}
+		}else if(res =="msg_ideaValidation"
+				||res =="msg_businessCollaterals"
+				||res =="msg_fundingOptions"
+				||res =="msg_startupFinancing"
+				||res =="msg_growthStrategies"
+				||res =="msg_startupscaling"
+				||res =="msg_incubators"
+				||res =="msg_mentorship"
+				||res =="msg_productDvp"
+				||res =="msg_customerAcq"){
+					if(usermessage == "1"){
+						messageInput = messageHelper.getCustomTextInput(
+							messageFrom,
+							msg_knowledgecontent
+						  );
+						sendMsg()
+					}else {
+						messageInput = messageHelper.getCustomTextInput(
+							messageFrom,
+							msg_dontUnderstand
+						  );
+						sendMsg()
+					}
+			}else if(res == "msg_knowledgecontent"){
+				if(usermessage == "1"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_ideaValidation
+					  );
+					sendMsg()
+				}else if(usermessage =="2"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_businessCollaterals
+					  );
+					sendMsg()
+				}else if(usermessage =="3"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_fundingOptions
+					  );
+					sendMsg()
+				}else if(usermessage =="4"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_startupFinancing
+					  );
+					sendMsg()
+				}if(usermessage == "5"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_growthStrategies
+					  );
+					sendMsg()
+				}else if(usermessage =="6"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_startupscaling
+					  );
+					sendMsg()
+				}else if(usermessage =="7"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_incubators
+					  );
+					sendMsg()
+				}else if(usermessage =="8"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_mentorship
+					  );
+					sendMsg()
+				}if(usermessage == "9"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_productDvp
+					  );
+					sendMsg()
+				}else if(usermessage =="10"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_customerAcq
+					  );
+					sendMsg()
+				}else {
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_dontUnderstand
+					  );
+					sendMsg()
+				}
+			}
 	}else{
 		if (["hi", "hii", "hello", "hie", "hey"].includes(messageText.toLowerCase())){
 			messageInput = messageHelper.getCustomTextInput(
