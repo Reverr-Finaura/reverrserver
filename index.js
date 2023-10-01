@@ -656,16 +656,16 @@ app.post("/webhook", async (req, response) => {
 	}
 	const resendLastToLastMsg = ()=>{
 		var ltlMsg = userChat.messages[userChat.messages.length -2];
-		if(ltlMsg.message.type =="template"){
-			var ltlMsgSend = ltlMsg.message.template.name;
+		// if(ltlMsg.message.type =="template"){
+		// 	var ltlMsgSend = ltlMsg.message.template.name;
 
-			messageInput = messageHelper.getTemplateTextInput(
-				messageFrom,
-				ltlMsgSend
-			);
+		// 	messageInput = messageHelper.getTemplateTextInput(
+		// 		messageFrom,
+		// 		ltlMsgSend
+		// 	);
 			
-			sendMsg();
-		} else {
+		// 	sendMsg();
+		// } else {
 			var ltlMsgSend = ltlMsg.message.text.body;
 
 			messageInput = messageHelper.getTemplateTextInput(
@@ -674,7 +674,7 @@ app.post("/webhook", async (req, response) => {
 			)
 
 			sendMsg();
-		}
+		// }
 		
 	}
 
