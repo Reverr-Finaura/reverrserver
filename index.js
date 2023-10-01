@@ -1114,7 +1114,7 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 		}else if(res == "msg_knowledge"){
-			if(usermessage== "1"){
+			if(usermessage == "1"){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_knowledgecontent
@@ -1245,12 +1245,6 @@ app.post("/webhook", async (req, response) => {
 						messageInput = messageHelper.getCustomTextInput(
 							messageFrom,
 							msg_knowledgecontent
-						  );
-						sendMsg()
-					}else {
-						messageInput = messageHelper.getCustomTextInput(
-							messageFrom,
-							msg_dontUnderstand
 						  );
 						sendMsg()
 					}
