@@ -1247,6 +1247,12 @@ app.post("/webhook", async (req, response) => {
 							msg_knowledgecontent
 						  );
 						sendMsg()
+					}else {
+						messageInput = messageHelper.getCustomTextInput(
+							messageFrom,
+							msg_dontUnderstand
+						  );
+						sendMsg()
 					}
 			}else if(res == "msg_knowledgecontent"){
 				if(usermessage == "1"){
@@ -1307,12 +1313,6 @@ app.post("/webhook", async (req, response) => {
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
 						msg_customerAcq
-					  );
-					sendMsg()
-				}else {
-					messageInput = messageHelper.getCustomTextInput(
-						messageFrom,
-						msg_dontUnderstand
 					  );
 					sendMsg()
 				}
