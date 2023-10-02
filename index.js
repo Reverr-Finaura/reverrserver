@@ -962,7 +962,7 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_webinarDetails"
 		}else if(lastMsgSend == msg_nomoresp){
 			result = "msg_nomoresp"
-		}else if(lastMsgSend[0]=="U"){
+		}else if(lastMsgSend[0]=="U" && lastMsgSend[1]=="n"){
 			result = "msg_moreSp"
 		}
 		console.log(result)
