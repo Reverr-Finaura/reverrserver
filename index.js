@@ -523,6 +523,8 @@ if(msgRec.id.includes(id)){
 
 
 app.post("/webhook", async (req, response) => {
+	var webinar_details = await db.collection("meta").doc("webinar").get();
+	webinar_details = webinar_details.data();
 	var  {payload}  = req.body;
 	console.log(payload)
 	console.log(payload.entry[0])
@@ -602,6 +604,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_rbrRegistered="Yay! See you there. \n\nType menu to go back to menu."
 	var msg_reverrSpacesCommunity = "Great choice!\nHere is the link to join the community of budding & seasoned entrepreneurs.\nLink to Reverrites: https://chat.whatsapp.com/GYG93rm4dVSH5521jNvtej \n\nType menu to go back to menu."
 	var msg_webinar = "Sorry currently there are no webinar taking place. \n\nType menu to go back to menu."
+	var msg_webinarDetails = `Yayy! We would be happy to host you in our next webinar.\n\nHere are the details of the next webinar:\nTopic:${webinar_details.topic}\nSpeaker:${webinar_details.speaker}\nTimings:${webinar_details.timings}\nRegistration link:${webinar_details.link}\n\nType menu to go to the Menu`
 	var msg_knowledge = "Upskilling and continuous knowledge enhancement are essential in today's competitive world.\nWorry not, we are here to your rescue.\nCheck out our bite-sized courses that you can indulge in on the go.\n\nType 1 to access content around different niches📑 \nType 2 to access educational content around entrepreneurship😎"
 	var msg_knowledgecontent = "Tell us your interest areas. What would you like to learn more about?\nPick your interest area(s).\n\n1. Idea validation\n2. Business collaterals\n3. Funding options\n4. Startup Financing\n5. Growth strategies\n6. Startup scaling\n7. Incubators & Accelerators\n8. Mentorship\n9. Product Development\n10. Customer Acquisition \n\nType menu to go back to Menu"
 	var msg_knowledgeYt = "Smart choice!\nThere you go: https://www.youtube.com/@YourStartupGuy \n\nBinge on some content that’s actually worth your time.🥳 \n\nType menu to go back to Menu"
@@ -775,6 +778,8 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_productDvp"
 		}else if(lastMsgSend == msg_customerAcq){
 			result = "msg_customerAcq"
+		}else if(lastMsgSend == msg_webinarDetails){
+			result = "msg_webinarDetails"
 		}
 		console.log(result)
 		return result;
@@ -1094,7 +1099,7 @@ app.post("/webhook", async (req, response) => {
 			}else if(usermessage =="3"){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
-					msg_webinar
+					msg_webinarDetails
 				  );
 				sendMsg()
 			}else if(usermessage =="4"){
