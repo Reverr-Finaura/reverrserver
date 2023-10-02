@@ -770,7 +770,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_askStage = "That sounds good.🤩\nNow pick what resonates with you the most.\n\nType 1 if you have an idea and wish to execute it.🗣️\nType 2 if you are running a successful startup 😎\nType 3 if you have an idea but lack the necessary resources/ guidance🫣\nType 4 if you are running a startup and wish to grow & expand it further🤑\nType 5 if you are exploring your options 🤔"
 	var msg_askOffering = "Type in the number of offering that suits your needs the best and let us take care of the rest. \n\n1. Get funding from VCs, Angels, and relevant Investors\n2. Discover networking opportunities \n3. Seek knowledge in bite-sized portions\n4. Connect with service providers for assistance"
 	var msg_dontUnderstand= "Sorry, I dont understand what do you mean by that?. \n\nType 1 to try again!"
-	var msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. \nPlease type menu to go to menu."
+	var msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. \n\nPlease type menu to go to menu."
 	var msg_fundingForm = "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and furnish a few essential details for us to proceed with building your deal's case.📂\nLink to the form: https://forms.gle/3DvvAsVzq6HXHLNn6\n\nOur team will get back to you soon.\n\nType 1 if you’ve filled out the form.\nType Menu to open main menu."
 	var msg_fundingFormFilled = "Thank you for sharing the Details.\n\nOur team will do a manual review and will connect with you in case the deal seems doable.🙌🏻Your patience is highly valued. Have a great day ahead! 😉 \n\nType Menu to open main menu."
 	var msg_professionalOfferings = "Type in the number of offering that suits your needs the best and let us take care of the rest.\n1. Discover networking opportunities \n2. Seek knowledge in bite-sized portions"
@@ -790,7 +790,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
 	var msg_unavailable = "Apologies, this is currently unavailable. We will let you know once it is available. \nType menu to go back to Menu."
 	var msg_bie = "See you soon, Byeee... 👋"
-	var msg_returnUserHi = `Hi ${name}, How can I help you today ? \n\n \nType menu to go to Menu.`
+	var msg_returnUserHi = `Hi ${name}, How can I help you today ? \n\nType menu to go to Menu.`
 	var msg_nomoresp ="Uh oh! We've run out of more options to showcase to you. \n\nFret not, our range of service providers is ever-expanding! You can check out & connect with new service providers in this domain very soon.🤗 \n\nType menu to go to menu."
 
 	//knowledge msgs
@@ -962,6 +962,8 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_webinarDetails"
 		}else if(lastMsgSend == msg_nomoresp){
 			result = "msg_nomoresp"
+		}else if(lastMsgSend[0]=="U"){
+			result = "msg_moreSp"
 		}
 		console.log(result)
 		return result;
