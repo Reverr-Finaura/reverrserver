@@ -21,7 +21,73 @@ const {bucket,db,Timestamp,FieldValue} = require("./config");
 
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
+const sp = require('./sp');
 
+// console.log(sp);
+// var temp=[];
+// sp.map((item,idx)=>{
+// 	item.Type.map((subitem, subidx)=>{
+// 		if(temp.includes(subitem)){
+// 			console.log("exists", subitem, idx, subidx)
+// 		}else{
+// 			temp.push(subitem)
+// 		}
+// 	})
+// })
+// console.log(temp)
+
+const cat1 = ['Legal', 'One Stop Solution for Business Incorporation Lincensing Registration and certification', 'Certification', 'Company Incorporation', 'GST Registration','Start up Registration', 'business set up', 'all compliances' ]
+const cat2 = ['Accounting','Transaction advisory','Auding Services','Audit', 'M&A tax','Bookkeeping', 'Taxation (GST & Income)',  'Auditing','Income Tax Return (ITR) Filing', 'TDS filing', 'GST Filing', 'CA services like taxation', 'GST', 'income tax',  'Auditing',]
+const cat3 = [ 'Technology','We build MVP solutions in terms of Web & Mobile Apps','Custom Web and App Development',]
+const cat4 = [ 'Pitch deck', 'Financial model', 'Business Plan', 'Secretarial & Valuations', 'Valuations',' Pitch deck',]
+const cat5 = ['Brand Names','Logo Designing','Marketing', 'VFX & Animation Digital Branding Resource Augmentation','marketing',]
+
+var sp1 =[]
+var sp2 =[]
+var sp3 =[]
+var sp4 =[]
+var sp5 =[]
+
+sp.map((item,idx)=>{
+	var elgbl1 = false;
+	var elgbl2 = false;
+	var elgbl3 = false;
+	var elgbl4 = false;
+	var elgbl5 = false;
+	for(var i=0; i<item.Type.length; i++){
+		if(cat1.includes(item.Type[i])){
+			elgbl1 = true;
+		}
+		if(cat2.includes(item.Type[i])){
+			elgbl2 = true;
+		}
+		if(cat3.includes(item.Type[i])){
+			elgbl3 = true;
+		}
+		if(cat4.includes(item.Type[i])){
+			elgbl4 = true;
+		}
+		if(cat5.includes(item.Type[i])){
+			elgbl5 = true;
+		}
+	}
+	if(elgbl1){
+		sp1.push(item)
+	}
+	if(elgbl2){
+		sp2.push(item)
+	}
+	if(elgbl3){
+		sp3.push(item)
+	}
+	if(elgbl4){
+		sp4.push(item)
+	}
+	if(elgbl5){
+		sp5.push(item)
+	}
+})
+console.log(sp1,sp2,sp3,sp4,sp5)
 
 const uuid = uuidv4();
 let sid=process.env.ACCOUNT_SID
@@ -544,6 +610,17 @@ app.post("/webhook", async (req, response) => {
 	var lastMsgRec=""
 	let messageInput;
 
+	var tsp = {
+		Name:"",
+		Linkedin:"",
+		Website:"",
+		Type:[],
+		Number:"",
+		Email:"",
+		Company:"",
+		Timestamp:""
+	}
+
 	var messageReceived = payload.entry[0].changes[0].value.messages;
 	var messageText = messageReceived[0].text.body;
 	var messageFrom = messageReceived[0].from;
@@ -578,6 +655,107 @@ app.post("/webhook", async (req, response) => {
 		}
 
 	}
+//   Legal
+//   Accounting
+//   Pitch deck
+//   Financial model
+//   Business Plan
+//   Secretarial & Valuations
+//   Brand Names
+//   Logo Designing
+//   Compatibility between 2 Founders
+//   Team Hiring
+//   Team Building
+//   Marketing
+//   Technology
+//   Business strategy
+//   applied human behaviour
+//   Transaction advisory
+//   Valuations
+//   M&A tax
+//   We build MVP solutions in terms of Web & Mobile Apps
+//   Credit Consultancy
+//   Professional
+//   Auding Services
+//   One Stop Solution for Business Incorporation Lincensing Registration and certification
+//   Audit
+//   Bookkeeping
+//   Taxation (GST & Income)
+//   certification
+//   Advisory
+//   Auditing
+//   Company Incorporation
+//   GST Registration
+//   Start up Registration
+//   Income Tax Return (ITR) Filing
+//   TDS filing
+//   GST Filing
+//   Tax Advisory
+//   Custom Web and App Development
+//   E‐Commerce & CMS Solutions ERP
+//   CRM & HRMS Solutions Games
+//   VFX & Animation Digital Branding Resource Augmentation
+//   Video Services (Investor pitch video, Product video, Sales booster video,  Social media video)
+//   Sales
+//   Assisted Fundraising
+//    Pitch deck
+//   CA services like taxation
+//   GST
+//   income tax
+//   auditing
+//   business set up
+//   all compliances
+
+// 1.   Legal
+// 2.   Accounting
+// 3.   Pitch deck
+// 4.   Financial model
+// 5.   Business Plan
+// 6.   Secretarial & Valuations
+// 7.   Brand Names
+// 8.   Logo Designing
+// 9.   Compatibility between 2 Founders
+// 10.   Team Hiring
+// 11.   Team Building
+// 12.   Marketing
+// 13.   Technology
+// 14.   Business strategy
+// 15.   applied human behaviour
+// 16.   Transaction advisory
+// 17.   Valuations
+// 18.   M&A tax
+// 19.   We build MVP solutions in terms of Web & Mobile Apps
+// 20.   Credit Consultancy
+// 21.   Professional
+// 22.   Auding Services
+// 23.   One Stop Solution for Business Incorporation Lincensing Registration and certification
+// 24.   Audit
+// 25.   Bookkeeping
+// 26.   Taxation (GST & Income)
+// 27.   certification
+// 28.   Advisory
+// 29.   Auditing
+// 30.   Company Incorporation
+// 31.   GST Registration
+// 32.   Start up Registration
+// 33.   Income Tax Return (ITR) Filing
+// 34.   TDS filing
+// 35.   GST Filing
+// 36.   Tax Advisory
+// 37.   Custom Web and App Development
+// 38.   E‐Commerce & CMS Solutions ERP
+// 39.   CRM & HRMS Solutions Games
+// 40.   VFX & Animation Digital Branding Resource Augmentation
+// 41.   Video Services (Investor pitch video, Product video, Sales booster video,  Social media video)
+// 42.   Sales
+// 43.   Assisted Fundraising
+// 44.    Pitch deck
+// 45.   CA services like taxation
+// 46.   GST
+// 47.   income tax
+// 48.   auditing
+// 49.   business set up
+// 50.   all compliances
 		
 	// <---- CUSTOM MSG---->
 	var msg_hello = "Hi, there! \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \nType 1 if you’re a Startup Founder \nType 2 if you’re a Professional "
@@ -592,7 +770,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_askStage = "That sounds good.🤩\nNow pick what resonates with you the most.\n\nType 1 if you have an idea and wish to execute it.🗣️\nType 2 if you are running a successful startup 😎\nType 3 if you have an idea but lack the necessary resources/ guidance🫣\nType 4 if you are running a startup and wish to grow & expand it further🤑\nType 5 if you are exploring your options 🤔"
 	var msg_askOffering = "Type in the number of offering that suits your needs the best and let us take care of the rest. \n\n1. Get funding from VCs, Angels, and relevant Investors\n2. Discover networking opportunities \n3. Seek knowledge in bite-sized portions\n4. Connect with service providers for assistance"
 	var msg_dontUnderstand= "Sorry, I dont understand what do you mean by that?. \n\nType 1 to try again!"
-	var msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. Please try again."
+	var msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. \nPlease type menu to go to menu."
 	var msg_fundingForm = "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and furnish a few essential details for us to proceed with building your deal's case.📂\nLink to the form: https://forms.gle/3DvvAsVzq6HXHLNn6\n\nOur team will get back to you soon.\n\nType 1 if you’ve filled out the form.\nType Menu to open main menu."
 	var msg_fundingFormFilled = "Thank you for sharing the Details.\n\nOur team will do a manual review and will connect with you in case the deal seems doable.🙌🏻Your patience is highly valued. Have a great day ahead! 😉 \n\nType Menu to open main menu."
 	var msg_professionalOfferings = "Type in the number of offering that suits your needs the best and let us take care of the rest.\n1. Discover networking opportunities \n2. Seek knowledge in bite-sized portions"
@@ -609,10 +787,11 @@ app.post("/webhook", async (req, response) => {
 	var msg_knowledgecontent = "Tell us your interest areas. What would you like to learn more about?\nPick your interest area(s).\n\n1. Idea validation\n2. Business collaterals\n3. Funding options\n4. Startup Financing\n5. Growth strategies\n6. Startup scaling\n7. Incubators & Accelerators\n8. Mentorship\n9. Product Development\n10. Customer Acquisition \n\nType menu to go back to Menu"
 	var msg_knowledgeYt = "Smart choice!\nThere you go: https://www.youtube.com/@YourStartupGuy \n\nBinge on some content that’s actually worth your time.🥳 \n\nType menu to go back to Menu"
 	var msg_serviceProvider = "Sure thing!\nWe have many service providers listed on our platform.\n\nWhat kind of service(s) are you looking to avail?\n\nType 1 if you’re looking for legal assistance\nType 2 if you’re looking for assistance with accounting, taxation, and/ or audit \nType 3 if you’re looking for technological assistance\nType 4 if you’re looking for assistance with creating pitch decks, business plans, and/ or financial model\nType 5 if you’re looking for assistance with Marketing \n\nType menu to go back to Menu"
-	var msg_moreSp = "Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: <name>\nProfile: <website/ linkedin url>\nExpertise: <domain>\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu"
+	var msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
 	var msg_unavailable = "Apologies, this is currently unavailable. We will let you know once it is available. \nType menu to go back to Menu."
 	var msg_bie = "See you soon, Byeee... 👋"
-	var msg_returnUserHi = `Hi ${name}, How can I help you today ?`
+	var msg_returnUserHi = `Hi ${name}, How can I help you today ? \n\n \nType menu to go to Menu.`
+	var msg_nomoresp ="Uh oh! We've run out of more options to showcase to you. \n\nFret not, our range of service providers is ever-expanding! You can check out & connect with new service providers in this domain very soon.🤗 \n\nType menu to go to menu."
 
 	//knowledge msgs
 	var msg_ideaValidation = "Idea Validation:\n1. How to Test Your Startup Idea (https://www.youtube.com/watch?v=J4e0OogLpOo) (YouTube Video)\n2. The Ultimate Guide to Idea Validation for Startups (https://www.startups.com/library/expert-advice/idea-validation-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
@@ -781,6 +960,8 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_customerAcq"
 		}else if(lastMsgSend == msg_webinarDetails){
 			result = "msg_webinarDetails"
+		}else if(lastMsgSend == msg_nomoresp){
+			result = "msg_nomoresp"
 		}
 		console.log(result)
 		return result;
@@ -1156,24 +1337,65 @@ app.post("/webhook", async (req, response) => {
 			}
 		}else if(res =="msg_serviceProvider"){
 			if(usermessage == "1"){
+				var csp = "1";
+				var cspidx = 0;
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({csp, cspidx});
+
+				tsp = sp1[cspidx]
+				msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_moreSp
 				  );
 				sendMsg()
 			}else if(usermessage =="2"){
+				var csp = "2";
+				var cspidx = 0;
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({csp, cspidx});
+
+				tsp = sp2[cspidx]
+				msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_moreSp
 				  );
 				sendMsg()
 			}else if(usermessage =="3"){
+				var csp = "3";
+				var cspidx = 0;
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({csp, cspidx});
+
+				tsp = sp3[cspidx]
+				msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_moreSp
 				  );
 				sendMsg()
 			}else if(usermessage =="4"){
+				var csp = "4";
+				var cspidx = 0;
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({csp, cspidx});
+
+				tsp = sp4[cspidx]
+				msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_moreSp
+				  );
+				sendMsg()
+			}else if(usermessage =="5"){
+				var csp = "5";
+				var cspidx = 0;
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({csp, cspidx});
+				
+				tsp = sp5[cspidx]
+				msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_moreSp
@@ -1188,11 +1410,111 @@ app.post("/webhook", async (req, response) => {
 			}
 		}else if(res == "msg_moreSp"){
 			if(usermessage == "1"){
-				messageInput = messageHelper.getCustomTextInput(
-					messageFrom,
-					msg_moreSp
-				  );
-				sendMsg()
+				var csp = userChat.csp;
+				var cspidx = userChat.cspidx;
+
+				if(csp == "1"){
+					cspidx = cspidx+1;
+					if(sp1.length-1<cspidx){
+						messageInput = messageHelper.getCustomTextInput(
+							messageFrom,
+							msg_nomoresp
+						  );
+						sendMsg()
+					}else{
+					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({ cspidx});
+	
+					tsp = sp1[cspidx]
+					msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+	
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_moreSp
+					  );
+					sendMsg()
+					}
+				}else if(csp =="2"){
+					cspidx = cspidx+1;
+					if(sp2.length-1<cspidx){
+						messageInput = messageHelper.getCustomTextInput(
+							messageFrom,
+							msg_nomoresp
+						  );
+						sendMsg()
+					}else{
+					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({cspidx});
+	
+					tsp = sp2[cspidx]
+					msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+	
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_moreSp
+					  );
+					sendMsg()
+					}
+				}else if(csp =="3"){
+					cspidx = cspidx+1;
+					if(sp3.length-1<cspidx){
+						messageInput = messageHelper.getCustomTextInput(
+							messageFrom,
+							msg_nomoresp
+						  );
+						sendMsg()
+					}else{
+					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({ cspidx});
+	
+					tsp = sp3[cspidx]
+					msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+	
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_moreSp
+					  );
+					sendMsg()
+					}
+				}else if(csp =="4"){
+					cspidx = cspidx+1;
+					if(sp4.length-1<cspidx){
+						messageInput = messageHelper.getCustomTextInput(
+							messageFrom,
+							msg_nomoresp
+						  );
+						sendMsg()
+					}else{
+					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({cspidx});
+	
+					tsp = sp4[cspidx]
+					msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+	
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_moreSp
+					  );
+					sendMsg()
+					}
+				}else if(csp =="5"){
+					cspidx = cspidx+1;
+					if(sp5.length-1<cspidx){
+						messageInput = messageHelper.getCustomTextInput(
+							messageFrom,
+							msg_nomoresp
+						  );
+						sendMsg()
+					}else{
+					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({cspidx});
+					
+					tsp = sp5[cspidx]
+					msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+	
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_moreSp
+					  );
+					sendMsg()
+					}
+				}
+
 			}else if(usermessage == "2"){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
@@ -1202,7 +1524,7 @@ app.post("/webhook", async (req, response) => {
 			}else {
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
-					msg_dontUnderstand
+					msg_dontUnderstandNoAction
 				  );
 				sendMsg()
 			}
@@ -1337,6 +1659,12 @@ app.post("/webhook", async (req, response) => {
 					  );
 					sendMsg()
 				}
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstandNoAction
+				  );
+				sendMsg()
 			}
 	}else{
 		if (["hi", "hii", "hello", "hie", "hey"].includes(messageText.toLowerCase())){
