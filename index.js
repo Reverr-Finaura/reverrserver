@@ -612,6 +612,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_moreSp = "Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: <name>\nProfile: <website/ linkedin url>\nExpertise: <domain>\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu"
 	var msg_unavailable = "Apologies, this is currently unavailable. We will let you know once it is available. \nType menu to go back to Menu."
 	var msg_bie = "See you soon, Byeee... 👋"
+	var msg_returnUserHi = `Hi ${name}, How can I help you today ?`
 
 	//knowledge msgs
 	var msg_ideaValidation = "Idea Validation:\n1. How to Test Your Startup Idea (https://www.youtube.com/watch?v=J4e0OogLpOo) (YouTube Video)\n2. The Ultimate Guide to Idea Validation for Startups (https://www.startups.com/library/expert-advice/idea-validation-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
@@ -788,11 +789,20 @@ app.post("/webhook", async (req, response) => {
 	if(lastMsgNotEmpty){
 		var res = msgMatcher(lastMsgSend);
 		if (["hi", "hii", "hello", "hie", "hey"].includes(messageText.toLowerCase())){
-			messageInput = messageHelper.getCustomTextInput(
-				messageFrom,
-				msg_hello
-			  );
-			sendMsg()
+			if(userChat.profile==true){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_returnUserHi
+				  );
+				sendMsg()
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_hello
+				  );
+				sendMsg()
+			}
+			
 		}else if(["bie", "bye", "byeee", "byee", "biee", "biee"].includes(messageText.toLowerCase())){
 			messageInput = messageHelper.getCustomTextInput(
 				messageFrom,
