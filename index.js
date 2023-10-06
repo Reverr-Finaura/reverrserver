@@ -758,7 +758,7 @@ app.post("/webhook", async (req, response) => {
 // 50.   all compliances
 		
 	// <---- CUSTOM MSG---->
-	var msg_hello = "Hi, there! \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \nType 1 if you’re a Startup Founder \nType 2 if you’re a Professional "
+	var msg_hello = " Hi, there!😉 \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \n*Type 1* if you’re a Startup Founder \n*Type 2* if you’re a Professional "
 	var msg_askName = "We are happy that you're here.🤗 \nHow should we address you? Please type in your full name."
 	var msg_confirmName1 = "So your name is "
 	var msg_confirmName3 = "? \nType 1 to confirm \nType 0 to retry"
