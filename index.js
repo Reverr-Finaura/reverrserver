@@ -965,7 +965,7 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_nomoresp"
 		}else if(lastMsgSend[0]=="U" && lastMsgSend[1]=="n"){
 			result = "msg_moreSp"
-		}else if(lastMsgSend[0] == msg_spaces){
+		}else if(lastMsgSend == msg_spaces){
 			result = "msg_spaces"
 		}
 		console.log(result)
