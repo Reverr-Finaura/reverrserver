@@ -763,8 +763,8 @@ app.post("/webhook", async (req, response) => {
 	var msg_confirmName1 = "Hi, "
 	var msg_confirmName3 = "? \n*Type 1* to *confirm* \n*Type 0* to *retry*"
 	var msg_confirmName = msg_confirmName1+name+msg_confirmName3
-	var msg_askLinkedin = "Let's build your profile first.📑\nKindly share your LinkedIn URL."
-	var msg_confirmLinkedin = `Your LinkedIn URL is ${linkedin} \n*Type 1* to *confirm* \n*Type 0* to *retry*`
+	var msg_askLinkedin = "Let's build your profile first.📑\nKindly share your Linkedin URL."
+	var msg_confirmLinkedin = `Your Linkedin URL is ${linkedin} \n*Type 1* to *confirm* \n*Type 0* to *retry*`
 	var msg_askbio = "We have noted it.\nNow please write down a one-liner bio for yourself mentioning your expertise, experience, and interests. 👩🏻‍💼👨🏻‍💼"
 	var msg_confirmBio = `${bio} , is this correct? \n*Type 1* to *confirm* \n*Type 0* to *retry*`
 	var msg_askStage = "That sounds good.🤩\nNow pick what resonates with you the most.\n\n*Type 1* if you have an idea and wish to execute it.🗣️\n*Type 2* if you are running a successful startup 😎\n*Type 3* if you have an idea but lack the necessary resources/ guidance🫣\n*Type 4* if you are running a startup and wish to grow & expand it further🤑\n*Type 5* if you are exploring your options 🤔"
@@ -792,6 +792,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_bie = "See you soon, Byeee... 👋"
 	var msg_returnUserHi = `Hi ${name}, How can I assist you today? \n\nType menu to go to Menu.`
 	var msg_nomoresp ="Uh oh! We've run out of more options to showcase to you. \n\nFret not, our range of service providers is ever-expanding! You can check out & connect with new service providers in this domain very soon.🤗 \n\nType menu to go to menu."
+	var msg_spaces = "Great choice!\nNow type down the space that resonates the most with you.😉\n\nType the number of Space that you wish to join: (For example- 11) 😋\n1. FinTech\n2. EdTech\n3. AgriTech\n4. FoodTech\n5. Ecommerce\n6. Logistics & Delivery\n7. Cleantech & Renewable Energy\n8. Ai & ML\n9. Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech"
 
 	//knowledge msgs
 	var msg_ideaValidation = "*Idea Validation*:📝\n\n1. How to Test Your Startup Idea (https://www.youtube.com/watch?v=J4e0OogLpOo) (YouTube Video)\n2. The Ultimate Guide to Idea Validation for Startups (https://www.startups.com/library/expert-advice/idea-validation-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
@@ -964,6 +965,8 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_nomoresp"
 		}else if(lastMsgSend[0]=="U" && lastMsgSend[1]=="n"){
 			result = "msg_moreSp"
+		}else if(lastMsgSend[0] == msg_spaces){
+			result = "msg_spaces"
 		}
 		console.log(result)
 		return result;
@@ -1084,7 +1087,7 @@ app.post("/webhook", async (req, response) => {
 		else if (res == "msg_askLinkedin"){
 			console.log("f4")
 			linkedin = usermessage;
-			msg_confirmLinkedin = `So your linkedin url is ${linkedin}? \nType 1 to confirm \nType 0 to retry`
+			msg_confirmLinkedin = `Your Linkedin URL is ${linkedin} \n*Type 1* to *confirm* \n*Type 0* to *retry*`
 			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({linkedin});
 			messageInput = messageHelper.getCustomTextInput(
 				messageFrom,
@@ -1097,7 +1100,7 @@ app.post("/webhook", async (req, response) => {
 			if(usermessage == "1"){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
-					msg_askbio
+					msg_spaces
 				);
 				sendMsg()
 			}else if(usermessage=="0"){
@@ -1117,7 +1120,7 @@ app.post("/webhook", async (req, response) => {
 		else if (res == "msg_askbio"){
 			console.log("f6")
 			bio = usermessage;
-			msg_confirmBio = `${bio} , Is this right? \nType 1 to confirm \nType 0 to retry`
+			msg_confirmBio = `${bio} , is this correct? \n*Type 1* to *confirm* \n*Type 0* to *retry*`
 			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bio});
 			messageInput = messageHelper.getCustomTextInput(
 				messageFrom,
@@ -1576,6 +1579,103 @@ app.post("/webhook", async (req, response) => {
 				  );
 				sendMsg()
 			}
+		}else if(res =="msg_spaces"){
+			var space = "";
+			var gofwd = false;
+			
+			if(usermessage == "1"){
+				space = "FinTech";
+				gofwd = true;
+			}else if(usermessage == "2"){
+				space = "EdTech";
+				gofwd = true;
+			}else if(usermessage == "3"){
+				space = "AgriTech";
+				gofwd = true;
+			}else if(usermessage == "4"){
+				space = "FoodTech";
+				gofwd = true;
+			}else if(usermessage == "5"){
+				space = "Ecommerce";
+				gofwd = true;
+			}else if(usermessage == "6"){
+				space = "Logistics & Delivery";
+				gofwd = true;
+			}else if(usermessage == "7"){
+				space = "Cleantech & Renewable Energy";
+				gofwd = true;
+			}else if(usermessage == "8"){
+				space = "Ai & ML";
+				gofwd = true;
+			}else if(usermessage == "9"){
+				space = "Web 3.0";
+				gofwd = true;
+			}else if(usermessage == "10"){
+				space = "FashionTech";
+				gofwd = true;
+			}else if(usermessage == "11"){
+				space = "SpaceTech";
+				gofwd = true;
+			}else if(usermessage == "12"){
+				space = "HealthTech";
+				gofwd = true;
+			}else if(usermessage == "13"){
+				space = "Cybersecurity";
+				gofwd = true;
+			}else if(usermessage == "14"){
+				space = "AR & VR";
+				gofwd = true;
+			}else if(usermessage == "15"){
+				space = "Internet of Things(IOT)";
+				gofwd = true;
+			}else if(usermessage == "16"){
+				space = "Biotech";
+				gofwd = true;
+			}else if(usermessage == "17"){
+				space = "TravelTech";
+				gofwd = true;
+			}else if(usermessage == "18"){
+				space = "Real Estate-Tech";
+				gofwd = true;
+			}else if(usermessage == "19"){
+				space = "BeautyTech";
+				gofwd = true;
+			}else if(usermessage == "20"){
+				space = "LegalTech";
+				gofwd = true;
+			}else if(usermessage == "21"){
+				space = "HR-Tech";
+				gofwd = true;
+			}else if(usermessage == "22"){
+				space = "Personal fitness Tech";
+				gofwd = true;
+			}else if(usermessage == "23"){
+				space = "Waste Management Technologies";
+				gofwd = true;
+			}else if(usermessage == "24"){
+				space = "Online Marketplaces";
+				gofwd = true;
+			}else if(usermessage == "25"){
+				space = "CloudTech";
+				gofwd = true;
+			}else {
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstandNoAction
+				  );
+				sendMsg()
+			}
+			if(gofwd){
+
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({space});
+
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askbio
+				);
+				sendMsg()
+			}
+
 		}else if(res =="msg_ideaValidation"
 				||res =="msg_businessCollaterals"
 				||res =="msg_fundingOptions"
