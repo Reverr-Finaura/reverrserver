@@ -814,7 +814,7 @@ app.post("/webhook", async (req, response) => {
 	const sendMsg = async()=>{
 		const { data } = await sendMessage(messageInput);
 		console.log(stopMsg)
-		if(!stopMsg ){
+		if(stopMsg == false ){
 			const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
 			if(!userexist.exists){
 				console.log("no doc");
