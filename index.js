@@ -844,10 +844,12 @@ app.post("/webhook", async (req, response) => {
 			response.json({
 				status: "success",
 			});
+		}else{
+			response.json({
+				status: "success",
+			  });
 		}
-		response.json({
-			status: "success",
-		  });
+		
 		
 	}
 	const resendLastToLastMsg = ()=>{
