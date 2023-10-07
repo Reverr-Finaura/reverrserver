@@ -812,9 +812,10 @@ app.post("/webhook", async (req, response) => {
 	var msg_customerAcq = "*Customer Acquisition*:👥\n\n1. Customer Acquisition Strategies for Startups (https://www.youtube.com/watch?v=6T5VXULd9yI) (YouTube Video)\n2. The Ultimate Guide to Customer Acquisition (https://www.startups.com/library/expert-advice/customer-acquisition-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
 
 	const sendMsg = async()=>{
-		const { data } = await sendMessage(messageInput);
+		
 		console.log("stop",stopMsg)
 		if(stopMsg == false ){
+			const { data } = await sendMessage(messageInput);
 			const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
 			if(!userexist.exists){
 				console.log("no doc");
