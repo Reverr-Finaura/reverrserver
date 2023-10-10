@@ -587,6 +587,10 @@ if(msgRec.id.includes(id)){
 }
 
 
+app.post("/sendwacustommsg", async(req,res)=>{
+
+})
+
 
 app.post("/webhook", async (req, response) => {
 	var webinar_details = await db.collection("meta").doc("webinar").get();
@@ -710,56 +714,6 @@ app.post("/webhook", async (req, response) => {
 //   business set up
 //   all compliances
 
-// 1.   Legal
-// 2.   Accounting
-// 3.   Pitch deck
-// 4.   Financial model
-// 5.   Business Plan
-// 6.   Secretarial & Valuations
-// 7.   Brand Names
-// 8.   Logo Designing
-// 9.   Compatibility between 2 Founders
-// 10.   Team Hiring
-// 11.   Team Building
-// 12.   Marketing
-// 13.   Technology
-// 14.   Business strategy
-// 15.   applied human behaviour
-// 16.   Transaction advisory
-// 17.   Valuations
-// 18.   M&A tax
-// 19.   We build MVP solutions in terms of Web & Mobile Apps
-// 20.   Credit Consultancy
-// 21.   Professional
-// 22.   Auding Services
-// 23.   One Stop Solution for Business Incorporation Lincensing Registration and certification
-// 24.   Audit
-// 25.   Bookkeeping
-// 26.   Taxation (GST & Income)
-// 27.   certification
-// 28.   Advisory
-// 29.   Auditing
-// 30.   Company Incorporation
-// 31.   GST Registration
-// 32.   Start up Registration
-// 33.   Income Tax Return (ITR) Filing
-// 34.   TDS filing
-// 35.   GST Filing
-// 36.   Tax Advisory
-// 37.   Custom Web and App Development
-// 38.   E‐Commerce & CMS Solutions ERP
-// 39.   CRM & HRMS Solutions Games
-// 40.   VFX & Animation Digital Branding Resource Augmentation
-// 41.   Video Services (Investor pitch video, Product video, Sales booster video,  Social media video)
-// 42.   Sales
-// 43.   Assisted Fundraising
-// 44.    Pitch deck
-// 45.   CA services like taxation
-// 46.   GST
-// 47.   income tax
-// 48.   auditing
-// 49.   business set up
-// 50.   all compliances
 		
 	// <---- CUSTOM MSG---->
 	var msg_hello = "Hi, there!😉 \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \n*Type 1* if you’re a Startup Founder \n*Type 2* if you’re a Professional "
@@ -796,7 +750,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_bie = "See you soon, Byeee... 👋"
 	var msg_returnUserHi = `Hi ${name}, How can I assist you today? \n\nType menu to go to Menu.`
 	var msg_nomoresp ="Uh oh! We've run out of more options to showcase to you. \n\nFret not, our range of service providers is ever-expanding! You can check out & connect with new service providers in this domain very soon.🤗 \n\nType menu to go to menu."
-	var msg_spaces = "Great choice!\nNow type down the space that resonates the most with you.😉\n\nType the number of Space that you wish to join: (For example- 11) 😋\n1. FinTech\n2. EdTech\n3. AgriTech\n4. FoodTech\n5. Ecommerce\n6. Logistics & Delivery\n7. Cleantech & Renewable Energy\n8. Ai & ML\n9. Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech"
+	var msg_spaces = "Now select the space that resonates the most with you.😉\n\nType the number of Space that you wish to join: (For example- 11) 😋\n1. FinTech\n2. EdTech\n3. AgriTech\n4. FoodTech\n5. Ecommerce\n6. Logistics & Delivery\n7. Cleantech & Renewable Energy\n8. Ai & ML\n9. Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech"
 	var msg_stop = "Okay, you’ll no longer receive messages from Reverr. 🫡\n\nYou can type “Start” to initiate the chat again.🤗"
 
 	//knowledge msgs
