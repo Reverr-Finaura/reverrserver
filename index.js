@@ -589,6 +589,203 @@ if(msgRec.id.includes(id)){
 
 app.post("/sendwacustommsg", async(req,res)=>{
 
+	try{
+		const {number, text, countryCode} = req.body;
+		const messageFrom = countryCode+number; 
+		messageInput = messageHelper.getCustomTextInput(
+			messageFrom,
+			text
+		  );
+		// console.log(messageFrom)
+		const { data } = await sendMessage(messageInput);
+		
+		const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
+		if(!userexist.exists){
+			console.log("no doc");
+			await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
+			{exists: "true"})
+			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+			messages: FieldValue.arrayUnion(
+				{status: "success",
+				messageId: data.messages[0].id,
+			message: JSON.parse(messageInput),
+			date: Timestamp.now(),
+			usermessage:null,
+			})
+			}) 
+		}else{
+			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+			messages: FieldValue.arrayUnion(
+				{status: "success",
+				messageId: data.messages[0].id,
+			message: JSON.parse(messageInput),
+			date: Timestamp.now(),
+			usermessage:null,
+			})
+			});
+		}
+
+		// console.log(data)
+		res.send("successfully send")
+	}catch (err){
+		console.log(err)
+		res.send(err)
+	}
+
+})
+app.post("/sendwamucm", async(req,res)=>{
+	
+	try{
+		const {numbers, text, countryCodes} = req.body;
+
+		for (let i =0; i<numbers.length; i++){
+			const number = numbers[i];
+			const countryCode = countryCodes[i];
+			const messageFrom = countryCode+number; 
+			messageInput = messageHelper.getCustomTextInput(
+				messageFrom,
+				text
+			);
+			// console.log(messageFrom)
+			const { data } = await sendMessage(messageInput);
+			
+			const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
+			if(!userexist.exists){
+				console.log("no doc");
+				await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
+				{exists: "true"})
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+				messages: FieldValue.arrayUnion(
+					{status: "success",
+					messageId: data.messages[0].id,
+				message: JSON.parse(messageInput),
+				date: Timestamp.now(),
+				usermessage:null,
+				})
+				}) 
+			}else{
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+				messages: FieldValue.arrayUnion(
+					{status: "success",
+					messageId: data.messages[0].id,
+				message: JSON.parse(messageInput),
+				date: Timestamp.now(),
+				usermessage:null,
+				})
+				});
+			}
+
+			// console.log(data)
+		}
+		
+		res.send("successfully send")
+	}catch (err){
+		console.log(err)
+		res.send(err)
+	}
+
+})
+
+app.post("/sendwatemplatemsg", async(req,res)=>{
+
+	try{
+		const {number, templateName, countryCode} = req.body;
+		const messageFrom = countryCode+number; 
+		messageInput = messageHelper.getTemplateTextInput(
+			messageFrom,
+			templateName
+		);
+		// console.log(messageFrom)
+		const { data } = await sendMessage(messageInput);
+		
+		const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
+		if(!userexist.exists){
+			console.log("no doc");
+			await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
+			{exists: "true"})
+			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+			messages: FieldValue.arrayUnion(
+				{status: "success",
+				messageId: data.messages[0].id,
+			message: JSON.parse(messageInput),
+			date: Timestamp.now(),
+			usermessage:null,
+			})
+			}) 
+		}else{
+			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+			messages: FieldValue.arrayUnion(
+				{status: "success",
+				messageId: data.messages[0].id,
+			message: JSON.parse(messageInput),
+			date: Timestamp.now(),
+			usermessage:null,
+			})
+			});
+		}
+
+		// console.log(data)
+		res.send("successfully send")
+	}catch (err){
+		console.log(err)
+		res.send(err)
+	}
+
+})
+
+
+
+app.post("/sendwamutm", async(req,res)=>{
+	
+	try{
+		const {numbers, templateName, countryCodes} = req.body;
+
+		for (let i =0; i<numbers.length; i++){
+			const number = numbers[i];
+			const countryCode = countryCodes[i];
+			const messageFrom = countryCode+number; 
+			messageInput = messageHelper.getTemplateTextInput(
+				messageFrom,
+				templateName
+			);
+			// console.log(messageFrom)
+			const { data } = await sendMessage(messageInput);
+			
+			const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
+			if(!userexist.exists){
+				console.log("no doc");
+				await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
+				{exists: "true"})
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+				messages: FieldValue.arrayUnion(
+					{status: "success",
+					messageId: data.messages[0].id,
+				message: JSON.parse(messageInput),
+				date: Timestamp.now(),
+				usermessage:null,
+				})
+				}) 
+			}else{
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+				messages: FieldValue.arrayUnion(
+					{status: "success",
+					messageId: data.messages[0].id,
+				message: JSON.parse(messageInput),
+				date: Timestamp.now(),
+				usermessage:null,
+				})
+				});
+			}
+
+			// console.log(data)
+		}
+		
+		res.send("successfully send")
+	}catch (err){
+		console.log(err)
+		res.send(err)
+	}
+
 })
 
 
@@ -767,7 +964,7 @@ app.post("/webhook", async (req, response) => {
 
 	const sendMsg = async()=>{
 		
-		console.log("stop",stopMsg)
+		// console.log("stop",stopMsg)
 		if(stopMsg == false ){
 			const { data } = await sendMessage(messageInput);
 			const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
@@ -799,6 +996,31 @@ app.post("/webhook", async (req, response) => {
 				status: "success",
 			});
 		}else{
+			const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
+			if(!userexist.exists){
+				console.log("no doc");
+				await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
+				{exists: "true"})
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+				messages: FieldValue.arrayUnion(
+					{status: "success",
+					messageId: Date.now(),
+				message: null,
+				date: Timestamp.now(),
+				usermessage,
+				})
+				}) 
+			}else{
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+				messages: FieldValue.arrayUnion(
+					{status: "success",
+					messageId: Date.now(),
+				message: null,
+				date: Timestamp.now(),
+				usermessage,
+				})
+				});
+			}
 			response.json({
 				status: "success",
 			  });
@@ -959,7 +1181,7 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 			
-		}else if(["bie", "bye", "byeee", "byee", "biee", "biee", "ba bie", "ba bye", "ba bies", "bie bie", "bye bye", "bi"].includes(messageText.toLowerCase())){
+		}else if(["bie", "bye", "byeee", "byee", "biee", "ba bie", "ba bye"].includes(messageText.toLowerCase())){
 			messageInput = messageHelper.getCustomTextInput(
 				messageFrom,
 				msg_bie
