@@ -1072,6 +1072,9 @@ app.post("/webhook", async (req, response) => {
 
 	const getnumbers = (inputString)=>{
 		const numbers = inputString.match(/\d+/g);
+		if(numbers == null){
+			return [];
+		}
 		const numbersArray = numbers.map(Number);
 		return numbersArray;
 	}
