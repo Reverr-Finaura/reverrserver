@@ -1878,7 +1878,6 @@ app.post("/webhook", async (req, response) => {
 			}
 		}else if(res == "msg_connect"){
 			var temparr = getnumbers(usermessage)
-			console.log("temparr",temparr,temparr.length)
 			if(temparr.length == 0){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
