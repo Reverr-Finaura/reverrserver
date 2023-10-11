@@ -1141,6 +1141,7 @@ app.post("/webhook", async (req, response) => {
 				console.log(index);
 			  return techCategories[index];
 			}
+			return "NotFound"
 		  });
 		  
 		  console.log(mappedCategories)
