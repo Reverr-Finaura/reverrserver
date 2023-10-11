@@ -1060,6 +1060,46 @@ app.post("/webhook", async (req, response) => {
 		return numbersArray;
 	}
 
+	const getSpaces = (numbers)=>{
+		const techCategories = [
+			"FinTech",
+			"EdTech",
+			"AgriTech",
+			"FoodTech",
+			"Ecommerce",
+			"Logistics & Delivery",
+			"Cleantech & Renewable Energy",
+			"AI & ML",
+			"Web 3.0",
+			"FashionTech",
+			"SpaceTech",
+			"HealthTech",
+			"Cybersecurity",
+			"AR & VR",
+			"Internet of Things (IoT)",
+			"Biotech",
+			"TravelTech",
+			"Real Estate-Tech",
+			"BeautyTech",
+			"LegalTech",
+			"HR-Tech",
+			"Personal Fitness Tech",
+			"Waste Management Technologies",
+			"Online Marketplaces",
+			"CloudTech"
+		  ];
+		
+		  const mappedCategories = numbers.map(number => {
+			const index = number - 1; // Adjust for 0-based indexing
+			if (index >= 0 && index < techCategories.length) {
+			  return techCategories[index];
+			}
+			return ;
+		  });
+		
+		  return mappedCategories;
+	}
+
 	const msgMatcher = (lastMsgSend)=>{
 		console.log(lastMsgSend);
 		var result = "not found"
@@ -1785,6 +1825,7 @@ app.post("/webhook", async (req, response) => {
 		}else if(res == "msg_connect"){
 			var temparr = getnumbers(usermessage)
 			console.log(temparr);
+			var intersetedSpaces = getSpaces(temparr)
 
 		}else if(res == "msg_professionalNetworking"){
 			if(usermessage == "1"){
