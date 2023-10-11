@@ -1135,8 +1135,10 @@ app.post("/webhook", async (req, response) => {
 		  ];
 		
 		  const mappedCategories = numbers.map(number => {
+	
 			const index = number - 1; // Adjust for 0-based indexing
 			if (index >= 0 && index < techCategories.length) {
+				console.log(index);
 			  return techCategories[index];
 			}
 		  });
