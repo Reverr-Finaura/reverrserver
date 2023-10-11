@@ -1067,12 +1067,12 @@ app.post("/webhook", async (req, response) => {
 		var users = [];
 
 		snapshot.forEach(doc => {
-			console.log(doc.id, '=>', doc.data());
+			
 			const data = {id:doc.id, ...doc.data()}
 			users.push(data);
 		});
 
-		console.log("users",users)
+		
 
 		const filteredUsers = filterUsersBySpace(users, intersetedSpaces);
 
@@ -1853,7 +1853,7 @@ app.post("/webhook", async (req, response) => {
 			var cisidx = 0;
 			// await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({intersetedSpaces, cisidx});
 			var currentProfile = getProfile(intersetedSpaces,cisidx);
-			console.log(currentProfile);
+			console.log("curr profile ->",currentProfile);
 
 
 		}else if(res == "msg_professionalNetworking"){
