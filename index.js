@@ -1142,7 +1142,9 @@ app.post("/webhook", async (req, response) => {
 			  return techCategories[index];
 			}
 		  });
-		
+		  
+		  console.log(mappedCategories)
+
 		  return mappedCategories;
 	}
 
