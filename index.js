@@ -1138,13 +1138,10 @@ app.post("/webhook", async (req, response) => {
 	
 			const index = number - 1; // Adjust for 0-based indexing
 			if (index >= 0 && index < techCategories.length) {
-				console.log(index);
 			  return techCategories[index];
 			}
 			return "NotFound"
 		  });
-		  
-		  console.log(mappedCategories)
 
 		  return mappedCategories;
 	}
@@ -1878,6 +1875,7 @@ app.post("/webhook", async (req, response) => {
 			}
 		}else if(res == "msg_connect"){
 			var temparr = getnumbers(usermessage)
+			console.log("temparr",temparr,temparr.length)
 			if(temparr.length == 0){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
