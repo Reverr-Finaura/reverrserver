@@ -1060,6 +1060,31 @@ app.post("/webhook", async (req, response) => {
 		return numbersArray;
 	}
 
+	const getProfile = async(intersetedSpaces, cisidx)=>{
+		const usersRef = db.collection('WhatsappMessages');
+		const snapshot = await usersRef.get();
+
+		var users = [];
+
+		snapshot.forEach(doc => {
+			console.log(doc.id, '=>', doc.data());
+			const data = {id:doc.id, ...doc.data()}
+			users.push(data);
+		});
+
+		console.log("users",users)
+
+		const filteredUsers = filterUsersBySpace(users, intersetedSpaces);
+
+		console.log("filteredusers",filteredUsers)
+
+		return filteredUsers[cisidx]
+
+	}
+	function filterUsersBySpace(users, spaceArray) {
+		return users.filter(user => spaceArray.includes(user.space));
+	  }
+
 	const getSpaces = (numbers)=>{
 		const techCategories = [
 			"FinTech",
@@ -1824,9 +1849,12 @@ app.post("/webhook", async (req, response) => {
 			}
 		}else if(res == "msg_connect"){
 			var temparr = getnumbers(usermessage)
-			console.log(temparr);
 			var intersetedSpaces = getSpaces(temparr)
-			console.log(intersetedSpaces)
+			var cisidx = 0;
+			// await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({intersetedSpaces, cisidx});
+			var currentProfile = getProfile(intersetedSpaces,cisidx);
+			console.log(currentProfile);
+
 
 		}else if(res == "msg_professionalNetworking"){
 			if(usermessage == "1"){
