@@ -949,6 +949,8 @@ app.post("/webhook", async (req, response) => {
 	var msg_nomoresp ="Uh oh! We've run out of more options to showcase to you. \n\nFret not, our range of service providers is ever-expanding! You can check out & connect with new service providers in this domain very soon.🤗 \n\nType menu to go to menu."
 	var msg_spaces = "Now select the space that resonates the most with you.😉\n\nType the number of Space that you wish to join: (For example- 11) 😋\n1. FinTech\n2. EdTech\n3. AgriTech\n4. FoodTech\n5. Ecommerce\n6. Logistics & Delivery\n7. Cleantech & Renewable Energy\n8. Ai & ML\n9. Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech"
 	var msg_stop = "Okay, you’ll no longer receive messages from Reverr. 🫡\n\nYou can type “Start” to initiate the chat again.🤗"
+	var msg_connect = " Let's get on to finding some suitable connections.😉\nWho are you looking to connect with?🤔 Pick the numbers of the Spaces you’re looking to explore. \n\n(Example: 11,5,8)👀\n\n1.  FinTech\n2. 	EdTech\n3. 	AgriTech\n4. 	FoodTech\n5. 	Ecommerce\n6. 	Logistics & Delivery\n7. 	Cleantech & Renewable Energy\n8. 	Ai & ML\n9. 	Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech"
+
 
 	//knowledge msgs
 	var msg_ideaValidation = "*Idea Validation*:📝\n\n1. How to Test Your Startup Idea (https://www.youtube.com/watch?v=J4e0OogLpOo) (YouTube Video)\n2. The Ultimate Guide to Idea Validation for Startups (https://www.startups.com/library/expert-advice/idea-validation-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
@@ -1050,6 +1052,12 @@ app.post("/webhook", async (req, response) => {
 			sendMsg();
 		}
 		
+	}
+
+	const getnumbers = (inputString)=>{
+		const numbers = inputString.match(/\d+/g);
+		const numbersArray = numbers.map(Number);
+		return numbersArray;
 	}
 
 	const msgMatcher = (lastMsgSend)=>{
@@ -1159,6 +1167,8 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_spaces"
 		}else if(lastMsgSend == msg_stop){
 			result = "msg_stop"
+		}else if(lastMsgSend == msg_connect){
+			result = "msg_connect"
 		}
 		console.log(result)
 		return result;
@@ -1520,7 +1530,7 @@ app.post("/webhook", async (req, response) => {
 			}else if(usermessage =="4"){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
-					msg_unavailable
+					msg_connect
 				  );
 				sendMsg()
 			}else {
@@ -1772,6 +1782,10 @@ app.post("/webhook", async (req, response) => {
 				  );
 				sendMsg()
 			}
+		}else if(res == "msg_connect"){
+			var temparr = getnumbers(usermessage)
+			console.log(temparr);
+
 		}else if(res == "msg_professionalNetworking"){
 			if(usermessage == "1"){
 				messageInput = messageHelper.getCustomTextInput(
@@ -1788,7 +1802,7 @@ app.post("/webhook", async (req, response) => {
 			}else if(usermessage =="3"){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
-					msg_unavailable
+					msg_connect
 				  );
 				sendMsg()
 			}else {
