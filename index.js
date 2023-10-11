@@ -1067,12 +1067,11 @@ app.post("/webhook", async (req, response) => {
 		var users = [];
 
 		snapshot.forEach(doc => {
-			
-			const data = {id:doc.id, ...doc.data()}
+			var data = {id:doc.id, ...doc.data()}
+			delete data.messages;
 			users.push(data);
 		});
 
-		
 
 		const filteredUsers = filterUsersBySpace(users, intersetedSpaces);
 
