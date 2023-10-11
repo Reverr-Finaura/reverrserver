@@ -1852,7 +1852,7 @@ app.post("/webhook", async (req, response) => {
 			var intersetedSpaces = getSpaces(temparr)
 			var cisidx = 0;
 			// await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({intersetedSpaces, cisidx});
-			var currentProfile = getProfile(intersetedSpaces,cisidx);
+			var currentProfile = await getProfile(intersetedSpaces,cisidx);
 			console.log("curr profile ->",currentProfile);
 
 
