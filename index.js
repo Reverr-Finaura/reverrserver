@@ -1156,7 +1156,10 @@ app.post("/webhook", async (req, response) => {
 	const msgMatcher = (lastMsgSend)=>{
 		console.log(lastMsgSend);
 		var result = "not found"
-		if(lastMsgSend == msg_hello){
+		if(lastMsgSend == null){
+			result = "not found"
+		}
+		else if(lastMsgSend == msg_hello){
 			result = "msg_hello"
 		}else if(lastMsgSend == msg_askName){
 			result = "msg_askName"
