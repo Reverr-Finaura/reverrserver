@@ -851,13 +851,13 @@ app.post("/webhook", async (req, response) => {
 		// console.log("user data", userChat)
 		// console.log(userChat.messages.length)
 		var lastMsg = userChat.messages[userChat.messages.length -1];
-		if(lastMsg != undefined && lastMsg != ""){
+		if(lastMsg != undefined && (lastMsg.message != ""||lastMsg.message != null)){
 			lastMsgNotEmpty = true;
 		}
 		// lastMsg = userChat.messages[2]; checking template
 		//  console.log(lastMsg.usermessage) // last msg that we recieved from user 
 		//  console.log( lastMsg.message.type =="template"?lastMsg.message.template.name: lastMsg.message.text.body) // last msg that we send to user
-		lastMsgSend = lastMsg.message.type =="template"?lastMsg.message.template.name: lastMsg.message.text.body;
+		lastMsgSend = lastMsg.message==null?null:(lastMsg.message.type =="template"?lastMsg.message.template.name: lastMsg.message.text.body);
 		lastMsgRec = lastMsg.usermessage;
 		
 		//initializing values
