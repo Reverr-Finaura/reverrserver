@@ -787,6 +787,109 @@ app.post("/sendwamutm", async(req,res)=>{
 	}
 
 })
+app.post("/sendwatemplatemsgimg", async(req,res)=>{
+
+	try{
+		const {number, templateName, countryCode, image} = req.body;
+		const messageFrom = countryCode+number; 
+		messageInput = messageHelper.getTemplateTextAndImageInput(
+			messageFrom,
+			templateName,
+			image
+		);
+		// console.log(messageFrom)
+		const { data } = await sendMessage(messageInput);
+		
+		const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
+		if(!userexist.exists){
+			console.log("no doc");
+			await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
+			{exists: "true"})
+			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+			messages: FieldValue.arrayUnion(
+				{status: "success",
+				messageId: data.messages[0].id,
+			message: JSON.parse(messageInput),
+			date: Timestamp.now(),
+			usermessage:null,
+			})
+			}) 
+		}else{
+			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+			messages: FieldValue.arrayUnion(
+				{status: "success",
+				messageId: data.messages[0].id,
+			message: JSON.parse(messageInput),
+			date: Timestamp.now(),
+			usermessage:null,
+			})
+			});
+		}
+
+		// console.log(data)
+		res.send("successfully send")
+	}catch (err){
+		console.log(err)
+		res.send(err)
+	}
+
+})
+
+
+
+app.post("/sendwamutmimg", async(req,res)=>{
+	
+	try{
+		const {numbers, templateName, countryCodes, image} = req.body;
+
+		for (let i =0; i<numbers.length; i++){
+			const number = numbers[i];
+			const countryCode = countryCodes[i];
+			const messageFrom = countryCode+number; 
+			messageInput = messageHelper.getTemplateTextAndImageInput(
+				messageFrom,
+				templateName,
+				image
+			);
+			// console.log(messageFrom)
+			const { data } = await sendMessage(messageInput);
+			
+			const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
+			if(!userexist.exists){
+				console.log("no doc");
+				await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
+				{exists: "true"})
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+				messages: FieldValue.arrayUnion(
+					{status: "success",
+					messageId: data.messages[0].id,
+				message: JSON.parse(messageInput),
+				date: Timestamp.now(),
+				usermessage:null,
+				})
+				}) 
+			}else{
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
+				messages: FieldValue.arrayUnion(
+					{status: "success",
+					messageId: data.messages[0].id,
+				message: JSON.parse(messageInput),
+				date: Timestamp.now(),
+				usermessage:null,
+				})
+				});
+			}
+
+			// console.log(data)
+		}
+		
+		res.send("successfully send")
+	}catch (err){
+		console.log(err)
+		res.send(err)
+	}
+
+})
 
 
 app.post("/webhook", async (req, response) => {

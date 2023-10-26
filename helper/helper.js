@@ -24,6 +24,31 @@ function getCustomTextInput(recipient, text) {
       },
     });
   }
+  function getTemplateTextAndImageInput(recipient, templateName,imageLink) {
+    return JSON.stringify({
+      messaging_product: "whatsapp",
+      to: recipient,
+      type: "template",
+      template: {
+        name: templateName,
+        language: {
+          code: "en_US",
+        },
+        components: [
+          {
+            type: "header",
+            parameters: [
+              {
+                type: "image",
+                image: {
+                  link: imageLink
+                }
+              }
+            ]
+          }]
+      },
+    });
+  }
   
-  module.exports = { getCustomTextInput, getTemplateTextInput };
+  module.exports = { getCustomTextInput, getTemplateTextInput, getTemplateTextAndImageInput };
   
