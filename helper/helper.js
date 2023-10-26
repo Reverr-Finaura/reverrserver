@@ -32,7 +32,7 @@ function getCustomTextInput(recipient, text) {
       template: {
         name: templateName,
         language: {
-          code: "en_US",
+          code: "en",
         },
         components: [
           {
