@@ -689,6 +689,7 @@ app.post("/sendwamucm", async(req,res)=>{
 app.post("/sendwatemplatemsg", async(req,res)=>{
 
 	try{
+		console.log("rec")
 		const {number, templateName, countryCode} = req.body;
 		const messageFrom = countryCode+number; 
 		messageInput = messageHelper.getTemplateTextInput(
@@ -725,6 +726,7 @@ app.post("/sendwatemplatemsg", async(req,res)=>{
 		}
 
 		// console.log(data)
+		console.log("send")
 		res.send("successfully send")
 	}catch (err){
 		console.log(err)
@@ -738,6 +740,7 @@ app.post("/sendwatemplatemsg", async(req,res)=>{
 app.post("/sendwamutm", async(req,res)=>{
 	
 	try{
+		console.log("rec")
 		const {numbers, templateName, countryCodes} = req.body;
 
 		for (let i =0; i<numbers.length; i++){
@@ -779,7 +782,7 @@ app.post("/sendwamutm", async(req,res)=>{
 
 			// console.log(data)
 		}
-		
+		console.log("send")
 		res.send("successfully send")
 	}catch (err){
 		console.log(err)
