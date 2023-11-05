@@ -20,7 +20,10 @@
     "firebase": "^9.6.8",
     "firebase-admin": "^10.0.2",
     "jsonwebtoken": "^9.0.0",
+    "openai": "^4.15.4",
+    "pdf-parse": "^1.1.1",
     "razorpay": "^2.0.6",
+    "request-promise": "^4.2.6",
     "shortid": "^2.2.15",
     "twilio": "^4.11.0",
     "uuid": "^9.0.0"
