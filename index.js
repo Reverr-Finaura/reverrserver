@@ -51,45 +51,45 @@ var sp3 =[]
 var sp4 =[]
 var sp5 =[]
 
-// sp.map((item,idx)=>{
-// 	var elgbl1 = false;
-// 	var elgbl2 = false;
-// 	var elgbl3 = false;
-// 	var elgbl4 = false;
-// 	var elgbl5 = false;
-// 	for(var i=0; i<item.Type.length; i++){
-// 		if(cat1.includes(item.Type[i])){
-// 			elgbl1 = true;
-// 		}
-// 		if(cat2.includes(item.Type[i])){
-// 			elgbl2 = true;
-// 		}
-// 		if(cat3.includes(item.Type[i])){
-// 			elgbl3 = true;
-// 		}
-// 		if(cat4.includes(item.Type[i])){
-// 			elgbl4 = true;
-// 		}
-// 		if(cat5.includes(item.Type[i])){
-// 			elgbl5 = true;
-// 		}
-// 	}
-// 	if(elgbl1){
-// 		sp1.push(item)
-// 	}
-// 	if(elgbl2){
-// 		sp2.push(item)
-// 	}
-// 	if(elgbl3){
-// 		sp3.push(item)
-// 	}
-// 	if(elgbl4){
-// 		sp4.push(item)
-// 	}
-// 	if(elgbl5){
-// 		sp5.push(item)
-// 	}
-// })
+sp.map((item,idx)=>{
+	var elgbl1 = false;
+	var elgbl2 = false;
+	var elgbl3 = false;
+	var elgbl4 = false;
+	var elgbl5 = false;
+	for(var i=0; i<item.Type.length; i++){
+		if(cat1.includes(item.Type[i])){
+			elgbl1 = true;
+		}
+		if(cat2.includes(item.Type[i])){
+			elgbl2 = true;
+		}
+		if(cat3.includes(item.Type[i])){
+			elgbl3 = true;
+		}
+		if(cat4.includes(item.Type[i])){
+			elgbl4 = true;
+		}
+		if(cat5.includes(item.Type[i])){
+			elgbl5 = true;
+		}
+	}
+	if(elgbl1){
+		sp1.push(item)
+	}
+	if(elgbl2){
+		sp2.push(item)
+	}
+	if(elgbl3){
+		sp3.push(item)
+	}
+	if(elgbl4){
+		sp4.push(item)
+	}
+	if(elgbl5){
+		sp5.push(item)
+	}
+})
 // console.log(sp1,sp2,sp3,sp4,sp5)
 
 const uuid = uuidv4();
