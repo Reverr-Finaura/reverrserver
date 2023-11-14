@@ -2489,12 +2489,13 @@ app.post("/webhook", async (req, response) => {
 	  app.post('/jobdes', async (req, res) => {
 		try {
 			const data = req.body;
+			const job = data.job;
 			const des= data.description;
 			const title= data.title;
-			const start_date= data.start_date;
-			const end_date=data.end_date;
-			const job_title= data.job_title;
-			const job_des=data.job_des;
+			const start_date= job.startDate;
+			const end_date=job.endDate;
+			const job_title= job.jobTitle;
+			const job_des=job.description;
 		  
 	  
 		  if (!data) {
