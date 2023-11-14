@@ -26,7 +26,7 @@ async function summary(des,title,details) {
     });
   
     console.log(completion.choices[0].message.content);
-    var content = completion.choices[0].message.content
+    var content = JSON.parse(completion.choices[0].message.content)
     return content;
   }
   
