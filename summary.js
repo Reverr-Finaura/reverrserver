@@ -16,8 +16,12 @@ async function summary(des,title,details) {
                     Resume:${details}
                     Job Title:${title}
                     Job Description:${des}
-                    Generate a ATS friendly proffessional Summary based on the job title and description mentioned.
+                    Generate a ATS friendly professional Summary based on the job title and description mentioned.
                     Don't create new information, format from only what's provided
+                    Generate a valid JSON response with the extracted resume text in a similar format
+                    {
+                      professionalSummary: '',
+                    }
                     `,
       
         }
