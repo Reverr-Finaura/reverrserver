@@ -2460,13 +2460,12 @@ app.post("/webhook", async (req, response) => {
 	  })
 	  app.post('/summary', async (req, res) => {
 		try {
+		  
+
 		  const data = req.body;
 		  const des= data.description;
 		  const title= data.title;
-		  const start_date= data.start_date;
-		  const end_date=data.end_date;
-		  const job_title= data.job_title;
-		  const job_des=data.job_des;
+		  const details= data.details;
 		  
 	  
 		  if (!data) {
@@ -2474,7 +2473,7 @@ app.post("/webhook", async (req, response) => {
 		  }
 	  
 		  
-		  const openAIResponse = await summary(des,title,start_date,end_date,job_title,job_des);
+		  const openAIResponse = await summary(des,title,details);
 	  
 		  if (openAIResponse) {
 			return res.status(200).json(openAIResponse);
@@ -2489,10 +2488,13 @@ app.post("/webhook", async (req, response) => {
 	
 	  app.post('/jobdes', async (req, res) => {
 		try {
-		  const data = req.body;
-		  const des= data.description;
-		  const title= data.title;
-		  const details= data.details;
+			const data = req.body;
+			const des= data.description;
+			const title= data.title;
+			const start_date= data.start_date;
+			const end_date=data.end_date;
+			const job_title= data.job_title;
+			const job_des=data.job_des;
 		  
 	  
 		  if (!data) {
@@ -2500,7 +2502,7 @@ app.post("/webhook", async (req, response) => {
 		  }
 	  
 		  
-		  const openAIResponse = await jobdes(des,title,details);
+		  const openAIResponse = await jobdes(des,title,start_date,end_date,job_title,job_des);
 	  
 		  if (openAIResponse) {
 			return res.status(200).json(openAIResponse);
