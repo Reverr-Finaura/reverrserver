@@ -862,8 +862,9 @@ app.post("/sendwamutmimg", async(req,res)=>{
 				templateName,
 				image
 			);
-			// console.log(messageFrom)
+			console.log(messageFrom)
 			const { data } = await sendMessage(messageInput);
+			console.log(data)
 			
 			const userexist = await db.collection("WhatsappMessages").doc(`${messageFrom}`).get()
 			if(!userexist.exists){
