@@ -595,7 +595,7 @@ if(msgRec.id.includes(id)){
 
 
 app.post("/sendwacustommsg", async(req,res)=>{
-
+	console.log("/sendwacustommsg", req.body)
 	try{
 		const {number, text, countryCode} = req.body;
 		const messageFrom = countryCode+number; 
@@ -641,7 +641,7 @@ app.post("/sendwacustommsg", async(req,res)=>{
 
 })
 app.post("/sendwamucm", async(req,res)=>{
-	
+	console.log("/sendwamucm", req.body)
 	try{
 		const {numbers, text, countryCodes} = req.body;
 
@@ -694,7 +694,7 @@ app.post("/sendwamucm", async(req,res)=>{
 })
 
 app.post("/sendwatemplatemsg", async(req,res)=>{
-
+	console.log("/sendwatemplatemsg", req.body)
 	try{
 		console.log("rec")
 		const {number, templateName, countryCode} = req.body;
@@ -745,7 +745,7 @@ app.post("/sendwatemplatemsg", async(req,res)=>{
 
 
 app.post("/sendwamutm", async(req,res)=>{
-	
+	console.log("/sendwamutm", req.body)
 	try{
 		console.log("rec")
 		const {numbers, templateName, countryCodes} = req.body;
@@ -798,7 +798,7 @@ app.post("/sendwamutm", async(req,res)=>{
 
 })
 app.post("/sendwatemplatemsgimg", async(req,res)=>{
-
+	console.log("/sendwatemplatemsgimg", req.body)
 	try{
 		const {number, templateName, countryCode, image} = req.body;
 		const messageFrom = countryCode+number; 
@@ -848,7 +848,8 @@ app.post("/sendwatemplatemsgimg", async(req,res)=>{
 
 
 app.post("/sendwamutmimg", async(req,res)=>{
-	
+	console.log("/sendwamutmimg", req.body)
+
 	try{
 		const {numbers, templateName, countryCodes, image} = req.body;
 
