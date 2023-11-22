@@ -2231,7 +2231,7 @@ app.post("/webhook", async (req, response) => {
 						msg_startupFinancing
 					  );
 					sendMsg()
-				}if(usermessage == "5"){
+				}else if(usermessage == "5"){
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
 						msg_growthStrategies
@@ -2255,7 +2255,7 @@ app.post("/webhook", async (req, response) => {
 						msg_mentorship
 					  );
 					sendMsg()
-				}if(usermessage == "9"){
+				}else if(usermessage == "9"){
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
 						msg_productDvp
@@ -2265,6 +2265,12 @@ app.post("/webhook", async (req, response) => {
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
 						msg_customerAcq
+					  );
+					sendMsg()
+				}else{
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_dontUnderstand
 					  );
 					sendMsg()
 				}
