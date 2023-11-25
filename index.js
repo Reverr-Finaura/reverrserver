@@ -2359,7 +2359,6 @@ app.post("/webhook", async (req, response) => {
 						requesting = [...requesting, messageFrom];
 					}
 
-					console.log("requested", userChat.requested)
 					
 					requested = [requser.number];
 					requesting = [messageFrom];
@@ -2374,7 +2373,7 @@ app.post("/webhook", async (req, response) => {
 					msg_1o1recRequest = `🤗Hi, there!\nWe’ve just got a connection request for you.💯\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\n*Type 1* if you’re *interested in connecting* one-on-one👥\n*Type 2* if you don’t find them a suitable match😔\n\n*Type menu* to go back to the Menu`
 
 					messageInput = messageHelper.getCustomTextInput(
-						messageFrom,
+						requser.number,
 						msg_1o1recRequest
 					);
 					noResponseSendMsg(requser.number);
@@ -2446,7 +2445,7 @@ app.post("/webhook", async (req, response) => {
 				msg_1o1reqAccepted = `🤩Hello, again!\nYour connection request has been accepted.\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSet up a one-on-one networking session here: ${currentProfile.calendly}`
 
 				messageInput = messageHelper.getCustomTextInput(
-					messageFrom,
+					requser.number,
 					msg_1o1reqAccepted
 				  );
 				noResponseSendMsg(requser.number)
@@ -2476,7 +2475,7 @@ app.post("/webhook", async (req, response) => {
 				msg_1o1reqRejected = `🫤Your connection request was declined by\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nNo worries, we’re sure you’ll find more suitable connections!😌\n\n*Type menu* to go back to the menu!😉`
 				
 				messageInput = messageHelper.getCustomTextInput(
-					messageFrom,
+					requser.number,
 					msg_1o1reqRejected
 				  );
 				noResponseSendMsg(requser.number)
