@@ -2351,14 +2351,18 @@ app.post("/webhook", async (req, response) => {
 					
 					if(userChat.requested!= undefined || userChat.requested!= []){
 						requested = userChat.requested;
+						requested = [...requested, requser.number];
+						console.log("requested", userChat.requested)
 					}
 					if(requser.requesting!= undefined || requser.requesting!= []){
 						requesting = requser.requesting;
+						requesting = [...requesting, messageFrom];
 					}
 
-
-					requested = [...requested, requser.number];
-					requesting = [...requesting, messageFrom];
+					console.log("requested", userChat.requested)
+					
+					requested = [requser.number];
+					requesting = [messageFrom];
 
 					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({requested});
 					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({requestedIdx : requested.length -1});
