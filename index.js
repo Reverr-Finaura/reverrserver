@@ -2349,12 +2349,12 @@ app.post("/webhook", async (req, response) => {
 
 					var requser = currentProfile;
 					
-					if(userChat.requested!= undefined || userChat.requested!= []){
+					if(userChat.requested!= undefined && userChat.requested!= []){
 						console.log("requested", userChat.requested)
 						requested = userChat.requested;
 						requested = [...requested, requser.number];
 					}
-					if(requser.requesting!= undefined || requser.requesting!= []){
+					if(requser.requesting!= undefined && requser.requesting!= []){
 						requesting = requser.requesting;
 						requesting = [...requesting, messageFrom];
 					}
