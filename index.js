@@ -2296,7 +2296,7 @@ app.post("/webhook", async (req, response) => {
 					);
 					sendMsg()
 				}else{
-					msg_shareProfile =`Super! We have found just the right person for you.😎\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see more connections\n*Type menu* to go back to the Menu `
+					msg_shareProfile =`Super! We have found just the right person for you.😎\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see *more connections*🧐\n*Type 2* if you’re *interested in connecting* one-on-one👥\n\n*Type menu* to go back to the Menu `
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
 						msg_shareProfile
