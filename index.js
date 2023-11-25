@@ -2345,6 +2345,7 @@ app.post("/webhook", async (req, response) => {
 					
 					currentProfile = await getProfile(intersetedSpaces,cisidx);
 					
+					console.log(currentProfile)
 					console.log(currentProfile[cisidx])
 
 					var requser = currentProfile[cisidx];
