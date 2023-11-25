@@ -2346,9 +2346,8 @@ app.post("/webhook", async (req, response) => {
 					currentProfile = await getProfile(intersetedSpaces,cisidx);
 					
 					console.log(currentProfile)
-					console.log(currentProfile[cisidx])
 
-					var requser = currentProfile[cisidx];
+					var requser = currentProfile;
 					
 					if(userChat.requested!= undefined || userChat.requested!= []){
 						requested = userChat.requested;
