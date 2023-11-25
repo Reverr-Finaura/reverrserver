@@ -926,6 +926,7 @@ app.post("/webhook", async (req, response) => {
 	var lastMsgRec=""
 	let messageInput;
 	var stopMsg= false;
+	var calendly = ""
 	
 
 	var currentProfile = {
@@ -939,7 +940,8 @@ app.post("/webhook", async (req, response) => {
 		userType: 'founder',
 		fundingForm: true,
 		currentNeed: 'Discover networking opportunities',
-		space: 'FinTech'
+		space: 'FinTech',
+		calendly:"Reverr"
 	  }
 
 	var tsp = {
@@ -987,6 +989,9 @@ app.post("/webhook", async (req, response) => {
 		}
 		if(userChat.stop){
 			stopMsg = userChat.stop;
+		}
+		if(userChat.calendly){
+			calendly = userChat.calendly;
 		}
 
 	}
@@ -1080,9 +1085,21 @@ app.post("/webhook", async (req, response) => {
 	var msg_spaces = "Now select the space that resonates the most with you.😉\n\nType the number of Space that you wish to join: (For example- 11) 😋\n1. FinTech\n2. EdTech\n3. AgriTech\n4. FoodTech\n5. Ecommerce\n6. Logistics & Delivery\n7. Cleantech & Renewable Energy\n8. AI & ML\n9. Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech"
 	var msg_stop = "Okay, you’ll no longer receive messages from Reverr. 🫡\n\nYou can type “Start” to initiate the chat again.🤗"
 	var msg_connect = " Let's get on to finding some suitable connections.😉\nWho are you looking to connect with?🤔 Pick the numbers of the Spaces you’re looking to explore. \n\n(Example: 11,5,8)👀\n\n1.  FinTech\n2. EdTech\n3. AgriTech\n4. FoodTech\n5. Ecommerce\n6. Logistics & Delivery\n7. Cleantech & Renewable Energy\n8. AI & ML\n9. Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech"
-	var msg_shareProfile =`Super! We have found just the right person for you.😎\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see more connections\n*Type menu* to go back to the Menu `
+	var msg_shareProfile =`Super! We have found just the right person for you.😎\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see *more connections*🧐\n*Type 2* if you’re *interested in connecting* one-on-one👥\n\n*Type menu* to go back to the Menu `
 	var msg_noMoreProfile = "Alas! We’ve run out of potential connections.😕\nTry checking out some other Spaces.🤔\n\n*Type menu* to go back to the Menu"
-
+	var msg_1o1getUserType ="Noted!🫡\nBefore we move forward, who are you looking to connect with?🤔\n\n*Type 1* to connect with *founders*🧑🏻‍💼\n*Type 2* to connect with *professionals*🧑🏻‍🏫\n*Type 3* to connect with *both* 🤗"
+	var msg_1o1askCalendly ="Alrighty!\nIn order to experience one-on-one networking, we would require your Calendly link.🔗👥\n\n*Type 1* to share your *Calendly link*🔗\n*Type 2* to learn how to *create* a Calendly link🛠️\n\nType *Menu* to go back to the Menu"
+	var msg_1o1getCalendly ="Great!\nPlease share the link.😉"
+	var msg_1o1confirmCalendly =`Your Calendly link is ${calendly} 🧐\n\n*Type 1* to *confirm* the link\n*Type 2* to *retry*`
+	var msg_1o1infoCalendly = "Don’t worry, we’ve got you!😋\n\nLearn how to *create a Calendly link* here: https://app.tango.us/app/workflow/Workflow-with-Calendly-and-Tango-80502116519548baac5887f161cd9119 \n\n*Type 1* to share your Calendly link🔗\nType *Menu* to go back to the Menu"
+	var msg_1o1recievedCalendly = "Perfect!\nYou are now ready to experience one-on-one networking.😉\n\n*Type 1* to start seeing *suitable connections*.\nType *Menu* to go back to the Menu"
+	var msg_1o1showintrest = "Great choice!🙌🏻\nWe have let them know that you’re interested in connecting.☺️\n\nWe will let you know once they accept your invitation to connect.😉\n\n*Type 1* to see *more connections*🧐\n\n*Type menu* to go back to the Menu "
+	var msg_1o1recRequest = `🤗Hi, there!\nWe’ve just got a connection request for you.💯\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\n*Type 1* if you’re *interested in connecting* one-on-one👥\n*Type 2* if you don’t find them a suitable match😔\n\n*Type menu* to go back to the Menu`
+	var msg_1o1sharedCalendly = "Great! We’ve shared your Calendly link with them.🥳\n\nKeep an eye on your calendar for all scheduled sessions.\n\nHappy networking!🎊🤗"
+	var msg_1o1notIntrested = "No worries! \nYou can check out more networking opportunities.🤭\n\n*Type menu* to go back to the Menu"
+	var msg_1o1reqRejected = `🫤Your connection request was declined by\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nNo worries, we’re sure you’ll find more suitable connections!😌\n\n*Type menu* to go back to the menu!😉`
+	var msg_1o1reqAccepted = `🤩Hello, again!\nYour connection request has been accepted.\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSet up a one-on-one networking session here: ${currentProfile.calendly}`
+	
 	//knowledge msgs
 	var msg_ideaValidation = "*Idea Validation*:📝\n\n1. How to Test Your Startup Idea (https://www.youtube.com/watch?v=J4e0OogLpOo) (YouTube Video)\n2. The Ultimate Guide to Idea Validation for Startups (https://www.startups.com/library/expert-advice/idea-validation-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
 	var msg_businessCollaterals = "*Business Collaterals*:🗂️\n\n1. Understanding Business Collateral (https://www.businessloans.com/guides/business-collateral/) (Article)\n2. Business Collateral: What It Is and How It Works (https://www.nav.com/blog/business-collateral-422422/) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
@@ -1161,6 +1178,68 @@ app.post("/webhook", async (req, response) => {
 		
 		
 	}
+	const noResponseSendMsg = async(sendto)=>{
+		
+		// console.log("stop",stopMsg)
+		if(stopMsg == false ){
+			const { data } = await sendMessage(messageInput);
+			const userexist = await db.collection("WhatsappMessages").doc(`${sendto}`).get()
+			if(!userexist.exists){
+				console.log("no doc");
+				await db.collection('WhatsappMessages').doc(`${sendto}`).set(
+				{exists: "true"})
+				await db.collection("WhatsappMessages").doc(`${sendto}`).update({
+				messages: FieldValue.arrayUnion(
+					{status: "success",
+					messageId: data.messages[0].id,
+				message: JSON.parse(messageInput),
+				date: Timestamp.now(),
+				usermessage,
+				})
+				}) 
+			}else{
+				await db.collection("WhatsappMessages").doc(`${sendto}`).update({
+				messages: FieldValue.arrayUnion(
+					{status: "success",
+					messageId: data.messages[0].id,
+				message: JSON.parse(messageInput),
+				date: Timestamp.now(),
+				usermessage,
+				})
+				});
+			}
+			
+		}else{
+			const userexist = await db.collection("WhatsappMessages").doc(`${sendto}`).get()
+			if(!userexist.exists){
+				console.log("no doc");
+				await db.collection('WhatsappMessages').doc(`${sendto}`).set(
+				{exists: "true"})
+				await db.collection("WhatsappMessages").doc(`${sendto}`).update({
+				messages: FieldValue.arrayUnion(
+					{status: "success",
+					messageId: Date.now(),
+				message: null,
+				date: Timestamp.now(),
+				usermessage,
+				})
+				}) 
+			}else{
+				await db.collection("WhatsappMessages").doc(`${sendto}`).update({
+				messages: FieldValue.arrayUnion(
+					{status: "success",
+					messageId: Date.now(),
+				message: null,
+				date: Timestamp.now(),
+				usermessage,
+				})
+				});
+			}
+			
+		}
+		
+		
+	}
 	const resendLastToLastMsg = ()=>{
 		var ltlMsg = userChat.messages[userChat.messages.length -2];
 		if(ltlMsg.message.type =="template"){
@@ -1207,7 +1286,11 @@ app.post("/webhook", async (req, response) => {
 		});
 
 
-		const filteredUsers = filterCurrentUser(filterUsersBySpace(users, intersetedSpaces));
+		var filteredUsers = filterCalendlyUsers(filterCurrentUser(filterUsersBySpace(users, intersetedSpaces)));
+
+		if(userChat.connectWith !== "both"){
+			filteredUsers = filterUserType(filteredUsers, userChat.connectWith);
+		}
 
 		if(filteredUsers.length == 0){
 
@@ -1225,6 +1308,12 @@ app.post("/webhook", async (req, response) => {
 	
 	function filterCurrentUser(users){
 		return users.filter(user => user.id!=messageFrom)
+	}
+	function filterUserType(users,userType){
+		return users.filter(user => user.userType ==userType)
+	}
+	function filterCalendlyUsers(users){
+		return users.filter(user => user.calendly!= undefined && user.calendly!="")
 	}
 
 	const getSpaces = (numbers)=>{
@@ -1384,6 +1473,28 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_shareProfile"
 		}else if(lastMsgSend == msg_shareProfile){
 			result = "msg_shareProfile"
+		}else if(lastMsgSend == msg_1o1getUserType){
+			result = "msg_1o1getUserType"
+		}else if(lastMsgSend == msg_1o1askCalendly){
+			result = "msg_1o1askCalendly"
+		}else if(lastMsgSend == msg_1o1getCalendly){
+			result ="msg_1o1getCalendly"
+		}else if(lastMsgSend[0]=="Y" && lastMsgSend[1]=="o" && lastMsgSend[2]=="u" && lastMsgSend[3]=="r"&& lastMsgSend[4]==" " && lastMsgSend[5]=="C"){
+			result = "msg_1o1confirmCalendly"
+		}else if(lastMsgSend == msg_1o1infoCalendly){
+			result = "msg_1o1infoCalendly"
+		}else if(lastMsgSend == msg_1o1recievedCalendly){
+			result = "msg_1o1recievedCalendly"
+		}else if(lastMsgSend == msg_1o1showintrest){
+			result = "msg_1o1showintrest"
+		}else if(lastMsgSend[0]=="🤗" && lastMsgSend[1]=="H" && lastMsgSend[2]=="i"&& lastMsgSend[3]==","){
+			result = "msg_1o1recRequest"
+		}else if(lastMsgSend[0]=="🤩" && lastMsgSend[1]=="H" && lastMsgSend[2]=="e"&& lastMsgSend[3]=="l"&& lastMsgSend[4]=="l"&& lastMsgSend[5]=="o"){
+			result = "msg_1o1reqAccepted"
+		}else if(lastMsgSend[0]=="🫤" && lastMsgSend[1]=="Y" && lastMsgSend[2]=="o"&& lastMsgSend[3]=="u"&& lastMsgSend[4]=="r"){
+			result = "msg_1o1reqRejected"
+		}else if(lastMsgSend == msg_1o1sharedCalendly){
+			result = "msg_1o1sharedCalendly"
 		}
 		
 		console.log(result)
@@ -2010,7 +2121,174 @@ app.post("/webhook", async (req, response) => {
 				var intersetedSpaces = getSpaces(temparr)
 				var cisidx = 0;
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({intersetedSpaces, cisidx});
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_1o1getUserType
+					);
+				sendMsg()
+
+				// if(userChat.calendly && userChat.calendly!==""){
+
+				// 	currentProfile = await getProfile(intersetedSpaces,cisidx);
+					
+				// 	if(currentProfile == null){
+				// 		messageInput = messageHelper.getCustomTextInput(
+				// 			messageFrom,
+				// 			msg_noMoreProfile
+				// 		);
+				// 		sendMsg()
+				// 	}else{
+				// 		msg_shareProfile =`Super! We have found just the right person for you.😎\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see more connections\n*Type menu* to go back to the Menu `
+				// 		messageInput = messageHelper.getCustomTextInput(
+				// 			messageFrom,
+				// 			msg_shareProfile
+				// 		);
+				// 		sendMsg()
+				// 	}
+
+				// }
+				
+			}
+			
+		}else if(res == "msg_1o1getUserType"){
+			var hasCalendly = false;
+			var error = false;
+			if(userChat.calendly && userChat.calendly!==""){
+				hasCalendly =true;
+			}
+
+			if(usermessage == "1"){	
+				var connectWith = "founder";
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({connectWith});
+				
+			}else if(usermessage == "2"){
+				var connectWith = "professional";
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({connectWith});
+				
+			}else if(usermessage == "3"){
+				var connectWith = "both";
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({connectWith});
+				
+			}else{
+				error = true;
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
+
+			if(!error){
+				if(!hasCalendly){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_1o1askCalendly
+					  );
+					sendMsg()
+				}else{
+					var intersetedSpaces = userChat.intersetedSpaces;
+					var cisidx = userChat.cisidx;
+					currentProfile = await getProfile(intersetedSpaces,cisidx);
+						
+					if(currentProfile == null){
+						messageInput = messageHelper.getCustomTextInput(
+							messageFrom,
+							msg_noMoreProfile
+						);
+						sendMsg()
+					}else{
+						msg_shareProfile =`Super! We have found just the right person for you.😎\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see more connections\n*Type menu* to go back to the Menu `
+						messageInput = messageHelper.getCustomTextInput(
+							messageFrom,
+							msg_shareProfile
+						);
+						sendMsg()
+					}
+				}
+			}
+			
+			
+			
+		}else if(res == "msg_1o1askCalendly"){
+			if(usermessage == "1"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_1o1getCalendly
+				  );
+				sendMsg()
+				
+			}else if(usermessage == "2"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_1o1infoCalendly
+				  );
+				sendMsg()
+				
+			}
+			else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}	
+			
+		}else if(res == "msg_1o1getCalendly"){
+			var calendly = usermessage;
+			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({calendly});
+			msg_1o1confirmCalendly =`Your Calendly link is ${calendly} 🧐\n\n*Type 1* to *confirm* the link\n*Type 2* to *retry*`
+			messageInput = messageHelper.getCustomTextInput(
+				messageFrom,
+				msg_1o1confirmCalendly
+			  );
+			sendMsg()
+			
+		}else if(res == "msg_1o1confirmCalendly"){
+			if(usermessage == "1"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_1o1recievedCalendly
+				  );
+				sendMsg()
+				
+			}else if(usermessage == "2"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_1o1getCalendly
+				  );
+				sendMsg()
+				
+			}
+			else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}	
+			
+		}else if(res == "msg_1o1infoCalendly"){
+			if(usermessage == "1"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_1o1getCalendly
+				  );
+				sendMsg()
+				
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}	
+			
+		}else if(res == "msg_1o1recievedCalendly"){
+			if(usermessage == "1"){
+				var intersetedSpaces = userChat.intersetedSpaces;
+				var cisidx = userChat.cisidx;
 				currentProfile = await getProfile(intersetedSpaces,cisidx);
+					
 				if(currentProfile == null){
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
@@ -2025,7 +2303,14 @@ app.post("/webhook", async (req, response) => {
 					);
 					sendMsg()
 				}
-			}
+				
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}	
 			
 		}else if(res == "msg_shareProfile"){
 			if(usermessage == "1"){
@@ -2043,7 +2328,7 @@ app.post("/webhook", async (req, response) => {
 					);
 					sendMsg()
 				}else{
-					msg_shareProfile =`Super! We have found just the right person for you.😎\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see more connections\n*Type menu* to go back to the Menu `
+					msg_shareProfile =`Super! We have found just the right person for you.😎\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see *more connections*🧐\n*Type 2* if you’re *interested in connecting* one-on-one👥\n\n*Type menu* to go back to the Menu `
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
 						msg_shareProfile
@@ -2051,6 +2336,47 @@ app.post("/webhook", async (req, response) => {
 					sendMsg()
 				
 				}
+			}else if(usermessage == "2"){
+					
+					var requested =[];
+					var intersetedSpaces = userChat.intersetedSpaces;
+					var cisidx = userChat.cisidx;
+					var requesting = [];
+					
+					var requser = currentProfile[cisidx];
+					
+					if(userChat.requested!= undefined || userChat.requested!= []){
+						requested = userChat.requested;
+					}
+					if(requser.requesting!= undefined || requser.requesting!= []){
+						requesting = requser.requesting;
+					}
+
+					currentProfile = await getProfile(intersetedSpaces,cisidx);
+
+					requested = [...requested, requser.number];
+					requesting = [...requesting, messageFrom];
+
+					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({requested});
+					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({requestedIdx : requested.length -1});
+					await db.collection("WhatsappMessages").doc(`${requser.number}`).update({requesting});
+					await db.collection("WhatsappMessages").doc(`${requser.number}`).update({requestingIdx : requesting.length -1});
+
+					currentProfile = userChat;
+					
+					msg_1o1recRequest = `🤗Hi, there!\nWe’ve just got a connection request for you.💯\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\n*Type 1* if you’re *interested in connecting* one-on-one👥\n*Type 2* if you don’t find them a suitable match😔\n\n*Type menu* to go back to the Menu`
+
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_1o1recRequest
+					);
+					noResponseSendMsg(requser.number);
+
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_1o1showintrest
+					);
+					sendMsg()
 			}else{
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
@@ -2059,6 +2385,109 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 			
+			
+		}else if(res == "msg_1o1showintrest"){
+			if(usermessage == "1"){
+				var intersetedSpaces = userChat.intersetedSpaces;
+				var cisidx = userChat.cisidx;
+
+					cisidx = cisidx+1;
+
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({cisidx});
+				currentProfile = await getProfile(intersetedSpaces,cisidx);
+				if(currentProfile == null){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_noMoreProfile
+					);
+					sendMsg()
+				}else{
+					msg_shareProfile =`Super! We have found just the right person for you.😎\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see *more connections*🧐\n*Type 2* if you’re *interested in connecting* one-on-one👥\n\n*Type menu* to go back to the Menu `
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_shareProfile
+					);
+					sendMsg()
+				
+				}
+				
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}	
+			
+		}else if(res == "msg_1o1recRequest"){
+			if(usermessage == "1"){
+				var requser = userChat.requesting[userChat.requestingIdx];
+
+				var requesting  = userChat.requesting;
+				requesting = requesting.filter( num => num !=requser);
+
+				requser = await db.collection("WhatsappMessages").doc(`${requser}`).get()
+				requser = requser.data();
+
+				var requested = requser.requested;
+				requested = requested.filter( num => num!=messageFrom);
+
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({requesting});
+				await db.collection("WhatsappMessages").doc(`${requser.number}`).update({requested});
+
+				currentProfile = userChat;
+				msg_1o1reqAccepted = `🤩Hello, again!\nYour connection request has been accepted.\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSet up a one-on-one networking session here: ${currentProfile.calendly}`
+
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_1o1reqAccepted
+				  );
+				noResponseSendMsg(requser.number)
+
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_1o1sharedCalendly
+				  );
+				sendMsg()
+				
+			}else if(usermessage == "2"){
+				var requser = userChat.requesting[userChat.requestingIdx];
+
+				var requesting  = userChat.requesting;
+				requesting = requesting.filter( num => num !=requser);
+
+				requser = await db.collection("WhatsappMessages").doc(`${requser}`).get()
+				requser = requser.data();
+
+				var requested = requser.requested;
+				requested = requested.filter( num => num!=messageFrom);
+
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({requesting});
+				await db.collection("WhatsappMessages").doc(`${requser.number}`).update({requested});
+
+				currentProfile = userChat;
+				msg_1o1reqRejected = `🫤Your connection request was declined by\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nNo worries, we’re sure you’ll find more suitable connections!😌\n\n*Type menu* to go back to the menu!😉`
+				
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_1o1reqRejected
+				  );
+				noResponseSendMsg(requser.number)
+
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_1o1notIntrested
+				  );
+				sendMsg()
+				
+			}
+			else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}	
 			
 		}else if(res == "msg_professionalNetworking"){
 			if(usermessage == "1"){
