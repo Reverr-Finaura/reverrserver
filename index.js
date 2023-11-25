@@ -2343,6 +2343,10 @@ app.post("/webhook", async (req, response) => {
 					var cisidx = userChat.cisidx;
 					var requesting = [];
 					
+					currentProfile = await getProfile(intersetedSpaces,cisidx);
+					
+					console.log(currentProfile[cisidx])
+
 					var requser = currentProfile[cisidx];
 					
 					if(userChat.requested!= undefined || userChat.requested!= []){
@@ -2352,7 +2356,6 @@ app.post("/webhook", async (req, response) => {
 						requesting = requser.requesting;
 					}
 
-					currentProfile = await getProfile(intersetedSpaces,cisidx);
 
 					requested = [...requested, requser.number];
 					requesting = [...requesting, messageFrom];
