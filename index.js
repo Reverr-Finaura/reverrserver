@@ -1178,7 +1178,7 @@ app.post("/webhook", async (req, response) => {
 		
 		
 	}
-	const noResponseSendMsg = async(sendto)=>{
+	const noResponseSendMsg = async(sendto, messageInput)=>{
 		
 		// console.log("stop",stopMsg)
 		if(stopMsg == false ){
@@ -2378,7 +2378,7 @@ app.post("/webhook", async (req, response) => {
 						requser.id,
 						msg_1o1recRequest
 					);
-					noResponseSendMsg(requser.id);
+					noResponseSendMsg(requser.id, messageInput);
 
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
@@ -2451,7 +2451,7 @@ app.post("/webhook", async (req, response) => {
 					requser.id,
 					msg_1o1reqAccepted
 				  );
-				noResponseSendMsg(requser.id)
+				noResponseSendMsg(requser.id, messageInput)
 
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
@@ -2481,7 +2481,7 @@ app.post("/webhook", async (req, response) => {
 					requser.id,
 					msg_1o1reqRejected
 				  );
-				noResponseSendMsg(requser.id)
+				noResponseSendMsg(requser.id, messageInput)
 
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
