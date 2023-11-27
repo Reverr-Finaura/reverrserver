@@ -1048,7 +1048,7 @@ app.post("/webhook", async (req, response) => {
 
 		
 	// <---- CUSTOM MSG---->
-	var msg_hello = "Hi, there!😉 \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \n*Type 1* if you’re a Startup Founder \n*Type 2* if you’re a Professional "
+	var msg_hello = "Hi, there😉 \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \n*Type 1* if you’re a Startup Founder \n*Type 2* if you’re a Professional "
 	var msg_askName = "We are happy that you're here.🤗 \nHow should we address you? Please type in your full name."
 	var msg_confirmName1 = "Hi, "
 	var msg_confirmName3 = "? \n*Type 1* to *confirm* \n*Type 0* to *retry*"
@@ -1094,11 +1094,11 @@ app.post("/webhook", async (req, response) => {
 	var msg_1o1infoCalendly = "Don’t worry, we’ve got you!😋\n\nLearn how to *create a Calendly link* here: https://app.tango.us/app/workflow/Workflow-with-Calendly-and-Tango-80502116519548baac5887f161cd9119 \n\n*Type 1* to share your Calendly link🔗\nType *Menu* to go back to the Menu"
 	var msg_1o1recievedCalendly = "Perfect!\nYou are now ready to experience one-on-one networking.😉\n\n*Type 1* to start seeing *suitable connections*.\nType *Menu* to go back to the Menu"
 	var msg_1o1showintrest = "Great choice!🙌🏻\nWe have let them know that you’re interested in connecting.☺️\n\nWe will let you know once they accept your invitation to connect.😉\n\n*Type 1* to see *more connections*🧐\n\n*Type menu* to go back to the Menu "
-	var msg_1o1recRequest = `🤗Hi, there!\nWe’ve just got a connection request for you.💯\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\n*Type 1* if you’re *interested in connecting* one-on-one👥\n*Type 2* if you don’t find them a suitable match😔\n\n*Type menu* to go back to the Menu`
+	var msg_1o1recRequest = `Hi, there!🤗\nWe’ve just got a connection request for you.💯\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\n*Type 1* if you’re *interested in connecting* one-on-one👥\n*Type 2* if you don’t find them a suitable match😔\n\n*Type menu* to go back to the Menu`
 	var msg_1o1sharedCalendly = "Great! We’ve shared your Calendly link with them.🥳\n\nKeep an eye on your calendar for all scheduled sessions.\n\nHappy networking!🎊🤗"
 	var msg_1o1notIntrested = "No worries! \nYou can check out more networking opportunities.🤭\n\n*Type menu* to go back to the Menu"
-	var msg_1o1reqRejected = `🫤Your connection request was declined by\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nNo worries, we’re sure you’ll find more suitable connections!😌\n\n*Type menu* to go back to the menu!😉`
-	var msg_1o1reqAccepted = `🤩Hello, again!\nYour connection request has been accepted.\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSet up a one-on-one networking session here: ${currentProfile.calendly}`
+	var msg_1o1reqRejected = `Your connection request was declined by 🫤\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nNo worries, we’re sure you’ll find more suitable connections!😌\n\n*Type menu* to go back to the menu!😉`
+	var msg_1o1reqAccepted = `Hello, again!🤩\nYour connection request has been accepted.\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSet up a one-on-one networking session here: ${currentProfile.calendly}`
 	
 	//knowledge msgs
 	var msg_ideaValidation = "*Idea Validation*:📝\n\n1. How to Test Your Startup Idea (https://www.youtube.com/watch?v=J4e0OogLpOo) (YouTube Video)\n2. The Ultimate Guide to Idea Validation for Startups (https://www.startups.com/library/expert-advice/idea-validation-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
@@ -1487,12 +1487,12 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_1o1recievedCalendly"
 		}else if(lastMsgSend == msg_1o1showintrest){
 			result = "msg_1o1showintrest"
-		}else if(lastMsgSend.substring(0, 4) == "🤗Hi,"){
+		}else if(lastMsgSend.substring(0, 10) == "Hi, there!"){
 			console.log("recREQ")
 			result = "msg_1o1recRequest"
-		}else if(lastMsgSend[0]=="🤩" && lastMsgSend[1]=="H" && lastMsgSend[2]=="e"&& lastMsgSend[3]=="l"&& lastMsgSend[4]=="l"&& lastMsgSend[5]=="o"){
+		}else if(lastMsgSend.substring(0, 13) == "Hello, again!"){
 			result = "msg_1o1reqAccepted"
-		}else if(lastMsgSend[0]=="🫤" && lastMsgSend[1]=="Y" && lastMsgSend[2]=="o"&& lastMsgSend[3]=="u"&& lastMsgSend[4]=="r"){
+		}else if(lastMsgSend.substring(0, 23) == "Your connection request"){
 			result = "msg_1o1reqRejected"
 		}else if(lastMsgSend == msg_1o1sharedCalendly){
 			result = "msg_1o1sharedCalendly"
@@ -2372,8 +2372,8 @@ app.post("/webhook", async (req, response) => {
 
 					currentProfile = userChat;
 					
-					msg_1o1recRequest = `🤗Hi, there!\nWe’ve just got a connection request for you.💯\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\n*Type 1* if you’re *interested in connecting* one-on-one👥\n*Type 2* if you don’t find them a suitable match😔\n\n*Type menu* to go back to the Menu`
-
+					msg_1o1recRequest = `Hi, there!🤗\nWe’ve just got a connection request for you.💯\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\n*Type 1* if you’re *interested in connecting* one-on-one👥\n*Type 2* if you don’t find them a suitable match😔\n\n*Type menu* to go back to the Menu`
+					
 					messageInput = messageHelper.getCustomTextInput(
 						requser.id,
 						msg_1o1recRequest
@@ -2445,7 +2445,7 @@ app.post("/webhook", async (req, response) => {
 				await db.collection("WhatsappMessages").doc(`${requser.id}`).update({requested});
 
 				currentProfile = userChat;
-				msg_1o1reqAccepted = `🤩Hello, again!\nYour connection request has been accepted.\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSet up a one-on-one networking session here: ${currentProfile.calendly}`
+				msg_1o1reqAccepted = `Hello, again!🤩\nYour connection request has been accepted.\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSet up a one-on-one networking session here: ${currentProfile.calendly}`
 
 				messageInput = messageHelper.getCustomTextInput(
 					requser.id,
@@ -2475,7 +2475,7 @@ app.post("/webhook", async (req, response) => {
 				await db.collection("WhatsappMessages").doc(`${requser.id}`).update({requested});
 
 				currentProfile = userChat;
-				msg_1o1reqRejected = `🫤Your connection request was declined by\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nNo worries, we’re sure you’ll find more suitable connections!😌\n\n*Type menu* to go back to the menu!😉`
+				msg_1o1reqRejected = `Your connection request was declined by 🫤\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nNo worries, we’re sure you’ll find more suitable connections!😌\n\n*Type menu* to go back to the menu!😉`
 				
 				messageInput = messageHelper.getCustomTextInput(
 					requser.id,
