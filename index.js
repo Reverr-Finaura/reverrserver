@@ -2461,13 +2461,14 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 				
 			}else if(usermessage == "2"){
-				var requser = userChat.requesting[userChat.requestingIdx];
+				var id = userChat.requesting[userChat.requestingIdx];
 
 				var requesting  = userChat.requesting;
-				requesting = requesting.filter( num => num !=requser);
+				requesting = requesting.filter( num => num !=id);
 
-				requser = await db.collection("WhatsappMessages").doc(`${requser}`).get()
+				var requser = await db.collection("WhatsappMessages").doc(`${id}`).get()
 				requser = requser.data();
+				requser.id = id;
 
 				var requested = requser.requested;
 				requested = requested.filter( num => num!=messageFrom);
