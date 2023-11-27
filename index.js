@@ -1487,7 +1487,7 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_1o1recievedCalendly"
 		}else if(lastMsgSend == msg_1o1showintrest){
 			result = "msg_1o1showintrest"
-		}else if(lastMsgSend[0]=="🤗" && lastMsgSend[1]=="H" && lastMsgSend[2]=="i"&& lastMsgSend[3]==","){
+		}else if(lastMsgSend.substring(0, 4) == "🤗Hi,"){
 			console.log("recREQ")
 			result = "msg_1o1recRequest"
 		}else if(lastMsgSend[0]=="🤩" && lastMsgSend[1]=="H" && lastMsgSend[2]=="e"&& lastMsgSend[3]=="l"&& lastMsgSend[4]=="l"&& lastMsgSend[5]=="o"){
