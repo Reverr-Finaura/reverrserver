@@ -1633,8 +1633,68 @@ app.post("/webhook", async (req, response) => {
 				  );
 				sendMsg()
 			}
-		}
-		else if (res == "msg_hello"){
+		}else if(["show request","show requests","showrequest","show_request"].includes(messageText.toLowerCase())) {//check if user has requesting user
+			if(userChat.requesting.length>=1){
+				//get details of requesting user
+				var req =  userChat.requesting[0];
+				var reqdoc = await db.collection("WhatsappMessages").doc(`${req}`).get();
+				var requser = reqdoc.data();
+
+				//fitting requser data into msg
+				msg_shareRequests =`Here are your requests.👀\n\n*Name:* ${requser.name}\n*Linkedin:* ${requser.linkedin}\n*About:* ${requser.bio}\n*Space:* ${requser.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see *more connections*🧐\n*Type 2* if you’re *interested in connecting* one-on-one👥\n\n*Type menu* to go back to the Menu `
+				
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({sharereqidx:0});
+				
+				// //update requesting of curr user
+				// var requesting = userChat.requesting.filter(item => item!=req)
+				// await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({requesting});
+
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_shareRequests
+				);
+				sendMsg()
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_noMoreRequests
+				);
+				sendMsg()
+			}
+		}else if(["show response","show responses","showresponses","show_response"].includes(messageText.toLowerCase())) {//check if user has requesting user
+			if(userChat.res.length>=1){
+				var reslist = userChat.res;
+				var residx =0;
+				var currres = reslist[residx]
+				var resdoc = await db.collection("WhatsappMessages").doc(`${currres.id}`).get();
+				var resuser = resdoc.data();
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({residx});
+
+				if(currres.accepted){
+					msg_1o1reqAcceptedtemp = `Here are your responses.👀\nHello, again!🤩\nYour connection request has been accepted.\n\n*Name:* ${resuser.name}\n*Linkedin:* ${resuser.linkedin}\n*About:* ${resuser.bio}\n*Space:* ${resuser.space}\n\nSet up a one-on-one networking session here: ${resuser.calendly}\n\n*Type 1* to see *more responses😉*\n*Type menu* to go back to the menu!😉`
+	
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_1o1reqAcceptedtemp
+					);
+					sendMsg()
+				}else{
+					msg_1o1reqRejectedtemp = `Here are your responses.👀\nYour connection request was declined by 🫤\n\n*Name:* ${resuser.name}\n*Linkedin:* ${resuser.linkedin}\n*About:* ${resuser.bio}\n*Space:* ${resuser.space}\n\nNo worries, we’re sure you’ll find more suitable connections!😌\n\n*Type 1* to see *more responses😉*\n*Type menu* to go back to the menu!😉`
+	
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_1o1reqRejectedtemp
+					);
+					sendMsg()
+				}
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_noMoreResponses
+				);
+				sendMsg()
+			}
+		}else if (res == "msg_hello"){
 			console.log("f1")
 			if(usermessage == "1"){
 				var userType = "founder";
@@ -2585,6 +2645,12 @@ app.post("/webhook", async (req, response) => {
 				}
 				
 
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
 			}
 		}else if(res == "msg_shareRequests" ){
 			if(usermessage == "1"){
