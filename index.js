@@ -2431,7 +2431,8 @@ app.post("/webhook", async (req, response) => {
 						requser.id,
 						msg_1o1recRequest
 					);
-
+					
+					console.log(requser,requser.messages.length )
 					var lastMsg = requser.messages[requser.messages.length -1];
 					var convoActive = false;
 					if(lastMsg != undefined && (lastMsg.usermessage != ""||lastMsg.usermessage != null)){
