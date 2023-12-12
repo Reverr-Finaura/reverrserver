@@ -1324,7 +1324,6 @@ app.post("/webhook", async (req, response) => {
 
 		snapshot.forEach(doc => {
 			var data = {id:doc.id, ...doc.data()}
-			delete data.messages;
 			users.push(data);
 		});
 
@@ -2400,7 +2399,7 @@ app.post("/webhook", async (req, response) => {
 					
 					currentProfile = await getProfile(intersetedSpaces,cisidx);
 					
-					console.log(currentProfile)
+					// console.log(currentProfile)
 
 					var requser = currentProfile;
 					
@@ -2417,7 +2416,7 @@ app.post("/webhook", async (req, response) => {
 					requested = [requser.id];
 					requesting = [messageFrom];
 
-					console.log(requested, requesting)
+					// console.log(requested, requesting)
 					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({requested});
 					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({requestedIdx : requested.length -1});
 					await db.collection("WhatsappMessages").doc(`${requser.id}`).update({requesting});
