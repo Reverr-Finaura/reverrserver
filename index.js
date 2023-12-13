@@ -1696,10 +1696,18 @@ app.post("/webhook", async (req, response) => {
 			}
 		}else if(["back","return","prev","backk"].includes(messageText.toLowerCase())){
 			if(lastMsgSend == msg_fundingForm ||lastMsgSend == msg_networkingOptions ||lastMsgSend == msg_knowledge ||lastMsgSend == msg_serviceProvider||lastMsgSend == msg_professionalNetworking ){
-				messageInput = messageHelper.getCustomTextInput(
-					messageFrom,
-					msg_askOffering
-				);
+				if(lastMsgSend == msg_professionalNetworking){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_professionalOfferings
+					);
+				}else{
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_askOffering
+					);
+				}
+				
 				sendMsg()
 			}else if(userChat.currentNeed){
 				
