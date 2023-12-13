@@ -1061,31 +1061,31 @@ app.post("/webhook", async (req, response) => {
 	var msg_askOffering = "Type in the number of offering that suits your needs the best and let us take care of the rest 😋. \n\n*Type 1*. Get funding from VCs, Angels, and relevant Investors 💰\n*Type 2*. Discover networking opportunities 👥\n*Type 3*. Seek knowledge in bite-sized portions 📝\n*Type 4*. Connect with service providers for assistance 🧑‍🔧"
 	var msg_dontUnderstand= "Uh oh, I don’t quite understand that.😕 \n\nType 1 to try again!"
 	var msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. \n\nPlease type menu to go to menu."
-	var msg_fundingForm = "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and furnish a few essential details for us to proceed with building your deal's case.📂\n*Link to the form*: https://forms.gle/3DvvAsVzq6HXHLNn6\n\nOur team will get back to you soon 🙂.\n\n*Type 1* if you’ve *filled* out the form.\n*Type menu* to go back to the Menu."
+	var msg_fundingForm = "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and furnish a few essential details for us to proceed with building your deal's case.📂\n*Link to the form*: https://forms.gle/3DvvAsVzq6HXHLNn6\n\nOur team will get back to you soon 🙂.\n\n*Type 1* if you’ve *filled* out the form.\n*Type menu* to go back to the Menu.\n*Type back* to go back."
 	var msg_fundingFormFilled = "Thank you for sharing the Details 😋.\n\nOur team will do a manual review and will connect with you in case the deal seems doable.🙌🏻Your patience is highly valued. Have a great day ahead! 😉 \n\nType Menu to open main menu."
 	var msg_professionalOfferings = "Type in the number of offering that suits your needs the best and let us take care of the rest.😋\n*Type 1*. Discover networking opportunities👥\n*Type 2*. Seek knowledge in bite-sized portions🗂️"
 	var msg_professionalNetworking = "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences.😉\n\n*Type 1*. Check out the latest *'Refreshed by Reverr'* offline events 👥\n*Type 2*. Join *Reverr Spaces* (Communities)🤝\n*Type 3*. Connect *one-on-one* with like-minded people 👯\n\n*Type menu* to go back to the Menu."
 	var msg_createProfile = "First please create your profile inorder to continue. \nType hi to start onboarding."
 	var msg_errorProfile = "Some error occured please create your profile again to continue. \nType hi to start onboarding."
 	var msg_networkingOptions = "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences. 🤓\n\n*Type 1*. Check out the latest *'Refreshed by Reverr'* offline events 👥\n*Type 2*. Join *Reverr Spaces* (Communities)🤝\n*Type 3*. Book a seat for *Reverr School's Free Online webinars* 🧑‍🎓\n*Type 4*. *Connect one-on-one* with like-minded people 👯"
-	var msg_rbrRegisterLink = "Here’s the link to register for the next Refreshed by Reverr event!\n\nRefreshed by Rever is not just your run-of-the-mill startup gathering; it's an exclusive convention tailored to empower emerging entrepreneurs by fostering connections, knowledge-sharing, and business growth.📊\n📈 Propel your startup to new heights,\n👥 Connect with potential business connections who believe in your vision,\n🎁 And access real good bonuses!\n\n*Book your seat now*: https://forms.gle/iJkCYxSaBC1pcWJx9\n\n*Type 1* if you’ve *registered* for RBR\nType menu to go back to Menu"
-	var msg_rbrRegistered="Yay! See you there.🙋🏻‍♀️ \n\nType menu to go back to menu."
-	var msg_reverrSpacesCommunity = "Great choice!👌\nHere is the link to join the community of budding & seasoned entrepreneurs.👥\n*Link to Reverrites:* https://chat.whatsapp.com/GYG93rm4dVSH5521jNvtej \n\nType menu to go back to menu."
-	var msg_webinar = "Sorry currently there are no webinar taking place. \n\nType menu to go back to menu."
-	var msg_webinarDetails = `Yayy! We would be happy to host you in our next webinar.🤗\n\nHere are the details of the next webinar:\n\n*Topic:* ${webinar_details.topic}\n\n*Speaker:* ${webinar_details.speaker}\n\n*Timings:* ${webinar_details.timings}\n\n*Registration link:* ${webinar_details.link}\n\nType menu to go to the Menu`
+	var msg_rbrRegisterLink = "Here’s the link to register for the next Refreshed by Reverr event!\n\nRefreshed by Rever is not just your run-of-the-mill startup gathering; it's an exclusive convention tailored to empower emerging entrepreneurs by fostering connections, knowledge-sharing, and business growth.📊\n📈 Propel your startup to new heights,\n👥 Connect with potential business connections who believe in your vision,\n🎁 And access real good bonuses!\n\n*Book your seat now*: https://forms.gle/iJkCYxSaBC1pcWJx9\n\n*Type 1* if you’ve *registered* for RBR\n*Type menu* to go back to the Menu.\n*Type back* to go back."
+	var msg_rbrRegistered="Yay! See you there.🙋🏻‍♀️ \n\n*Type menu* to go back to the Menu."
+	var msg_reverrSpacesCommunity = "Great choice!👌\nHere is the link to join the community of budding & seasoned entrepreneurs.👥\n*Link to Reverrites:* https://chat.whatsapp.com/GYG93rm4dVSH5521jNvtej \n\n*Type menu* to go back to the Menu.\n*Type back* to go back."
+	var msg_webinar = "Sorry currently there are no webinar taking place. \n\n*Type menu* to go back to the Menu."
+	var msg_webinarDetails = `Yayy! We would be happy to host you in our next webinar.🤗\n\nHere are the details of the next webinar:\n\n*Topic:* ${webinar_details.topic}\n\n*Speaker:* ${webinar_details.speaker}\n\n*Timings:* ${webinar_details.timings}\n\n*Registration link:* ${webinar_details.link}\n\n*Type menu* to go back to the Menu.\n*Type back* to go back.`
 	var msg_knowledge = "Upskilling and continuous knowledge enhancement are essential in today's competitive world.\nWorry not, we are here to your rescue.🤩\n\nCheck out our bite-sized courses that you can indulge in on the go.\n\n*Type 1* to access content around *different niches*📑 \n*Type 2* to access *educational content* around entrepreneurship😎"
-	var msg_knowledgecontent = "Tell us your interest areas. What would you like to learn more about?🤔\nPick your interest area(s).\n\n1. Idea validation🤓\n2. Business collaterals📑\n3. Funding options💸\n4. Startup Financing💰\n5. Growth strategies📈\n6. Startup scaling📊\n7. Incubators & Accelerators🏢\n8. Mentorship🧑‍🏫\n9. Product Development🛠️\n10. Customer Acquisition👥 \n\nType menu to go back to Menu"
-	var msg_knowledgeYt = "Smart choice!😎\n*There you go:* https://www.youtube.com/@YourStartupGuy \n\nBinge on some content that’s actually worth your time.🥳 \n\nType menu to go back to Menu"
-	var msg_serviceProvider = "Sure thing!\nWe have many service providers listed on our platform.😋\n\nWhat kind of service(s) are you looking to avail?🤔\n\n*Type 1* if you’re looking for *legal* assistance📑\n*Type 2* if you’re looking for assistance with *accounting, taxation*, and/ or *audit*📊 \n*Type 3* if you’re looking for *technological* assistance🧑‍💻\n*Type 4* if you’re looking for assistance with creating *pitch decks, business plans,* and/ or *financial model*🗂️\n*Type 5* if you’re looking for assistance with *Marketing*📈 \n\nType menu to go back to Menu"
+	var msg_knowledgecontent = "Tell us your interest areas. What would you like to learn more about?🤔\nPick your interest area(s).\n\n1. Idea validation🤓\n2. Business collaterals📑\n3. Funding options💸\n4. Startup Financing💰\n5. Growth strategies📈\n6. Startup scaling📊\n7. Incubators & Accelerators🏢\n8. Mentorship🧑‍🏫\n9. Product Development🛠️\n10. Customer Acquisition👥 \n\n*Type menu* to go back to the Menu.\n*Type back* to go back."
+	var msg_knowledgeYt = "Smart choice!😎\n*There you go:* https://www.youtube.com/@YourStartupGuy \n\nBinge on some content that’s actually worth your time.🥳 \n\n*Type menu* to go back to the Menu.\n*Type back* to go back."
+	var msg_serviceProvider = "Sure thing!\nWe have many service providers listed on our platform.😋\n\nWhat kind of service(s) are you looking to avail?🤔\n\n*Type 1* if you’re looking for *legal* assistance📑\n*Type 2* if you’re looking for assistance with *accounting, taxation*, and/ or *audit*📊 \n*Type 3* if you’re looking for *technological* assistance🧑‍💻\n*Type 4* if you’re looking for assistance with creating *pitch decks, business plans,* and/ or *financial model*🗂️\n*Type 5* if you’re looking for assistance with *Marketing*📈 \n\n*Type menu* to go back to the Menu.\n*Type back* to go back."
 	var msg_moreSp = `Understood!😇\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name:* ${tsp.Name}\n*Profile:* ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise:* ${tsp.Type}\n\n*Type 1* to check out *more service providers*\n*Type 2* to *change* service providers *category*.\n*Type menu* to go back to the Menu`
-	var msg_unavailable = "Ah, we are still working on this section!😶‍🌫️\nOur team will keep you posted & will ping you once we’re live! 😉 \n\nType menu to go back to Menu."
+	var msg_unavailable = "Ah, we are still working on this section!😶‍🌫️\nOur team will keep you posted & will ping you once we’re live! 😉 \n\n*Type menu* to go back to the Menu."
 	var msg_bie = "See you soon, Byeee... 👋"
 	var msg_returnUserHi = `Hi ${name}, How can I assist you today? \n\nType menu to go to Menu.`
-	var msg_nomoresp ="Uh oh! We've run out of more options to showcase to you. \n\nFret not, our range of service providers is ever-expanding! You can check out & connect with new service providers in this domain very soon.🤗 \n\nType menu to go to menu."
+	var msg_nomoresp ="Uh oh! We've run out of more options to showcase to you. \n\nFret not, our range of service providers is ever-expanding! You can check out & connect with new service providers in this domain very soon.🤗 \n\n*Type menu* to go back to the Menu."
 	var msg_spaces = "Now select the space that resonates the most with you.😉\n\nType the number of Space that you wish to join: (For example- 11) 😋\n1. FinTech\n2. EdTech\n3. AgriTech\n4. FoodTech\n5. Ecommerce\n6. Logistics & Delivery\n7. Cleantech & Renewable Energy\n8. AI & ML\n9. Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech"
 	var msg_stop = "Okay, you’ll no longer receive messages from Reverr. 🫡\n\nYou can type “Start” to initiate the chat again.🤗"
-	var msg_connect = " Let's get on to finding some suitable connections.😉\nWho are you looking to connect with?🤔 Pick the numbers of the Spaces you’re looking to explore. \n\n(Example: 11,5,8)👀\n\n1.  FinTech\n2. EdTech\n3. AgriTech\n4. FoodTech\n5. Ecommerce\n6. Logistics & Delivery\n7. Cleantech & Renewable Energy\n8. AI & ML\n9. Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech"
-	var msg_shareProfile =`Super! We have found just the right person for you.😎\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see *more connections*🧐\n*Type 2* if you’re *interested in connecting* one-on-one👥\n\n*Type menu* to go back to the Menu `
+	var msg_connect = " Let's get on to finding some suitable connections.😉\nWho are you looking to connect with?🤔 Pick the numbers of the Spaces you’re looking to explore. \n\n(Example: 11,5,8)👀\n\n1.  FinTech\n2. EdTech\n3. AgriTech\n4. FoodTech\n5. Ecommerce\n6. Logistics & Delivery\n7. Cleantech & Renewable Energy\n8. AI & ML\n9. Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech\n\n*Type back* to go back."
+	var msg_shareProfile =`Super! We have found just the right person for you.😎\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see *more connections*🧐\n*Type 2* if you’re *interested in connecting* one-on-one👥\n\n*Type menu* to go back to the Menu \n*Type back* to go back.`
 	var msg_shareRequests =`Here are your requests.👀\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see *more connections*🧐\n*Type 2* if you’re *interested in connecting* one-on-one👥\n\n*Type menu* to go back to the Menu `
 	var msg_noMoreRequests ="Ah! We’ve run out of connection requests.😔\nStart Networking again by going to the menu.\n\n*Type menu* to go back to the Menu"
 	var msg_shareResponses =`Here are your responses.👀\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see *more responses😉*\n*Type 2* to set up a *one-on-one networking* session😁\n\n*Type menu* to go back to the Menu `
@@ -1695,8 +1695,14 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 		}else if(["back","return","prev","backk"].includes(messageText.toLowerCase())){
-			if(userChat.currentNeed){
-			
+			if(lastMsgSend == msg_fundingForm ||lastMsgSend == msg_networkingOptions ||lastMsgSend == msg_knowledge ||lastMsgSend == msg_serviceProvider||lastMsgSend == msg_professionalNetworking ){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askOffering
+				);
+				sendMsg()
+			}else if(userChat.currentNeed){
+				
 				if(userChat.currentNeed == "Get funding from VCs, Angels, and relevant Investors"){
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
@@ -1704,11 +1710,18 @@ app.post("/webhook", async (req, response) => {
 					);
 					sendMsg()
 				} else if (userChat.currentNeed == "Discover networking opportunities"){
-
-					messageInput = messageHelper.getCustomTextInput(
-						messageFrom,
-						msg_networkingOptions
-					);
+					if(userChat.userType == "founder"){
+						messageInput = messageHelper.getCustomTextInput(
+							messageFrom,
+							msg_networkingOptions
+						);
+					}else{
+						messageInput = messageHelper.getCustomTextInput(
+							messageFrom,
+							msg_professionalNetworking
+						  );
+					}
+					
 					sendMsg()
 				}  else if (userChat.currentNeed == "Seek knowledge in bite-sized portions"){
 
