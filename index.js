@@ -1061,10 +1061,10 @@ app.post("/webhook", async (req, response) => {
 	var msg_askOffering = "Type in the number of offering that suits your needs the best and let us take care of the rest 😋. \n\n*Type 1*. Get funding from VCs, Angels, and relevant Investors 💰\n*Type 2*. Discover networking opportunities 👥\n*Type 3*. Seek knowledge in bite-sized portions 📝\n*Type 4*. Connect with service providers for assistance 🧑‍🔧"
 	var msg_dontUnderstand= "Uh oh, I don’t quite understand that.😕 \n\nType 1 to try again!"
 	var msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. \n\nPlease type menu to go to menu."
-	var msg_fundingForm = "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and furnish a few essential details for us to proceed with building your deal's case.📂\n*Link to the form*: https://forms.gle/3DvvAsVzq6HXHLNn6\n\nOur team will get back to you soon 🙂.\n\n*Type 1* if you’ve *filled* out the form.\nType Menu to open main menu."
+	var msg_fundingForm = "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and furnish a few essential details for us to proceed with building your deal's case.📂\n*Link to the form*: https://forms.gle/3DvvAsVzq6HXHLNn6\n\nOur team will get back to you soon 🙂.\n\n*Type 1* if you’ve *filled* out the form.\n*Type menu* to go back to the Menu."
 	var msg_fundingFormFilled = "Thank you for sharing the Details 😋.\n\nOur team will do a manual review and will connect with you in case the deal seems doable.🙌🏻Your patience is highly valued. Have a great day ahead! 😉 \n\nType Menu to open main menu."
 	var msg_professionalOfferings = "Type in the number of offering that suits your needs the best and let us take care of the rest.😋\n*Type 1*. Discover networking opportunities👥\n*Type 2*. Seek knowledge in bite-sized portions🗂️"
-	var msg_professionalNetworking = "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences.😉\n\n*Type 1*. Check out the latest *'Refreshed by Reverr'* offline events 👥\n*Type 2*. Join *Reverr Spaces* (Communities)🤝\n*Type 3*. Connect *one-on-one* with like-minded people 👯\n\nType menu to go back to menu."
+	var msg_professionalNetworking = "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences.😉\n\n*Type 1*. Check out the latest *'Refreshed by Reverr'* offline events 👥\n*Type 2*. Join *Reverr Spaces* (Communities)🤝\n*Type 3*. Connect *one-on-one* with like-minded people 👯\n\n*Type menu* to go back to the Menu."
 	var msg_createProfile = "First please create your profile inorder to continue. \nType hi to start onboarding."
 	var msg_errorProfile = "Some error occured please create your profile again to continue. \nType hi to start onboarding."
 	var msg_networkingOptions = "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences. 🤓\n\n*Type 1*. Check out the latest *'Refreshed by Reverr'* offline events 👥\n*Type 2*. Join *Reverr Spaces* (Communities)🤝\n*Type 3*. Book a seat for *Reverr School's Free Online webinars* 🧑‍🎓\n*Type 4*. *Connect one-on-one* with like-minded people 👯"
@@ -1077,7 +1077,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_knowledgecontent = "Tell us your interest areas. What would you like to learn more about?🤔\nPick your interest area(s).\n\n1. Idea validation🤓\n2. Business collaterals📑\n3. Funding options💸\n4. Startup Financing💰\n5. Growth strategies📈\n6. Startup scaling📊\n7. Incubators & Accelerators🏢\n8. Mentorship🧑‍🏫\n9. Product Development🛠️\n10. Customer Acquisition👥 \n\nType menu to go back to Menu"
 	var msg_knowledgeYt = "Smart choice!😎\n*There you go:* https://www.youtube.com/@YourStartupGuy \n\nBinge on some content that’s actually worth your time.🥳 \n\nType menu to go back to Menu"
 	var msg_serviceProvider = "Sure thing!\nWe have many service providers listed on our platform.😋\n\nWhat kind of service(s) are you looking to avail?🤔\n\n*Type 1* if you’re looking for *legal* assistance📑\n*Type 2* if you’re looking for assistance with *accounting, taxation*, and/ or *audit*📊 \n*Type 3* if you’re looking for *technological* assistance🧑‍💻\n*Type 4* if you’re looking for assistance with creating *pitch decks, business plans,* and/ or *financial model*🗂️\n*Type 5* if you’re looking for assistance with *Marketing*📈 \n\nType menu to go back to Menu"
-	var msg_moreSp = `Understood!😇\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name:* ${tsp.Name}\n*Profile:* ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise:* ${tsp.Type}\n\n*Type 1* to check out *more service providers*\n*Type 2* to *change* service providers *category*.\nType menu to go back to the Menu`
+	var msg_moreSp = `Understood!😇\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name:* ${tsp.Name}\n*Profile:* ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise:* ${tsp.Type}\n\n*Type 1* to check out *more service providers*\n*Type 2* to *change* service providers *category*.\n*Type menu* to go back to the Menu`
 	var msg_unavailable = "Ah, we are still working on this section!😶‍🌫️\nOur team will keep you posted & will ping you once we’re live! 😉 \n\nType menu to go back to Menu."
 	var msg_bie = "See you soon, Byeee... 👋"
 	var msg_returnUserHi = `Hi ${name}, How can I assist you today? \n\nType menu to go to Menu.`
@@ -1634,7 +1634,7 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 		}else if(["show request","show requests","showrequest","show_request"].includes(messageText.toLowerCase())) {//check if user has requesting user
-			if(userChat.requesting.length>=1){
+			if(userChat.requesting && userChat.requesting.length>=1){
 				//get details of requesting user
 				var req =  userChat.requesting[0];
 				var reqdoc = await db.collection("WhatsappMessages").doc(`${req}`).get();
@@ -1662,7 +1662,7 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 		}else if(["show response","show responses","showresponses","show_response"].includes(messageText.toLowerCase())) {//check if user has requesting user
-			if(userChat.res.length>=1){
+			if(userChat.res && userChat.res.length>=1){
 				var reslist = userChat.res;
 				var residx =0;
 				var currres = reslist[residx]
@@ -1691,6 +1691,51 @@ app.post("/webhook", async (req, response) => {
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_noMoreResponses
+				);
+				sendMsg()
+			}
+		}else if(["back","return","prev","backk"].includes(messageText.toLowerCase())){
+			if(userChat.currentNeed){
+			
+				if(userChat.currentNeed == "Get funding from VCs, Angels, and relevant Investors"){
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_askOffering
+					);
+					sendMsg()
+				} else if (userChat.currentNeed == "Discover networking opportunities"){
+
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_networkingOptions
+					);
+					sendMsg()
+				}  else if (userChat.currentNeed == "Seek knowledge in bite-sized portions"){
+
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_knowledge
+					);
+					sendMsg()
+				} else if (userChat.currentNeed == "Connect with service providers for assistance"){
+
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_serviceProvider
+					);
+					sendMsg()
+				} else {
+					messageInput = messageHelper.getCustomTextInput(
+						messageFrom,
+						msg_dontUnderstand
+					);
+					sendMsg()
+				}
+				
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
 				);
 				sendMsg()
 			}
@@ -1911,7 +1956,7 @@ app.post("/webhook", async (req, response) => {
 				  );
 				sendMsg()
 			} else if (usermessage=="4"){
-				var currentNeed = " Connect with service providers for assistance"
+				var currentNeed = "Connect with service providers for assistance"
 				var profile = true
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({profile});
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
@@ -2205,12 +2250,19 @@ app.post("/webhook", async (req, response) => {
 			}
 		}else if(res == "msg_professionalOfferings"){
 			if(usermessage == "1"){
+				var currentNeed = "Discover networking opportunities"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
+
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_professionalNetworking
 				  );
 				sendMsg()
 			}else if(usermessage == "2"){
+				var currentNeed = "Seek knowledge in bite-sized portions"
+
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
+
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_knowledge
