@@ -1836,7 +1836,8 @@ app.post("/webhook", async (req, response) => {
 			var path = "BWR"
 			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({path})
 			messageInput = messageHelper.getCustomTextInput(
-				msg_startupStage,
+				messageFrom,
+				msg_startupStage
 			  );
 			sendMsg()
 		}else if(["bie", "bye", "byeee", "byee", "biee", "ba bie", "ba bye"].includes(messageText.toLowerCase())){
