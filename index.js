@@ -1343,7 +1343,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_productDvp = "*Product Development*:🛠️\n\n1. Product Development Process Explained (https://www.youtube.com/watch?v=2XebzSDxIKg) (YouTube Video)\n2. The Complete Guide to Product Development (https://www.startups.com/library/expert-advice/product-development-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
 	var msg_customerAcq = "*Customer Acquisition*:👥\n\n1. Customer Acquisition Strategies for Startups (https://www.youtube.com/watch?v=6T5VXULd9yI) (YouTube Video)\n2. The Ultimate Guide to Customer Acquisition (https://www.startups.com/library/expert-advice/customer-acquisition-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
 
-	var msg_hello = "Welcome to Reverr 😉. We hope you are doing great.\n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities.🎯\n\nTell us about yourself and allow us to cater to all your needs.\n*Type 1* if you’re a “*Startup Founder*”🧑‍💻\n*Type 2* if you’re a “*Professional*” 🧑🏻‍💼"
+	var msg_hello = "Welcome to Reverr 😉. We hope you are doing great.\n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities.🎯\n\nTell us about yourself and allow us to cater to all your needs.\n*Type 1* if you’re a “ *Startup Founder* ”🧑‍💻\n*Type 2* if you’re a “ *Professional* ” 🧑🏻‍💼"
 	var msg_intiate = "Hello, there!\nWe welcome you to Reverr, a Startup India-recognized startup platform enabling and empowering entrepreneurs and redesigning the startup ecosystem.🏅🌐\n\nWith over 5000+ startup founders, 150+ business mentors, 50+ VCs, and 20+ ecosystem partners, Reverr welcomes you aboard as an essential addition to our platform.😉\n\nTo move forward, we’ll now onboard you and understand your preferences.💁🏻‍♀️\n\n*Type 1* to initiate *onboarding*🧐"
 	var msg_askName = "We are happy that you're here.🤗\n\nHow should we address you? Please type in your *full name*."
 	var msg_howtoProceed = "Got it!😉\nAnd finally, how do you wish to proceed from here?🤔\n\n*Type 1*to *Build with Reverr*, where we take you on an *entrepreneurial journey* from Idea Validation to making big billions $!💡💰\n\n*Type 2* to *pave your way* and explore *Reverr’s core offerings* like Fundraising, Networking, Service Providers, and Knowledge!💯🔥\n\nYou can switch between these modes later on by typing “*BWR*” and/ or “*Explore*”.💯"
@@ -3685,7 +3685,7 @@ app.post("/webhook", async (req, response) => {
 		if (["hi", "hii", "hello", "hie", "hey"].includes(messageText.toLowerCase())){
 			messageInput = messageHelper.getCustomTextInput(
 				messageFrom,
-				msg_hello
+				msg_intiate
 			  );
 			sendMsg()
 		}else{
