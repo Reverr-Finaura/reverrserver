@@ -1038,7 +1038,7 @@ app.post("/webhook", async (req, response) => {
 //   Video Services (Investor pitch video, Product video, Sales booster video,  Social media video)
 //   Sales
 //   Assisted Fundraising
-//    Pitch deck
+//   Pitch deck
 //   CA services like taxation
 //   GST
 //   income tax
@@ -1048,14 +1048,15 @@ app.post("/webhook", async (req, response) => {
 
 		
 	// <---- CUSTOM MSG---->
-	var msg_hello = "Hi, there😉 \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \n*Type 1* if you’re a Startup Founder \n*Type 2* if you’re a Professional "
-	var msg_askName = "We are happy that you're here.🤗 \nHow should we address you? Please type in your full name."
+	
+	// var msg_hello = "Hi, there😉 \nWelcome to Reverr. We hope you are doing great. \n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities. 🎯 \n\nTell us about yourself and allow us to cater to all your needs. \n*Type 1* if you’re a Startup Founder \n*Type 2* if you’re a Professional "
+	// var msg_askName = "We are happy that you're here.🤗 \nHow should we address you? Please type in your full name."
 	var msg_confirmName1 = "Hi, "
 	var msg_confirmName3 = "? \n*Type 1* to *confirm* \n*Type 0* to *retry*"
 	var msg_confirmName = msg_confirmName1+name+msg_confirmName3
 	var msg_askLinkedin = "Let's build your profile first.📑\nKindly share your Linkedin URL."
 	var msg_confirmLinkedin = `Your Linkedin URL is ${linkedin} \n*Type 1* to *confirm* \n*Type 0* to *retry*`
-	var msg_askbio = "We have noted it.\nNow please write down a one-liner bio for yourself mentioning your expertise, experience, and interests. 👩🏻‍💼👨🏻‍💼"
+	var msg_askbio = "We have noted it 😉.\nNow please write down a one-liner bio for yourself mentioning your expertise, experience, and interests. 👩🏻‍💼👨🏻‍💼"
 	var msg_confirmBio = `${bio} , is this correct? \n*Type 1* to *confirm* \n*Type 0* to *retry*`
 	var msg_askStage = "That sounds good.🤩\nNow pick what resonates with you the most.\n\n*Type 1* if you have an idea and wish to execute it.🗣️\n*Type 2* if you are running a successful startup 😎\n*Type 3* if you have an idea but lack the necessary resources/ guidance🫣\n*Type 4* if you are running a startup and wish to grow & expand it further🤑\n*Type 5* if you are exploring your options 🤔"
 	var msg_askOffering = "Type in the number of offering that suits your needs the best and let us take care of the rest 😋. \n\n*Type 1*. Get funding from VCs, Angels, and relevant Investors 💰\n*Type 2*. Discover networking opportunities 👥\n*Type 3*. Seek knowledge in bite-sized portions 📝\n*Type 4*. Connect with service providers for assistance 🧑‍🔧"
@@ -1117,6 +1118,16 @@ app.post("/webhook", async (req, response) => {
 	var msg_mentorship = "*Mentorship*:🧑‍🏫\n\n1. The Power of Mentorship (https://www.youtube.com/watch?v=nfWgX4C3B0k) (YouTube Video)\n2. Why Mentorship is Essential for Your Career  (https://www.forbes.com/sites/janbruce/2021/11/01/why-mentorship-is-essential-for-your-career/?sh=29076e3d4300) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
 	var msg_productDvp = "*Product Development*:🛠️\n\n1. Product Development Process Explained (https://www.youtube.com/watch?v=2XebzSDxIKg) (YouTube Video)\n2. The Complete Guide to Product Development (https://www.startups.com/library/expert-advice/product-development-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
 	var msg_customerAcq = "*Customer Acquisition*:👥\n\n1. Customer Acquisition Strategies for Startups (https://www.youtube.com/watch?v=6T5VXULd9yI) (YouTube Video)\n2. The Ultimate Guide to Customer Acquisition (https://www.startups.com/library/expert-advice/customer-acquisition-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu."
+
+	var msg_hello = "Welcome to Reverr 😉. We hope you are doing great.\n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities.🎯\n\nTell us about yourself and allow us to cater to all your needs.\n*Type 1* if you’re a “*Startup Founder*”🧑‍💻\n*Type 2* if you’re a “*Professional*” 🧑🏻‍💼"
+	var msg_intiate = "Hello, there!\nWe welcome you to Reverr, a Startup India-recognized startup platform enabling and empowering entrepreneurs and redesigning the startup ecosystem.🏅🌐\n\nWith over 5000+ startup founders, 150+ business mentors, 50+ VCs, and 20+ ecosystem partners, Reverr welcomes you aboard as an essential addition to our platform.😉\n\nTo move forward, we’ll now onboard you and understand your preferences.💁🏻‍♀️\n\n*Type 1* to initiate *onboarding*🧐"
+	var msg_askName = "We are happy that you're here.🤗\n\nHow should we address you? Please type in your *full name*."
+	var msg_howtoProceed = "Got it!😉\nAnd finally, how do you wish to proceed from here?🤔\n\n*Type 1*to *Build with Reverr*, where we take you on an *entrepreneurial journey* from Idea Validation to making big billions $!💡💰\n\n*Type 2* to *pave your way* and explore *Reverr’s core offerings* like Fundraising, Networking, Service Providers, and Knowledge!💯🔥\n\nYou can switch between these modes later on by typing “*BWR*” and/ or “*Explore*”.💯"
+	var msg_startupStage ="That sounds good.🤩\nNow pick what resonates with you the most.\n\n*Type 1* if you have an *Idea* and wish to execute it.🗣️\n*Type 2* if you are building the *MVP* and have *early traction* 😎\n*Type 3* if you are generating *Revenue* and wish to *Scale* further🤑"
+	var msg_IdeaStage ="Perfect!\nYour profiling is complete.💯\n\nType in the number of offering that suits your needs the best and let us take care of the rest. 😋\n\n*Type 1* to *Validate* your *Business Idea*🔍\n*Type 2* to connect with *Business mentors*🧑🏻‍🏫\n*Type 3* to seek *Knowledge* in bite-sized portions 📝\n*Type 4* to explore *Networking opportunities*👥\n*Type 5* to access “*Startup Bites*”- Precisely-curated news items🤓"
+	var msg_MvpStage ="Perfect!\nYour profiling is complete.💯\n\nType in the number of offering that suits your needs the best and let us take care of the rest. 😋\n\n*Type 1* to curate a *Go-to-Market Strategy*🤓\n*Type 2* to connect with relevant *Service Providers*🧑‍🔧\n*Type 3* to seek *Knowledge* in bite-sized portions 📝\n*Type 4* to explore *Networking opportunities*👥\n\n*Type 5* to raise *Funds & Scale* your business🤑\n*Type 6* to access “*Startup Bites*”- Precisely-curated news items🤓"
+	var msg_RevenueStage ="Perfect!\nYour profiling is complete.💯\n\nType in the number of offering that suits your needs the best and let us take care of the rest. 😋\n\n*Type 1* to raise *Funds & Scale* your business🤑\n*Type 2* to explore *Networking opportunities*👥\n*Type 3* to connect with relevant *Service Providers*🧑‍🔧\n*Type 4* to seek *Knowledge* in bite-sized portions 📝\n*Type 5* to access “*Startup Bites*”- Precisely-curated news items🤓" 
+	var msg_fwdtoMyra="Understood.💯\nWe have noted down your preferences.\n\nWe are now forwarding you to Myra, Reverr’s agent who will keep in touch with you and will ensure a seamless experience for you here.🤗"
 
 	const sendMsg = async()=>{
 		
@@ -1549,6 +1560,20 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_noMoreResponses"
 		}else if(lastMsgSend == "networking_responses"){
 			result = "networking_responses"
+		}else if(lastMsgSend == "msg_intiate"){
+			result = "msg_intiate"
+		}else if(lastMsgSend == "msg_howtoProceed"){
+			result = "msg_howtoProceed"
+		}else if(lastMsgSend == "msg_startupStage"){
+			result = "msg_startupStage"
+		}else if(lastMsgSend == "msg_IdeaStage"){
+			result = "msg_IdeaStage"
+		}else if(lastMsgSend == "msg_MvpStage"){
+			result = "msg_MvpStage"
+		}else if(lastMsgSend == "msg_RevenueStage"){
+			result = "msg_RevenueStage"
+		}else if(lastMsgSend == "msg_fwdtoMyra"){
+			result = "msg_fwdtoMyra"
 		}
 		
 		console.log(result)
@@ -1567,11 +1592,26 @@ app.post("/webhook", async (req, response) => {
 			}else{
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
-					msg_hello
+					msg_intiate
 				  );
 				sendMsg()
 			}
 			
+		}else if(["explore"].includes(messageText.toLowerCase())){
+			var path = "DIY"
+			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({path})
+			messageInput = messageHelper.getCustomTextInput(
+				messageFrom,
+				msg_askOffering
+			  );
+			sendMsg()
+		}else if(["bwr"].includes(messageText.toLowerCase())){
+			var path = "BWR"
+			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({path})
+			messageInput = messageHelper.getCustomTextInput(
+				msg_startupStage,
+			  );
+			sendMsg()
 		}else if(["bie", "bye", "byeee", "byee", "biee", "ba bie", "ba bye"].includes(messageText.toLowerCase())){
 			messageInput = messageHelper.getCustomTextInput(
 				messageFrom,
@@ -1786,8 +1826,22 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 
-		}
-		else if (res == "msg_askName"){
+		}else if (res == "msg_intiate"){
+			if(usermessage == "1"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_hello
+				  );
+				sendMsg()
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
+
+		}else if (res == "msg_askName"){
 			console.log("f2")
 			name = usermessage;
 			msg_confirmName = msg_confirmName1+name+msg_confirmName3
@@ -1870,7 +1924,7 @@ app.post("/webhook", async (req, response) => {
 				if(userChat.userType=="founder"){
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
-					msg_askStage
+					msg_howtoProceed
 				)} else if(userChat.userType == "professional"){
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
@@ -1893,8 +1947,215 @@ app.post("/webhook", async (req, response) => {
 				  );
 				sendMsg()
 			}
-		}
-		else if (res == "msg_askStage"){
+		}else if(res == "msg_howtoProceed"){
+			if(usermessage == "1"){
+				var path = "BWR"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({path})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_startupStage
+				  );
+				sendMsg()
+			}else if(usermessage == "2"){
+				var path = "DIY"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({path})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_askOffering
+				  );
+				sendMsg()
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
+		}else if(res == "msg_startupStage"){
+			if(usermessage == "1"){
+				var stage = "Idea"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_IdeaStage
+				  );
+				sendMsg()
+			}else if(usermessage == "2"){
+				var stage = "MVP"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_MvpStage
+				  );
+				sendMsg()
+			}else if(usermessage == "3"){
+				var stage = "Revenue"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_RevenueStage
+				  );
+				sendMsg()
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
+		}else if(res == "msg_IdeaStage"){
+			if(usermessage == "1"){
+				var bwrNeed = "validate idea"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else if(usermessage == "2"){
+				var bwrNeed = "Mentors"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}if(usermessage == "3"){
+				var bwrNeed = "Knowledge"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else if(usermessage == "4"){
+				var bwrNeed = "Networking opportunities"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else if(usermessage == "5"){
+				var bwrNeed = "Startup Bites"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
+		}else if(res == "msg_MvpStage"){
+			if(usermessage == "1"){
+				var bwrNeed = "*Go-to-Market Strategy"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else if(usermessage == "2"){
+				var bwrNeed = "Service Providers"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}if(usermessage == "3"){
+				var bwrNeed = "Knowledge"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else if(usermessage == "4"){
+				var bwrNeed = "Networking opportunities"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else if(usermessage == "5"){
+				var bwrNeed = "Funds & Scale"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else if(usermessage == "6"){
+				var bwrNeed = "Startup Bites"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
+		}else if(res == "msg_RevenueStage"){
+			if(usermessage == "1"){
+				var bwrNeed = "Funds & Scale"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else if(usermessage == "2"){
+				var bwrNeed = "Networking opportunities"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}if(usermessage == "3"){
+				var bwrNeed = "Service Providers"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else if(usermessage == "4"){
+				var bwrNeed = "Knowledge"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else if(usermessage == "5"){
+				var bwrNeed = "Startup Bites"
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_fwdtoMyra
+				  );
+				sendMsg()
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
+			}
+		}else if (res == "msg_askStage"){
 			console.log("f8")
 			if(usermessage=="1"){
 				var stage = "have an idea and wish to execute it.🗣️"
