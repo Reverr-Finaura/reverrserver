@@ -1346,7 +1346,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_hello = "Welcome to Reverr 😉. We hope you are doing great.\n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities.🎯\n\nTell us about yourself and allow us to cater to all your needs.\n*Type 1* if you’re a “ *Startup Founder* ”🧑‍💻\n*Type 2* if you’re a “ *Professional* ” 🧑🏻‍💼"
 	var msg_intiate = "Hello, there!\nWe welcome you to Reverr, a Startup India-recognized startup platform enabling and empowering entrepreneurs and redesigning the startup ecosystem.🏅🌐\n\nWith over 5000+ startup founders, 150+ business mentors, 50+ VCs, and 20+ ecosystem partners, Reverr welcomes you aboard as an essential addition to our platform.😉\n\nTo move forward, we’ll now onboard you and understand your preferences.💁🏻‍♀️\n\n*Type 1* to initiate *onboarding*🧐"
 	var msg_askName = "We are happy that you're here.🤗\n\nHow should we address you? Please type in your *full name*."
-	var msg_howtoProceed = "Got it!😉\nAnd finally, how do you wish to proceed from here?🤔\n\n*Type 1*to *Build with Reverr*, where we take you on an *entrepreneurial journey* from Idea Validation to making big billions $!💡💰\n\n*Type 2* to *pave your way* and explore *Reverr’s core offerings* like Fundraising, Networking, Service Providers, and Knowledge!💯🔥\n\nYou can switch between these modes later on by typing “*BWR*” and/ or “*Explore*”.💯"
+	var msg_howtoProceed = "Got it!😉\nAnd finally, how do you wish to proceed from here?🤔\n\n*Type 1* to *Build with Reverr*, where we take you on an *entrepreneurial journey* from Idea Validation to making big billions $!💡💰\n\n*Type 2* to *pave your way* and explore *Reverr’s core offerings* like Fundraising, Networking, Service Providers, and Knowledge!💯🔥\n\nYou can switch between these modes later on by typing “ *BWR* ” and/ or “ *Explore* ”.💯"
 	var msg_startupStage ="That sounds good.🤩\nNow pick what resonates with you the most.\n\n*Type 1* if you have an *Idea* and wish to execute it.🗣️\n*Type 2* if you are building the *MVP* and have *early traction* 😎\n*Type 3* if you are generating *Revenue* and wish to *Scale* further🤑"
 	var msg_IdeaStage ="Perfect!\nYour profiling is complete.💯\n\nType in the number of offering that suits your needs the best and let us take care of the rest. 😋\n\n*Type 1* to *Validate* your *Business Idea*🔍\n*Type 2* to connect with *Business mentors*🧑🏻‍🏫\n*Type 3* to seek *Knowledge* in bite-sized portions 📝\n*Type 4* to explore *Networking opportunities*👥\n*Type 5* to access “*Startup Bites*”- Precisely-curated news items🤓"
 	var msg_MvpStage ="Perfect!\nYour profiling is complete.💯\n\nType in the number of offering that suits your needs the best and let us take care of the rest. 😋\n\n*Type 1* to curate a *Go-to-Market Strategy*🤓\n*Type 2* to connect with relevant *Service Providers*🧑‍🔧\n*Type 3* to seek *Knowledge* in bite-sized portions 📝\n*Type 4* to explore *Networking opportunities*👥\n\n*Type 5* to raise *Funds & Scale* your business🤑\n*Type 6* to access “*Startup Bites*”- Precisely-curated news items🤓"
@@ -2201,7 +2201,8 @@ app.post("/webhook", async (req, response) => {
 		}else if(res == "msg_startupStage"){
 			if(usermessage == "1"){
 				var stage = "Idea"
-				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage})
+				var profile = true
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage,profile})
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_IdeaStage
@@ -2209,7 +2210,8 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}else if(usermessage == "2"){
 				var stage = "MVP"
-				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage})
+				var profile = true
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage,profile})
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_MvpStage
@@ -2217,7 +2219,8 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}else if(usermessage == "3"){
 				var stage = "Revenue"
-				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage})
+				var profile = true
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({stage,profile})
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_RevenueStage
@@ -2247,7 +2250,7 @@ app.post("/webhook", async (req, response) => {
 					msg_fwdtoMyra
 				  );
 				sendMsg()
-			}if(usermessage == "3"){
+			}else if(usermessage == "3"){
 				var bwrNeed = "Knowledge"
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
 				messageInput = messageHelper.getCustomTextInput(
@@ -2295,7 +2298,7 @@ app.post("/webhook", async (req, response) => {
 					msg_fwdtoMyra
 				  );
 				sendMsg()
-			}if(usermessage == "3"){
+			}else if(usermessage == "3"){
 				var bwrNeed = "Knowledge"
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({bwrNeed})
 				messageInput = messageHelper.getCustomTextInput(
