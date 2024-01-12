@@ -1371,7 +1371,9 @@ app.post("/webhook", async (req, response) => {
 				date: Timestamp.now(),
 				usermessage,
 				})
+				
 				}) 
+				lastMsgNotEmpty = true;
 			}else{
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
 				messages: FieldValue.arrayUnion(
@@ -1401,6 +1403,7 @@ app.post("/webhook", async (req, response) => {
 				usermessage,
 				})
 				}) 
+				lastMsgNotEmpty = true;
 			}else{
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
 				messages: FieldValue.arrayUnion(
@@ -1784,19 +1787,19 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_noMoreResponses"
 		}else if(lastMsgSend == "networking_responses"){
 			result = "networking_responses"
-		}else if(lastMsgSend == "msg_intiate"){
+		}else if(lastMsgSend == msg_intiate){
 			result = "msg_intiate"
-		}else if(lastMsgSend == "msg_howtoProceed"){
+		}else if(lastMsgSend == msg_howtoProceed){
 			result = "msg_howtoProceed"
-		}else if(lastMsgSend == "msg_startupStage"){
+		}else if(lastMsgSend == msg_startupStage){
 			result = "msg_startupStage"
-		}else if(lastMsgSend == "msg_IdeaStage"){
+		}else if(lastMsgSend == msg_IdeaStage){
 			result = "msg_IdeaStage"
-		}else if(lastMsgSend == "msg_MvpStage"){
+		}else if(lastMsgSend == msg_MvpStage){
 			result = "msg_MvpStage"
-		}else if(lastMsgSend == "msg_RevenueStage"){
+		}else if(lastMsgSend == msg_RevenueStage){
 			result = "msg_RevenueStage"
-		}else if(lastMsgSend == "msg_fwdtoMyra"){
+		}else if(lastMsgSend == msg_fwdtoMyra){
 			result = "msg_fwdtoMyra"
 		}
 		
