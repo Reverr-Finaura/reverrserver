@@ -44,12 +44,6 @@ function getTemplateTextAndImageInput(recipient, templateName, imageLink) {
                 link: imageLink,
               },
             },
-            {
-              type: "video",
-              video: {
-                link: imageLink,
-              },
-            },
           ],
         },
       ],

@@ -1288,7 +1288,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. \n\nPlease type menu to go to menu."
 	var msg_fundingForm = "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and furnish a few essential details for us to proceed with building your deal's case.📂\n*Link to the form*: https://forms.gle/3DvvAsVzq6HXHLNn6\n\nOur team will get back to you soon 🙂.\n\n*Type 1* if you’ve *filled* out the form.\n*Type menu* to go back to the Menu.\n*Type back* to go back."
 	var msg_fundingFormFilled = "Thank you for sharing the Details 😋.\n\nOur team will do a manual review and will connect with you in case the deal seems doable.🙌🏻Your patience is highly valued. Have a great day ahead! 😉 \n\nType Menu to open main menu."
-	var msg_professionalOfferings = "Type in the number of offering that suits your needs the best and let us take care of the rest.😋\n*Type 1*. Discover networking opportunities👥\n*Type 2*. Seek knowledge in bite-sized portions🗂️"
+	var msg_professionalOfferings = "Type in the number of offering that suits your needs the best and let us take care of the rest.😋\n*Type 1*. Discover networking opportunities👥\n*Type 2*. Seek knowledge in bite-sized portions🗂️\n*Type 3* to access “ *Startup Bites* ”- Precisely-curated news items🤓"
 	var msg_professionalNetworking = "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences.😉\n\n*Type 1*. Check out the latest *'Refreshed by Reverr'* offline events 👥\n*Type 2*. Join *Reverr Spaces* (Communities)🤝\n*Type 3*. Connect *one-on-one* with like-minded people 👯\n\n*Type menu* to go back to the Menu."
 	var msg_createProfile = "First please create your profile inorder to continue. \nType hi to start onboarding."
 	var msg_errorProfile = "Some error occured please create your profile again to continue. \nType hi to start onboarding."
@@ -1352,6 +1352,8 @@ app.post("/webhook", async (req, response) => {
 	var msg_MvpStage ="Perfect!\nYour profiling is complete.💯\n\nType in the number of offering that suits your needs the best and let us take care of the rest. 😋\n\n*Type 1* to curate a *Go-to-Market Strategy*🤓\n*Type 2* to connect with relevant *Service Providers*🧑‍🔧\n*Type 3* to seek *Knowledge* in bite-sized portions 📝\n*Type 4* to explore *Networking opportunities*👥\n\n*Type 5* to raise *Funds & Scale* your business🤑\n*Type 6* to access “ *Startup Bites* ”- Precisely-curated news items🤓"
 	var msg_RevenueStage ="Perfect!\nYour profiling is complete.💯\n\nType in the number of offering that suits your needs the best and let us take care of the rest. 😋\n\n*Type 1* to raise *Funds & Scale* your business🤑\n*Type 2* to explore *Networking opportunities*👥\n*Type 3* to connect with relevant *Service Providers*🧑‍🔧\n*Type 4* to seek *Knowledge* in bite-sized portions 📝\n*Type 5* to access “ *Startup Bites* ”- Precisely-curated news items🤓" 
 	var msg_fwdtoMyra="Understood.💯\nWe have noted down your preferences.\n\nWe are now forwarding you to Myra, Reverr’s agent who will keep in touch with you and will ensure a seamless experience for you here.🤗"
+	var msg_myraback ="Uh oh! That didn't work.🙁\nMyra will get in touch with you soon."
+	var msg_professionalStartupBites = "Understood.💯\nWe have noted down your preferences.\n\nWe are now forwarding you to Inaya, Reverr’s agent who will keep in touch with you and will ensure a seamless experience for you here.🤗\n\nType *menu* to go back to the main menu."
 
 	const sendMsg = async()=>{
 		
@@ -1801,6 +1803,10 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_RevenueStage"
 		}else if(lastMsgSend == msg_fwdtoMyra){
 			result = "msg_fwdtoMyra"
+		}else if(lastMsgSend == msg_myraback){
+			result = "msg_myraback"
+		}else if(lastMsgSend == msg_professionalStartupBites){
+			result = "msg_professionalStartupBites"
 		}
 		
 		console.log(result)
@@ -1963,6 +1969,14 @@ app.post("/webhook", async (req, response) => {
 				sendMsg()
 			}
 		}else if(["back","return","prev","backk"].includes(messageText.toLowerCase())){
+			if(userChat.path == "BWR"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_myraback
+				);
+				sendMsg();
+				return;
+			}
 			if(lastMsgSend == msg_fundingForm ||lastMsgSend == msg_networkingOptions ||lastMsgSend == msg_knowledge ||lastMsgSend == msg_serviceProvider||lastMsgSend == msg_professionalNetworking ){
 				if(userChat.userType == "professional"){
 					messageInput = messageHelper.getCustomTextInput(
@@ -2779,6 +2793,16 @@ app.post("/webhook", async (req, response) => {
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
 					msg_knowledge
+				  );
+				sendMsg()
+			}else if(usermessage == "3"){
+				var currentNeed = "startup news"
+
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
+
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_professionalStartupBites
 				  );
 				sendMsg()
 			}else {
