@@ -2588,7 +2588,8 @@ app.post("/webhook", async (req, response) => {
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({csp, cspidx});
 
 				tsp = sp1[cspidx]
-				msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+				
+				msg_moreSp = `Understood!😇\nHere are some *relevant service providers* who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name*: ${tsp.Name}\n*Profile*: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise*: ${tsp.Type}\n\n*Type 1* to check out *more service providers*🤔\n*Type 2* to *change* service providers *category*🔀.\n*Type menu* to go back to the Menu`
 
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
@@ -2601,7 +2602,7 @@ app.post("/webhook", async (req, response) => {
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({csp, cspidx});
 
 				tsp = sp2[cspidx]
-				msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+				msg_moreSp = `Understood!😇\nHere are some *relevant service providers* who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name*: ${tsp.Name}\n*Profile*: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise*: ${tsp.Type}\n\n*Type 1* to check out *more service providers*🤔\n*Type 2* to *change* service providers *category*🔀.\n*Type menu* to go back to the Menu`
 
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
@@ -2614,7 +2615,7 @@ app.post("/webhook", async (req, response) => {
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({csp, cspidx});
 
 				tsp = sp3[cspidx]
-				msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+				msg_moreSp = `Understood!😇\nHere are some *relevant service providers* who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name*: ${tsp.Name}\n*Profile*: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise*: ${tsp.Type}\n\n*Type 1* to check out *more service providers*🤔\n*Type 2* to *change* service providers *category*🔀.\n*Type menu* to go back to the Menu`
 
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
@@ -2627,7 +2628,7 @@ app.post("/webhook", async (req, response) => {
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({csp, cspidx});
 
 				tsp = sp4[cspidx]
-				msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+				msg_moreSp = `Understood!😇\nHere are some *relevant service providers* who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name*: ${tsp.Name}\n*Profile*: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise*: ${tsp.Type}\n\n*Type 1* to check out *more service providers*🤔\n*Type 2* to *change* service providers *category*🔀.\n*Type menu* to go back to the Menu`
 
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
@@ -2640,7 +2641,7 @@ app.post("/webhook", async (req, response) => {
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({csp, cspidx});
 				
 				tsp = sp5[cspidx]
-				msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+				msg_moreSp = `Understood!😇\nHere are some *relevant service providers* who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name*: ${tsp.Name}\n*Profile*: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise*: ${tsp.Type}\n\n*Type 1* to check out *more service providers*🤔\n*Type 2* to *change* service providers *category*🔀.\n*Type menu* to go back to the Menu`
 
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
@@ -2671,7 +2672,7 @@ app.post("/webhook", async (req, response) => {
 					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({ cspidx});
 	
 					tsp = sp1[cspidx]
-					msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+					msg_moreSp = `Understood!😇\nHere are some *relevant service providers* who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name*: ${tsp.Name}\n*Profile*: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise*: ${tsp.Type}\n\n*Type 1* to check out *more service providers*🤔\n*Type 2* to *change* service providers *category*🔀.\n*Type menu* to go back to the Menu`
 	
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
@@ -2691,7 +2692,7 @@ app.post("/webhook", async (req, response) => {
 					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({cspidx});
 	
 					tsp = sp2[cspidx]
-					msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+					msg_moreSp = `Understood!😇\nHere are some *relevant service providers* who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name*: ${tsp.Name}\n*Profile*: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise*: ${tsp.Type}\n\n*Type 1* to check out *more service providers*🤔\n*Type 2* to *change* service providers *category*🔀.\n*Type menu* to go back to the Menu`
 	
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
@@ -2711,7 +2712,7 @@ app.post("/webhook", async (req, response) => {
 					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({ cspidx});
 	
 					tsp = sp3[cspidx]
-					msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+					msg_moreSp = `Understood!😇\nHere are some *relevant service providers* who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name*: ${tsp.Name}\n*Profile*: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise*: ${tsp.Type}\n\n*Type 1* to check out *more service providers*🤔\n*Type 2* to *change* service providers *category*🔀.\n*Type menu* to go back to the Menu`
 	
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
@@ -2731,7 +2732,7 @@ app.post("/webhook", async (req, response) => {
 					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({cspidx});
 	
 					tsp = sp4[cspidx]
-					msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+					msg_moreSp = `Understood!😇\nHere are some *relevant service providers* who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name*: ${tsp.Name}\n*Profile*: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise*: ${tsp.Type}\n\n*Type 1* to check out *more service providers*🤔\n*Type 2* to *change* service providers *category*🔀.\n*Type menu* to go back to the Menu`
 	
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
@@ -2751,7 +2752,7 @@ app.post("/webhook", async (req, response) => {
 					await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({cspidx});
 					
 					tsp = sp5[cspidx]
-					msg_moreSp = `Understood!\nHere are some relevant service providers who are listed on Reverr.\nCheck out their profile & feel free to connect with them.\n\nCompany name: ${tsp.Name}\nProfile: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\nExpertise: ${tsp.Type}\n\nType 1 to check out more service providers\nType 2 to change service providers category.\nType menu to go back to the Menu`
+					msg_moreSp = `Understood!😇\nHere are some *relevant service providers* who are listed on Reverr.\nCheck out their profile & feel free to connect with them.🤗\n\n*Company name*: ${tsp.Name}\n*Profile*: ${tsp.Linkedin?tsp.Linkedin:tsp.Website}\n*Expertise*: ${tsp.Type}\n\n*Type 1* to check out *more service providers*🤔\n*Type 2* to *change* service providers *category*🔀.\n*Type menu* to go back to the Menu`
 	
 					messageInput = messageHelper.getCustomTextInput(
 						messageFrom,
