@@ -682,7 +682,7 @@ app.post("/sendwacustommsg", async (req, res) => {
       await db
         .collection("WhatsappMessages")
         .doc(`${messageFrom}`)
-        .set({ exists: "true" });
+        .set({ exists: "true",number:messageFrom });
       await db
         .collection("WhatsappMessages")
         .doc(`${messageFrom}`)
@@ -739,7 +739,7 @@ app.post("/sendwamucm", async (req, res) => {
         await db
           .collection("WhatsappMessages")
           .doc(`${messageFrom}`)
-          .set({ exists: "true" });
+          .set({ exists: "true",number:messageFrom });
         await db
           .collection("WhatsappMessages")
           .doc(`${messageFrom}`)
@@ -799,7 +799,7 @@ app.post("/sendwatemplatemsg", async (req, res) => {
       await db
         .collection("WhatsappMessages")
         .doc(`${messageFrom}`)
-        .set({ exists: "true" });
+        .set({ exists: "true",number:messageFrom });
       await db
         .collection("WhatsappMessages")
         .doc(`${messageFrom}`)
@@ -862,7 +862,7 @@ app.post("/sendwamutm", async (req, res) => {
         await db
           .collection("WhatsappMessages")
           .doc(`${messageFrom}`)
-          .set({ exists: "true" });
+          .set({ exists: "true",number:messageFrom });
         await db
           .collection("WhatsappMessages")
           .doc(`${messageFrom}`)
@@ -920,7 +920,7 @@ app.post("sendwatemplatemsgvideo", async (req, res) => {
       await db
         .collection("WhatsappMessages")
         .doc(`${messageFrom}`)
-        .set({ exists: "true" });
+        .set({ exists: "true",number:messageFrom });
       await db
         .collection("WhatsappMessages")
         .doc(`${messageFrom}`)
@@ -975,7 +975,7 @@ app.post("/sendwatemplatemsgimg", async (req, res) => {
       await db
         .collection("WhatsappMessages")
         .doc(`${messageFrom}`)
-        .set({ exists: "true" });
+        .set({ exists: "true",number:messageFrom });
       await db
         .collection("WhatsappMessages")
         .doc(`${messageFrom}`)
@@ -1033,7 +1033,7 @@ app.post("sendwamutmvideo"),
           await db
             .collection("WhatsappMessages")
             .doc(`${messageFrom}`)
-            .set({ exists: "true" });
+            .set({ exists: "true",number:messageFrom });
           await db
             .collection("WhatsappMessages")
             .doc(`${messageFrom}`)
@@ -1093,7 +1093,7 @@ app.post("/sendwamutmimg", async (req, res) => {
         await db
           .collection("WhatsappMessages")
           .doc(`${messageFrom}`)
-          .set({ exists: "true" });
+          .set({ exists: "true",number:messageFrom });
         await db
           .collection("WhatsappMessages")
           .doc(`${messageFrom}`)
@@ -1365,7 +1365,7 @@ app.post("/webhook", async (req, response) => {
 			if(!userexist.exists){
 				console.log("no doc");
 				await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
-				{exists: "true"})
+				{exists: "true",number:messageFrom})
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
 				messages: FieldValue.arrayUnion(
 					{status: "success",
@@ -1396,7 +1396,7 @@ app.post("/webhook", async (req, response) => {
 			if(!userexist.exists){
 				console.log("no doc");
 				await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
-				{exists: "true"})
+				{exists: "true",number:messageFrom})
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
 				messages: FieldValue.arrayUnion(
 					{status: "success",
@@ -1434,7 +1434,7 @@ app.post("/webhook", async (req, response) => {
 			if(!userexist.exists){
 				console.log("no doc");
 				await db.collection('WhatsappMessages').doc(`${sendto}`).set(
-				{exists: "true"})
+				{exists: "true",number:messageFrom})
 				await db.collection("WhatsappMessages").doc(`${sendto}`).update({
 				messages: FieldValue.arrayUnion(
 					{status: "success",
@@ -1461,7 +1461,7 @@ app.post("/webhook", async (req, response) => {
 			if(!userexist.exists){
 				console.log("no doc");
 				await db.collection('WhatsappMessages').doc(`${sendto}`).set(
-				{exists: "true"})
+				{exists: "true",number:messageFrom})
 				await db.collection("WhatsappMessages").doc(`${sendto}`).update({
 				messages: FieldValue.arrayUnion(
 					{status: "success",
@@ -1500,7 +1500,7 @@ app.post("/webhook", async (req, response) => {
 		if(!userexist.exists){
 			console.log("no doc");
 			await db.collection('WhatsappMessages').doc(`${messageFrom}`).set(
-			{exists: "true"})
+			{exists: "true",number:messageFrom})
 			await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({
 			messages: FieldValue.arrayUnion(
 				{status: "success",
