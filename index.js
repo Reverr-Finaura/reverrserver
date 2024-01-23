@@ -1288,7 +1288,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_dontUnderstandNoAction= "Sorry, I dont understand what do you mean by that. \n\nPlease type menu to go to menu."
 	var msg_fundingForm = "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and furnish a few essential details for us to proceed with building your deal's case.📂\n*Link to the form*: https://forms.gle/3DvvAsVzq6HXHLNn6\n\nOur team will get back to you soon 🙂.\n\n*Type 1* if you’ve *filled* out the form.\n*Type menu* to go back to the Menu.\n*Type back* to go back."
 	var msg_fundingFormFilled = "Thank you for sharing the Details 😋.\n\nOur team will do a manual review and will connect with you in case the deal seems doable.🙌🏻Your patience is highly valued. Have a great day ahead! 😉 \n\nType Menu to open main menu."
-	var msg_professionalOfferings = "Type in the number of offering that suits your needs the best and let us take care of the rest.😋\n*Type 1*. Discover networking opportunities👥\n*Type 2*. Seek knowledge in bite-sized portions🗂️\n*Type 3* to access “ *Startup Bites* ”- Precisely-curated news items🤓"
+	var msg_professionalOfferings = "Type in the number of offering that suits your needs the best and let us take care of the rest.😋\n*Type 1*. Discover networking opportunities👥\n*Type 2*. Seek knowledge in bite-sized portions🗂️\n*Type 4* to connect with *Business mentors*🧑‍💼\n*Type 3* to access “ *Startup Bites* ”- Precisely-curated news items🤓"
 	var msg_professionalNetworking = "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences.😉\n\n*Type 1*. Check out the latest *'Refreshed by Reverr'* offline events 👥\n*Type 2*. Join *Reverr Spaces* (Communities)🤝\n*Type 3*. Connect *one-on-one* with like-minded people 👯\n\n*Type menu* to go back to the Menu."
 	var msg_createProfile = "First please create your profile inorder to continue. \nType hi to start onboarding."
 	var msg_errorProfile = "Some error occured please create your profile again to continue. \nType hi to start onboarding."
@@ -1307,7 +1307,7 @@ app.post("/webhook", async (req, response) => {
 	var msg_bie = "See you soon, Byeee... 👋"
 	var msg_returnUserHi = `Hi ${name}, How can I assist you today? \n\nType menu to go to Menu.`
 	var msg_nomoresp ="Uh oh! We've run out of more options to showcase to you. \n\nFret not, our range of service providers is ever-expanding! You can check out & connect with new service providers in this domain very soon.🤗 \n\n*Type menu* to go back to the Menu."
-	var msg_spaces = "Now select the space that resonates the most with you.😉\n\nType the number of Space that you wish to join: (For example- 11) 😋\n1. FinTech\n2. EdTech\n3. AgriTech\n4. FoodTech\n5. Ecommerce\n6. Logistics & Delivery\n7. Cleantech & Renewable Energy\n8. AI & ML\n9. Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech"
+	var msg_spaces = "Great!\nNow select the *space* that resonates the most with you.😉\n\nType the number of Space that you wish to join: (For example- 11) 😋\n1. FinTech\n2. EdTech\n3. AgriTech\n4. FoodTech\n5. Ecommerce\n6. Logistics & Delivery\n7. Cleantech & Renewable Energy\n8. AI & ML\n9. Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech"
 	var msg_stop = "Okay, you’ll no longer receive messages from Reverr. 🫡\n\nYou can type “Start” to initiate the chat again.🤗"
 	var msg_connect = " Let's get on to finding some suitable connections.😉\nWho are you looking to connect with?🤔 Pick the numbers of the Spaces you’re looking to explore. \n\n(Example: 11,5,8)👀\n\n1.  FinTech\n2. EdTech\n3. AgriTech\n4. FoodTech\n5. Ecommerce\n6. Logistics & Delivery\n7. Cleantech & Renewable Energy\n8. AI & ML\n9. Web 3.0\n10. FashionTech\n11. SpaceTech\n12. HealthTech\n13. Cybersecurity\n14. AR & VR\n15. Internet of Things(IOT)\n16. Biotech\n17. TravelTech\n18. Real Estate-Tech\n19. BeautyTech\n20. LegalTech\n21. HR-Tech\n22. Personal fitness Tech\n23. Waste Management Technologies\n24. Online Marketplaces\n25. CloudTech\n\n*Type back* to go back."
 	var msg_shareProfile =`Super! We have found just the right person for you.😎\n\n*Name:* ${currentProfile.name}\n*Linkedin:* ${currentProfile.linkedin}\n*About:* ${currentProfile.bio}\n*Space:* ${currentProfile.space}\n\nSend out a connection request already.😉\n\n*Type 1* to see *more connections*🧐\n*Type 2* if you’re *interested in connecting* one-on-one👥\n\n*Type menu* to go back to the Menu \n*Type back* to go back.`
@@ -1348,12 +1348,14 @@ app.post("/webhook", async (req, response) => {
 	var msg_askName = "We are happy that you're here.🤗\n\nHow should we address you? Please type in your *full name*."
 	var msg_howtoProceed = "Got it!😉\nAnd finally, how do you wish to proceed from here?🤔\n\n*Type 1* to *Build with Reverr*, where we take you on an *entrepreneurial journey* from Idea Validation to making big billions $!💡💰\n\n*Type 2* to *pave your way* and explore *Reverr’s core offerings* like Fundraising, Networking, Service Providers, and Knowledge!💯🔥\n\nYou can switch between these modes later on by typing “ *BWR* ” and/ or “ *Explore* ”.💯"
 	var msg_startupStage ="That sounds good.🤩\nNow pick what resonates with you the most.\n\n*Type 1* if you have an *Idea* and wish to execute it.🗣️\n*Type 2* if you are building the *MVP* and have *early traction* 😎\n*Type 3* if you are generating *Revenue* and wish to *Scale* further🤑"
-	var msg_IdeaStage ="Perfect!\nYour profiling is complete.💯\n\nType in the number of offering that suits your needs the best and let us take care of the rest. 😋\n\n*Type 1* to *Validate* your *Business Idea*🔍\n*Type 2* to connect with *Business mentors*🧑🏻‍🏫\n*Type 3* to seek *Knowledge* in bite-sized portions 📝\n*Type 4* to explore *Networking opportunities*👥\n*Type 5* to access “ *Startup Bites* ”- Precisely-curated news items🤓"
-	var msg_MvpStage ="Perfect!\nYour profiling is complete.💯\n\nType in the number of offering that suits your needs the best and let us take care of the rest. 😋\n\n*Type 1* to curate a *Go-to-Market Strategy*🤓\n*Type 2* to connect with relevant *Service Providers*🧑‍🔧\n*Type 3* to seek *Knowledge* in bite-sized portions 📝\n*Type 4* to explore *Networking opportunities*👥\n*Type 5* to raise *Funds & Scale* your business🤑\n*Type 6* to access “ *Startup Bites* ”- Precisely-curated news items🤓"
-	var msg_RevenueStage ="Perfect!\nYour profiling is complete.💯\n\nType in the number of offering that suits your needs the best and let us take care of the rest. 😋\n\n*Type 1* to raise *Funds & Scale* your business🤑\n*Type 2* to explore *Networking opportunities*👥\n*Type 3* to connect with relevant *Service Providers*🧑‍🔧\n*Type 4* to seek *Knowledge* in bite-sized portions 📝\n*Type 5* to access “ *Startup Bites* ”- Precisely-curated news items🤓" 
-	var msg_fwdtoMyra="understood.💯\nWe have noted down your preferences.\n\nWe are now forwarding you to Myra, Reverr’s agent who will keep in touch with you and will ensure a seamless experience for you here.🤗"
+	var msg_IdeaStage ="Perfect!\nYour profiling is complete.💯\n\n*Type 1* to initiate the journey for *Idea-stage Founders*.💡"
+	var msg_MvpStage ="Perfect!\nYour profiling is complete.💯\n\n*Type 1* to initiate the journey for MVP-stage Founders.🛠️"
+	var msg_RevenueStage ="Perfect!\nYour profiling is complete.💯\n\n*Type 1* to initiate the journey for Revenue-stage Founders.💰" 
+	var msg_fwdtoMyra="Hurray! It’s time.🎉\n\nWe are now forwarding you to *Myra*, Reverr’s agent who will keep in touch with you and will ensure a seamless experience for you here.🤗"
 	var msg_myraback ="Uh oh! That didn't work.🙁\nMyra will get in touch with you soon."
 	var msg_professionalStartupBites = "understood.💯\nWe have noted down your preferences.\n\nWe are now forwarding you to Inaya, Reverr’s agent who will keep in touch with you and will ensure a seamless experience for you here.🤗\n\nType *menu* to go back to the main menu."
+	var msg_confirmSpace = "*Type 1* to confirm the same\n*Type 0* to retry";
+
 	const sendMsg = async()=>{
 		
 		// console.log("stop",stopMsg)
@@ -1806,6 +1808,8 @@ app.post("/webhook", async (req, response) => {
 			result = "msg_myraback"
 		}else if(lastMsgSend == msg_professionalStartupBites){
 			result = "msg_professionalStartupBites"
+		}else if(lastMsgSend == msg_confirmSpace){
+			result = "msg_confirmSpace"
 		}
 		
 		console.log(result)
@@ -2796,7 +2800,17 @@ app.post("/webhook", async (req, response) => {
 				  );
 				sendMsg()
 			}else if(usermessage == "3"){
-				var currentNeed = "startup news"
+				var currentNeed = "Business mentor"
+
+				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
+
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_professionalStartupBites
+				  );
+				sendMsg()
+			}else if(usermessage == "4"){
+				var currentNeed = "Startup news"
 
 				await db.collection("WhatsappMessages").doc(`${messageFrom}`).update({currentNeed});
 
@@ -3609,11 +3623,31 @@ app.post("/webhook", async (req, response) => {
 
 				messageInput = messageHelper.getCustomTextInput(
 					messageFrom,
+					msg_confirmSpace
+				);
+				sendMsg()
+				
+			}
+
+		}else if(res == "msg_confirmSpace"){
+			if(usermessage == "1"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
 					msg_askbio
 				);
 				sendMsg()
+			}else if(usermessage == "0"){
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_spaces
+				);
+			}else{
+				messageInput = messageHelper.getCustomTextInput(
+					messageFrom,
+					msg_dontUnderstand
+				  );
+				sendMsg()
 			}
-
 		}else if(res =="msg_ideaValidation"
 				||res =="msg_businessCollaterals"
 				||res =="msg_fundingOptions"
