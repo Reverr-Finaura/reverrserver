@@ -409,6 +409,31 @@ app.post("/cftoken", (req, res) => {
   });
 });
 
+app.post("/webcftoken/rs", async (req, res) => {
+	const { id, amount, currency, customer_id, customer_phone } = req.body;
+	let dt = {
+	  customer_details: {
+		customer_id: customer_id,
+		customer_phone: customer_phone,
+	  },
+	  order_id: id,
+	  order_amount: amount,
+	  order_currency: currency,
+	};
+	try {
+	  let resp = await axios.post("https://api.cashfree.com/pg/orders", dt, {
+		headers: {
+		  "x-client-id": "5576698180b9b64d59e8bc1d8f966755",
+		  "x-client-secret": "cfsk_ma_prod_00941e05bf52f2b92c318e0480c7b251_24d03023",
+		  "x-api-version": "2022-01-01",
+		},
+	  });
+	  res.json({ token: resp?.data?.order_token });
+	} catch (err) {
+	  console.log("err", err);
+	}
+  });
+
 app.post("/webcftoken", async (req, res) => {
   const { id, amount, currency, customer_id, customer_phone } = req.body;
   let dt = {
