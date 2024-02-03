@@ -1331,7 +1331,7 @@ app.post("/webhook", async (req, response) => {
   var msg_fundingFormFilled =
     "Thank you for sharing the Details 😋.\n\nOur team will do a manual review and will connect with you in case the deal seems doable.🙌🏻Your patience is highly valued. Have a great day ahead! 😉 \n\nType Menu to open main menu.";
   var msg_professionalOfferings =
-    "Type in the number of offering that suits your needs the best and let us take care of the rest.😋\n*Type 1*. Discover networking opportunities👥\n*Type 2*. Seek knowledge in bite-sized portions🗂️\n*Type 4* to connect with *Business mentors*🧑‍💼\n*Type 3* to access “ *Startup Bites* ”- Precisely-curated news items🤓";
+    "Type in the number of offering that suits your needs the best and let us take care of the rest.😋\n*Type 1*. Discover networking opportunities👥\n*Type 2*. Seek knowledge in bite-sized portions🗂️\n*Type 3* to connect with *Business mentors*🧑‍💼\n*Type 4* to access “ *Startup Bites* ”- Precisely-curated news items🤓";
   var msg_professionalNetworking =
     "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences.😉\n\n*Type 1*. Check out the latest *'Refreshed by Reverr'* offline events 👥\n*Type 2*. Join *Reverr Spaces* (Communities)🤝\n*Type 3*. Connect *one-on-one* with like-minded people 👯\n\n*Type menu* to go back to the Menu.";
   var msg_createProfile =
@@ -1473,7 +1473,7 @@ app.post("/webhook", async (req, response) => {
     "Keeping up with the latest happenings is always the right thing to do!📰😎\n\n You have successfully subscribed to weekly Startup Bites. The latest, crisp news will land in your inbox super soon.📬\n\nType menu to back to menu";
 
   var msg_IdeaValidationtoEnterprise =
-    "Super choice!😉\n\n*Build with Reverr* is a guided journey where we take you on an entrepreneurial pursuit from *Idea Validation to Enterprise*.💡🏢\n\nWe assist you on this journey and act as a guide who hand-holds you at every step and ensures you fulfil your entrepreneurial aspirations.🤗\n\n*Type 1* to *join the waitlist* (For serious aspirants only)⏳\n\nType *back* to opt-out and go to the previous menu";
+    "super choice!😉\n\n*Build with Reverr* is a guided journey where we take you on an entrepreneurial pursuit from *Idea Validation to Enterprise*.💡🏢\n\nWe assist you on this journey and act as a guide who hand-holds you at every step and ensures you fulfil your entrepreneurial aspirations.🤗\n\n*Type 1* to *join the waitlist* (For serious aspirants only)⏳\n\nType *back* to opt-out and go to the previous menu";
 
   var msg_ideaValidationtoEnterenterpriseResponseMessage =
     "Welcome aboard, champ.😉\n\nWe are excited to go on an entrepreneurial journey and watch you build a solution that caters to millions of users.🎉\n\n*You’ve been waitlisted*. We’ll share the next steps soon.💯\n\nType menu to go to menu";
@@ -2964,6 +2964,30 @@ app.post("/webhook", async (req, response) => {
       }
     } else if (res == "msg_IdeaValidationtoEnterprise") {
       if (usermessage == "1") {
+        var userlist;
+        var updatelist = true;
+        var waitlistBWR = true;
+        await db
+          .collection("WhatsappMessages")
+          .doc(`${messageFrom}`)
+          .update({ waitlistBWR });
+        const data = await db.collection("meta").doc(`waitlistBWR`).get();
+        if (data.exists) {
+          userlist = data.data().user;
+          if (!userlist.includes(messageFrom)) {
+            userlist.push(messageFrom);
+          } else {
+            updatelist = false;
+          }
+        } else {
+          userlist = [messageFrom];
+        }
+        if (updatelist) {
+          await db
+            .collection("meta")
+            .doc(`waitlistBWR`)
+            .update({ user: userlist });
+        }
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
           msg_ideaValidationtoEnterenterpriseResponseMessage
