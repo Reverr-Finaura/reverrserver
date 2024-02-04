@@ -146,7 +146,7 @@ sp.map((item, idx) => {
 const uuid = uuidv4();
 let sid = process.env.ACCOUNT_SID;
 let auth_token = process.env.AUTH_TOKKEN;
-// let twilio = require("twilio")(sid, auth_token);
+let twilio = require("twilio")(sid, auth_token);
 //server domain
 //https://reverrserver.herokuapp.com/
 var corsOptions = {
