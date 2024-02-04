@@ -146,7 +146,7 @@ sp.map((item, idx) => {
 const uuid = uuidv4();
 let sid = process.env.ACCOUNT_SID;
 let auth_token = process.env.AUTH_TOKKEN;
-let twilio = require("twilio")(sid, auth_token);
+// let twilio = require("twilio")(sid, auth_token);
 //server domain
 //https://reverrserver.herokuapp.com/
 var corsOptions = {
@@ -1447,7 +1447,7 @@ app.post("/webhook", async (req, response) => {
     "*Customer Acquisition*:👥\n\n1. Customer Acquisition Strategies for Startups (https://www.youtube.com/watch?v=6T5VXULd9yI) (YouTube Video)\n2. The Ultimate Guide to Customer Acquisition (https://www.startups.com/library/expert-advice/customer-acquisition-guide) (Article) \n\nType 1 to change category. \nType menu to go back to menu.";
 
   var msg_hello =
-    "Welcome to Reverr 😉. We hope you are doing great.\n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities.🎯\n\nTell us about yourself and allow us to cater to all your needs.\n*Type 1* if you’re a “ *Startup Founder* ”🧑‍💻\n*Type 2* if you’re a “ *Professional* ” 🧑🏻‍💼\n\n*Type 3* if you’re an “Investor” 💰";
+    "Welcome to Reverr 😉. We hope you are doing great.\n\nReverr aims to assist startups by being a platform that connects startup founders to mentors, investors, and service providers while providing knowledge and networking opportunities.🎯\n\nTell us about yourself and allow us to cater to all your needs.\n*Type 1* if you’re a “ *Startup Founder* ”🧑‍💻\n*Type 2* if you’re a “ *Professional* ” 🧑🏻‍💼";
   var msg_intiate =
     "Hello, there!\nWe welcome you to Reverr, a Startup India-recognized startup platform enabling and empowering entrepreneurs and redesigning the startup ecosystem.🏅🌐\n\nWith over 5000+ startup founders, 150+ business mentors, 50+ VCs, and 20+ ecosystem partners, Reverr welcomes you aboard as an essential addition to our platform.😉\n\nTo move forward, we’ll now onboard you and understand your preferences.💁🏻‍♀️\n\n*Type 1* to initiate *onboarding*🧐";
   var msg_askName =
