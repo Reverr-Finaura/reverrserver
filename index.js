@@ -1345,7 +1345,7 @@ app.post("/webhook", async (req, response) => {
   var msg_Networkingevents =
     "Sounds great!\n\nWhat kind of networking events would you like to attend?🤔\n\n*Type 1* to check out online events💻\n\n*Type 2* to check out offline events👥";
   var msg_MayraReponse =
-    " Understood.💯\n\nWe have noted down your preferences.\n\nWe are now forwarding you to *Myra*, Reverr’s agent who will keep in touch with you and will ensure a seamless experience for you here.🤗\n\n	\n\nType menu to back to menu";
+    " Understood.💯\n\nWe have noted down your preferences.\n\nWe are now forwarding you to *Myra*, Reverr’s agent who will keep in touch with you and will ensure a seamless experience for you here.🤗\n\nType menu to back to menu";
   //   var msg_reverrSpace =
   //     "Great choice!\n\nHere is the link to join the community of budding & seasoned entrepreneurs.🤗\n\nLink to Reverrites🔗: https://chat.whatsapp.com/GYG93rm4dVSH5521jNvtej \n\nType menu to back to menu";
   var msg_rbrRegisterLink =
@@ -4345,7 +4345,8 @@ app.post("/webhook", async (req, response) => {
         );
         sendMsg();
       }
-    } else if (res == "msg_ebookAndbooksSummaries") {
+    } else if (res == "msg_ebookAndBooksSummaries") {
+      console.log("coming")
       if (
         usermessage == "1" ||
         usermessage == "2" ||
