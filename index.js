@@ -2959,13 +2959,22 @@ app.post("/webhook", async (req, response) => {
       if (usermessage == "1") {
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
-          msg_knowledgecontent
+          //   msg_ideaValidation
+          msg_ebookAndbooksSummaries
         );
         sendMsg();
       } else if (usermessage == "2") {
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
-          msg_knowledgeYt
+          //   msg_businessCollaterals
+          msg_videoPlaylist
+        );
+        sendMsg();
+      } else if (usermessage == "3") {
+        messageInput = messageHelper.getCustomTextInput(
+          messageFrom,
+          //   msg_fundingOptions
+          msg_coursesAndCertifications
         );
         sendMsg();
       } else {
@@ -4267,68 +4276,68 @@ app.post("/webhook", async (req, response) => {
       if (usermessage == "1") {
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
-          //   msg_ideaValidation
-          msg_ebookAndbooksSummaries
+            msg_ideaValidation
+          // msg_ebookAndbooksSummaries
         );
         sendMsg();
       } else if (usermessage == "2") {
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
-          //   msg_businessCollaterals
-          msg_videoPlaylist
+            msg_businessCollaterals
+          // msg_videoPlaylist
         );
         sendMsg();
       } else if (usermessage == "3") {
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
-          //   msg_fundingOptions
-          msg_coursesAndCertifications
+            msg_fundingOptions
+          // msg_coursesAndCertifications
         );
         sendMsg();
       }
-      //   else if (usermessage == "4") {
-      //     messageInput = messageHelper.getCustomTextInput(
-      //       messageFrom,
-      //       msg_startupFinancing
-      //     );
-      //     sendMsg();
-      //   } else if (usermessage == "5") {
-      //     messageInput = messageHelper.getCustomTextInput(
-      //       messageFrom,
-      //       msg_growthStrategies
-      //     );
-      //     sendMsg();
-      //   } else if (usermessage == "6") {
-      //     messageInput = messageHelper.getCustomTextInput(
-      //       messageFrom,
-      //       msg_startupscaling
-      //     );
-      //     sendMsg();
-      //   } else if (usermessage == "7") {
-      //     messageInput = messageHelper.getCustomTextInput(
-      //       messageFrom,
-      //       msg_incubators
-      //     );
-      //     sendMsg();
-      //   } else if (usermessage == "8") {
-      //     messageInput = messageHelper.getCustomTextInput(
-      //       messageFrom,
-      //       msg_mentorship
-      //     );
-      //     sendMsg();
-      //   } else if (usermessage == "9") {
-      //     messageInput = messageHelper.getCustomTextInput(
-      //       messageFrom,
-      //       msg_productDvp
-      //     );
-      //     sendMsg();
-      //   } else if (usermessage == "10") {
-      //     messageInput = messageHelper.getCustomTextInput(
-      //       messageFrom,
-      //       msg_customerAcq
-      //     );
-      //     sendMsg();
-      //   }
+        if (usermessage == "4") {
+          messageInput = messageHelper.getCustomTextInput(
+            messageFrom,
+            msg_startupFinancing
+          );
+          sendMsg();
+        } else if (usermessage == "5") {
+          messageInput = messageHelper.getCustomTextInput(
+            messageFrom,
+            msg_growthStrategies
+          );
+          sendMsg();
+        } else if (usermessage == "6") {
+          messageInput = messageHelper.getCustomTextInput(
+            messageFrom,
+            msg_startupscaling
+          );
+          sendMsg();
+        } else if (usermessage == "7") {
+          messageInput = messageHelper.getCustomTextInput(
+            messageFrom,
+            msg_incubators
+          );
+          sendMsg();
+        } else if (usermessage == "8") {
+          messageInput = messageHelper.getCustomTextInput(
+            messageFrom,
+            msg_mentorship
+          );
+          sendMsg();
+        } else if (usermessage == "9") {
+          messageInput = messageHelper.getCustomTextInput(
+            messageFrom,
+            msg_productDvp
+          );
+          sendMsg();
+        } else if (usermessage == "10") {
+          messageInput = messageHelper.getCustomTextInput(
+            messageFrom,
+            msg_customerAcq
+          );
+          sendMsg();
+        }
       else {
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
