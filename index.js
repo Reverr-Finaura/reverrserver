@@ -1321,7 +1321,7 @@ app.post("/webhook", async (req, response) => {
   var msg_askStage =
     "That sounds good.🤩\nNow pick what resonates with you the most.\n\n*Type 1* if you have an idea and wish to execute it.🗣️\n*Type 2* if you are running a successful startup 😎\n*Type 3* if you have an idea but lack the necessary resources/ guidance🫣\n*Type 4* if you are running a startup and wish to grow & expand it further🤑\n*Type 5* if you are exploring your options 🤔";
   var msg_askOffering =
-    "Type in the number of offering that suits your needs the best and let us take care of the rest 😋. \n\n*Type 1*. Get funding from VCs, Angels, and relevant Investors 💰\n*Type 2*. Discover networking opportunities 👥\n*Type 3*. Seek knowledge in bite-sized portions 📝\n*Type 4*. Connect with service providers for assistance 🧑‍🔧\n*Type 5*. Access “ *Startup Bites* ”- Precisely-curated news items🤓\n*Type 6. Build with Reverr-* a guided journey from *Idea to Enterprise*💡";
+    "Type in the number of offering that suits your needs the best and let us take care of the rest 😋. \n\n*Type 1*. Get *Funding* from VCs, Angels, and relevant Investors 💰\n*Type 2*. Discover *Networking* opportunities 👥\n*Type 3*. Seek *Knowledge* in bite-sized portions 📝\n*Type 4*. Connect with *Service Providers* for assistance 🧑‍🔧\n*Type 5*. Access “ *Startup Bites* ”- Precisely-curated news items🤓\n*Type 6. Build with Reverr-* a guided journey from *Idea to Enterprise*💡";
   var msg_dontUnderstand =
     "Uh oh, I don’t quite understand that.😕 \n\nType 1 to try again!";
   var msg_dontUnderstandNoAction =
@@ -1329,9 +1329,9 @@ app.post("/webhook", async (req, response) => {
   var msg_fundingForm =
     "We have numerous VCs, Angels, and Investors on our platform and work with Investment Associates who have substantiated experience in the industry.📈💰\n\nFill out the following form and share some details for us to provide you with a database of relevant investors.📂🙂\n\n*Link to the form*: https://forms.gle/Y93rD4vuVyFWoFZp9\n\n*Type 1* if you’ve filled out the form\n\nType back to go back";
   var msg_fundingFormFilled =
-    "Thank you for sharing the Details 😋.\n\nOur team will do a manual review and will connect with you in case the deal seems doable.🙌🏻Your patience is highly valued. Have a great day ahead! 😉 \n\nType Menu to open main menu.";
+    "Thank you for sharing the Details 😋.\n\nOur team will do a manual review and will share a database of relevant investors super soon. 🙌🏻 \n\nHave a great day ahead! 😉 \n\nType *Menu* to open main menu.";
   var msg_professionalOfferings =
-    "Type in the number of offering that suits your needs the best and let us take care of the rest.😋\n*Type 1*. Discover networking opportunities👥\n*Type 2*. Seek knowledge in bite-sized portions🗂️\n*Type 3* to connect with *Business mentors*🧑‍💼\n*Type 4* to access “ *Startup Bites* ”- Precisely-curated news items🤓";
+    "Type in the number of offering that suits your needs the best and let us take care of the rest.😋\n*Type 1*. Discover *Networking opportunities* 👥\n*Type 2*. Seek *Knowledge* in bite-sized portions🗂️\n*Type 3* to connect with *Business mentors*🧑‍💼\n*Type 4* to access “ *Startup Bites* ”- Precisely-curated news items🤓";
   var msg_professionalNetworking =
     "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences.😉\n\n*Type 1*. Check out the latest *'Refreshed by Reverr'* offline events 👥\n*Type 2*. Join *Reverr Spaces* (Communities)🤝\n*Type 3*. Connect *one-on-one* with like-minded people 👯\n\n*Type menu* to go back to the Menu.";
   var msg_createProfile =
@@ -1341,11 +1341,11 @@ app.post("/webhook", async (req, response) => {
   //   var msg_networkingOptions =
   //     "Networking with the right people can escalate your business to newer heights.\nLet us help you in finding the best-suited individuals based on your preferences. 🤓\n\n*Type 1*. Check out the latest *'Refreshed by Reverr'* offline events 👥\n*Type 2*. Join *Reverr Spaces* (Communities)🤝\n*Type 3*. Book a seat for *Reverr School's Free Online webinars* 🧑‍🎓\n*Type 4*. *Connect one-on-one* with like-minded people 👯";
   var msg_networkingOptions =
-    "Networking with the right people can escalate your business to newer heights.\n\nLet us help you in finding the best-suited individuals based on your preferences. 🤓\n\n*Type 1* to Check out Networking events👥\n\n*Type 2* to Join Reverr Spaces (Community)🤝\n\n*Type 3* to Connect one-on-one with like-minded people👯";
+    "Networking with the right people can escalate your business to newer heights.\n\nLet us help you in finding the best-suited individuals based on your preferences. 🤓\n\n*Type 1* to Check out *Networking events* 👥\n*Type 2* to Join *Reverr Spaces* (Community)🤝\n*Type 3* to *Connect one-on-one* with like-minded people👯";
   var msg_Networkingevents =
-    "Sounds great!\n\nWhat kind of networking events would you like to attend?🤔\n\n*Type 1* to check out online events💻\n\n*Type 2* to check out offline events👥";
+    "Sounds great!\n\nWhat kind of networking events would you like to attend?🤔\n\n*Type 1* to check out *online* events💻\n*Type 2* to check out *offline* events👥";
   var msg_MayraReponse =
-    " Understood.💯\n\nWe have noted down your preferences.\n\nWe are now forwarding you to *Myra*, Reverr’s agent who will keep in touch with you and will ensure a seamless experience for you here.🤗\n\nType menu to back to menu";
+    "understood.💯\nWe have noted down your preferences.\n\nWe are now forwarding you to *Myra*, Reverr’s agent who will keep in touch with you and will ensure a seamless experience for you here.🤗\n\n*Type 1* to change *category* \nType *menu* to go to menu";
   //   var msg_reverrSpace =
   //     "Great choice!\n\nHere is the link to join the community of budding & seasoned entrepreneurs.🤗\n\nLink to Reverrites🔗: https://chat.whatsapp.com/GYG93rm4dVSH5521jNvtej \n\nType menu to back to menu";
   var msg_rbrRegisterLink =
@@ -1353,20 +1353,20 @@ app.post("/webhook", async (req, response) => {
   var msg_rbrRegistered =
     "Yay! See you there.🙋🏻‍♀️ \n\n*Type menu* to go back to the Menu.";
   var msg_reverrSpacesCommunity =
-    "Great choice!👌\nHere is the link to join the community of budding & seasoned entrepreneurs.👥\n*Link to Reverrites:* https://chat.whatsapp.com/GYG93rm4dVSH5521jNvtej \n\n*Type menu* to go back to the Menu.\n*Type back* to go back.";
+    "Great choice!👌\nHere is the link to join the *community of budding & seasoned entrepreneurs* 👥\n*Link to Reverrites:* https://chat.whatsapp.com/GYG93rm4dVSH5521jNvtej \n\n*Type menu* to go back to the Menu.\n*Type back* to go back.";
   var msg_webinar =
     "Sorry currently there are no webinar taking place. \n\n*Type menu* to go back to the Menu.";
   var msg_webinarDetails = `Yayy! We would be happy to host you in our next webinar.🤗\n\nHere are the details of the next webinar:\n\n*Topic:* ${webinar_details.topic}\n\n*Speaker:* ${webinar_details.speaker}\n\n*Timings:* ${webinar_details.timings}\n\n*Registration link:* ${webinar_details.link}\n\n*Type menu* to go back to the Menu.\n*Type back* to go back.`;
   //   var msg_knowledge =
   //     "Upskilling and continuous knowledge enhancement are essential in today's competitive world.\nWorry not, we are here to your rescue.🤩\n\nCheck out our bite-sized courses that you can indulge in on the go.\n\n*Type 1* to access content around *different niches*📑 \n*Type 2* to access *educational content* around entrepreneurship😎\n\n Type *back* to go back.";
   var msg_knowledge =
-    "That’s like a champ!😉\n\nEntrepreneurship is all about learning and upskilling yourself. We support your hustle!🤝🏻\n\nWhat would you like to explore?\n\n*Type 1* to access eBooks and book summaries📚\n\n*Type 2* to access video playlists📽️\n\n*Type 3* to access professional certifications & courses🏅";
+    "That’s like a champ!😉\nEntrepreneurship is all about learning and upskilling yourself. We support your hustle!🤝🏻\n\nWhat would you like to explore?\n*Type 1* to access *eBooks* and *book summaries* 📚\n*Type 2* to access *video playlists* 📽️\n*Type 3* to access *professional certifications* & *courses* 🏅";
   var msg_ebookAndbooksSummaries =
-    "super! Choose a category to receive eBooks:\n\n*Type 1* for Startup Essentials📋\n\n*Type 2* for Entrepreneurial Mindset🧠\n\n*Type 3* for Leadership and Management🧑🏻‍💼\n\n*Type 4* for Marketing and Branding📢\n\n*Type 5* for Financial Management💸\n\n*Type 6* for Sales and Customer Relations👥\n\n*Type 7* for Technology and Innovation💡\n\n*Type 8* for Legal and Regulatory Compliance✒️\n\n*Type 9* for Scaling and Growth📈\n\n*Type 10* for Social Impact and Sustainability🌱";
+    "super! Choose a category to receive eBooks:\n\n*Type 1* for *Startup Essentials* 📋\n*Type 2* for *Entrepreneurial Mindset* 🧠\n*Type 3* for *Leadership and Management* 🧑🏻‍💼\n*Type 4* for *Marketing and Branding* 📢\n*Type 5* for *Financial Management* 💸\n*Type 6* for *Sales and Customer Relations* 👥\n*Type 7* for *Technology and Innovation* 💡\n*Type 8* for *Legal and Regulatory Compliance* ✒️\n*Type 9* for *Scaling and Growth*📈\n*Type 10* for *Social Impact and Sustainability* 🌱";
   var msg_videoPlaylist =
-    "sure then! Choose a category to access video playlists:\n\n*Type 1* for Startup Essentials📋\n\n*Type 2* for Entrepreneurial Mindset🧠\n\n*Type 3* for Leadership and Management🧑🏻‍💼\n\n*Type 4* for Marketing and Branding📢\n\n*Type 5* for Financial Management💸\n\n*Type 6* for Sales and Customer Relations👥\n\n*Type 7* for Technology and Innovation💡\n\n*Type 8* for Legal and Regulatory Compliance✒️\n\n*Type 9* for Scaling and Growth📈\n\n*Type 10* for Social Impact and Sustainability🌱";
+    "sure then! Choose a category to access video playlists:\n\n*Type 1* for *Startup Essentials* 📋\n*Type 2* for *Entrepreneurial Mindset* 🧠\n*Type 3* for *Leadership and Management* 🧑🏻‍💼\n*Type 4* for *Marketing and Branding* 📢\n*Type 5* for *Financial Management* 💸\n*Type 6* for *Sales and Customer Relations* 👥\n*Type 7* for *Technology and Innovation* 💡\n*Type 8* for *Legal and Regulatory Compliance* ✒️\n*Type 9* for *Scaling and Growth*📈\n*Type 10* for *Social Impact and Sustainability* 🌱";
   var msg_coursesAndCertifications =
-    "super! Choose a category to receive courses & certifications:\n\n*Type 1* for Startup Essentials📋\n\n*Type 2* for Entrepreneurial Mindset🧠\n\n*Type 3* for Leadership and Management🧑🏻‍💼\n\n*Type 4* for Marketing and Branding📢\n\n*Type 5* for Financial Management💸\n\n*Type 6* for Sales and Customer Relations👥\n\n*Type 7* for Technology and Innovation💡\n\n*Type 8* for Legal and Regulatory Compliance✒️\n\n*Type 9* for Scaling and Growth📈\nType 10 for Social Impact and Sustainability🌱";
+    "super! Choose a category to receive courses & certifications:\n\n*Type 1* for *Startup Essentials* 📋\n*Type 2* for *Entrepreneurial Mindset* 🧠\n*Type 3* for *Leadership and Management* 🧑🏻‍💼\n*Type 4* for *Marketing and Branding* 📢\n*Type 5* for *Financial Management* 💸\n*Type 6* for *Sales and Customer Relations* 👥\n*Type 7* for *Technology and Innovation* 💡\n*Type 8* for *Legal and Regulatory Compliance* ✒️\n*Type 9* for *Scaling and Growth*📈\n*Type 10* for *Social Impact and Sustainability* 🌱";
 
   var msg_knowledgecontent =
     "Tell us your interest areas. What would you like to learn more about?🤔\nPick your interest area(s).\n\n1. Idea validation🤓\n2. Business collaterals📑\n3. Funding options💸\n4. Startup Financing💰\n5. Growth strategies📈\n6. Startup scaling📊\n7. Incubators & Accelerators🏢\n8. Mentorship🧑‍🏫\n9. Product Development🛠️\n10. Customer Acquisition👥 \n\n*Type menu* to go back to the Menu.\n*Type back* to go back.";
@@ -1470,10 +1470,10 @@ app.post("/webhook", async (req, response) => {
     "understood.💯\nWe have noted down your preferences.\n\nWe are now forwarding you to Inaya, Reverr’s agent who will keep in touch with you and will ensure a seamless experience for you here.🤗\n\nType *menu* to go back to the main menu.";
   var msg_confirmSpace = "*Type 1* to confirm the same\n*Type 0* to retry";
   var msg_startUpbites =
-    "Keeping up with the latest happenings is always the right thing to do!📰😎\n\n You have successfully subscribed to weekly Startup Bites. The latest, crisp news will land in your inbox super soon.📬\n\nType menu to back to menu";
+    "Keeping up with the latest happenings is always the right thing to do!📰😎\n\n You have *successfully subscribed to weekly Startup Bites*. The latest, crisp news will land in your inbox super soon.📬\n\nType menu to back to menu";
 
   var msg_IdeaValidationtoEnterprise =
-    "super choice!😉\n\n*Build with Reverr* is a guided journey where we take you on an entrepreneurial pursuit from *Idea Validation to Enterprise*.💡🏢\n\nWe assist you on this journey and act as a guide who hand-holds you at every step and ensures you fulfil your entrepreneurial aspirations.🤗\n\n*Type 1* to *join the waitlist* (For serious aspirants only)⏳\n\nType *back* to opt-out and go to the previous menu";
+    "*super choice!* 😉\n\n*Build with Reverr* is a guided journey where we take you on an entrepreneurial pursuit from *Idea Validation to Enterprise*.💡🏢\n\nWe assist you on this journey and act as a guide who hand-holds you at every step and ensures you fulfil your entrepreneurial aspirations.🤗\n\n*Type 1* to *join the waitlist* (For serious aspirants only)⏳\n\nType *back* to opt-out and go to the previous menu";
 
   var msg_ideaValidationtoEnterenterpriseResponseMessage =
     "Welcome aboard, champ.😉\n\nWe are excited to go on an entrepreneurial journey and watch you build a solution that caters to millions of users.🎉\n\n*You’ve been waitlisted*. We’ll share the next steps soon.💯\n\nType menu to go to menu";
@@ -2909,7 +2909,8 @@ app.post("/webhook", async (req, response) => {
       } else if (usermessage == "3") {
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
-          msg_webinarDetails
+          // msg_webinarDetails
+          msg_connect
         );
         sendMsg();
         //   } else if (usermessage == "4") {
@@ -2927,12 +2928,22 @@ app.post("/webhook", async (req, response) => {
       }
     } else if (res == "msg_Networkingevents") {
       if (usermessage == "1") {
+        var onlineEvent = true;
+        await db
+          .collection("WhatsappMessages")
+          .doc(`${messageFrom}`)
+          .update({ onlineEvent });
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
           msg_MayraReponse
         );
         sendMsg();
       } else if (usermessage == "2") {
+        var offlineEvent = true;
+        await db
+          .collection("WhatsappMessages")
+          .doc(`${messageFrom}`)
+          .update({ offlineEvent });
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
           //
@@ -3315,7 +3326,8 @@ app.post("/webhook", async (req, response) => {
 
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
-          msg_professionalNetworking
+          // msg_professionalNetworking
+          msg_networkingOptions
         );
         sendMsg();
       } else if (usermessage == "2") {
@@ -3354,7 +3366,8 @@ app.post("/webhook", async (req, response) => {
 
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
-          msg_professionalStartupBites
+          // msg_professionalStartupBites
+          msg_startUpbites
         );
         sendMsg();
       } else {
@@ -4411,31 +4424,41 @@ app.post("/webhook", async (req, response) => {
       ) {
         messageInput = messageHelper.getCustomTextInput(
           messageFrom,
-          msg_MayraReponse
+          msg_MayraReponse);
+
+        sendMsg();
+      } else {
+        messageInput = messageHelper.getCustomTextInput(
+          messageFrom,
+          msg_dontUnderstandNoAction
         );
         sendMsg();
       }
-    } else {
-      messageInput = messageHelper.getCustomTextInput(
-        messageFrom,
-        msg_dontUnderstandNoAction
-      );
-      sendMsg();
+      }else if(res=="msg_MayraReponse"){
+        if(usermessage =="1"){
+          resendLastToLastMsg();
+        }else{
+          messageInput = messageHelper.getCustomTextInput(
+          messageFrom,
+          msg_dontUnderstandNoAction
+        );
+        sendMsg();}
+      }
+    }else{
+      if (["hi", "hii", "hello", "hie", "hey"].includes(messageText.toLowerCase())){
+        messageInput = messageHelper.getCustomTextInput(
+          messageFrom,
+          msg_intiate
+          );
+        sendMsg()
+      }else{
+        messageInput = messageHelper.getCustomTextInput(
+          messageFrom,
+          msg_dontUnderstandNoAction
+          );
+        sendMsg()
+      }
     }
-  } else {
-    if (
-      ["hi", "hii", "hello", "hie", "hey"].includes(messageText.toLowerCase())
-    ) {
-      messageInput = messageHelper.getCustomTextInput(messageFrom, msg_intiate);
-      sendMsg();
-    } else {
-      messageInput = messageHelper.getCustomTextInput(
-        messageFrom,
-        msg_dontUnderstandNoAction
-      );
-      sendMsg();
-    }
-  }
 
   try {
     // console.log(req.body)
