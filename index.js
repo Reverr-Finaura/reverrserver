@@ -1973,6 +1973,8 @@ app.post("/webhook", async (req, response) => {
       result = "msg_coursesAndCertifications";
     } else if (lastMsgSend == msg_IdeaValidationtoEnterprise) {
       result = "msg_IdeaValidationtoEnterprise";
+    } else if (lastMsgSend == msg_MayraReponse) {
+      result = "msg_MayraReponse";
     }
     console.log(result);
     return result;
