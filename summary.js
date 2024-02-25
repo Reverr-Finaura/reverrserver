@@ -25,7 +25,7 @@ async function summary(des, title, details) {
                     `,
       },
     ],
-    model: "gpt-3.5-turbo",
+    model: "gpt-3.5-turbo-1106",
   });
 
   console.log(completion.choices[0].message.content);
