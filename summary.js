@@ -17,12 +17,19 @@ async function summary(des, title, details) {
                     Job Title:${title}
                     Job Description:${des}
                     Generate a ATS friendly professional Summary based on the job title and description mentioned.
-                    Don't create new information, format from only what's provided
+                    Use the information in the resume, don't divert from his core skills
                     Generate a valid JSON response with the extracted resume text in a similar format
                     {
                       professionalSummary: '',
                     }
-                    `,
+
+                    Note:
+                    - Generate JSON with section names as keys and text extracted from the resume as values.
+                    - Provide a single-line JSON response. 
+                    - Respond only with the generated JSON response.
+                    - add relevant keywords in the summary 
+                    
+                 `,
       },
     ],
     model: "gpt-3.5-turbo-1106",
@@ -30,6 +37,8 @@ async function summary(des, title, details) {
 
   console.log(completion.choices[0].message.content);
   var content = JSON.parse(completion.choices[0].message.content);
+  console.log(typeof content)
+
   return content;
 }
 
