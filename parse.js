@@ -61,6 +61,7 @@ async function responsecreate(pdfText) {
                 url: '',
             },
         ],
+        skills:[]
     }
 
         Note:
@@ -69,7 +70,9 @@ async function responsecreate(pdfText) {
         - Respond only with the generated JSON response.
         - Do not add new lines; keep the text as in the resume.
         - If the PDF does not seem to be a resume, return an error message.
-        -use lower case only
+        -give spaces between words wherever it seems that there are more than 2 words in any section
+        -in links add name of website or social links like linkedin , github , instagram , portfolio etc and in url enter the url of those links.
+        -All the dates should be in the format of yyyy-mm-dd
         `,
       
         }
@@ -80,7 +83,8 @@ async function responsecreate(pdfText) {
     console.log(completion.choices[0].message.content);
     console.log(typeof completion.choices[0].message.content);
     var temp = JSON.parse(completion.choices[0].message.content)
-    console.log(temp)
+    console.log( typeof temp)
+
     // console.log(temp.projects)
     return temp;
   }

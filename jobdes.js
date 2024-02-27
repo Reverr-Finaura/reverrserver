@@ -11,12 +11,12 @@ async function jobdes(des,title,start_date,end_date,job_title,job_des) {
         },
         {
             role: 'user',
-          content: `Task: rewrite these responsibilities"${job_des}" for the position of ${job_title} in such a way that it uses some keywords from the job description. the content should be relevant to the position mentioned
+          content: `Task: rewrite these responsibilities"${job_des}" for the position of ${job_title} in such a way that it uses some keywords from the job description. the content should be relevant to the position mentioned, and the information of candidate. No information should be added that isn't given by the candidate. Also, add any relevant metrics if possible. The first character of the sentence should be in capital, don't add any new line character
           Style: Business
           Tone: Professional
           Length: 50 words
-          Format: markdown
-          Job Description:${des}
+          Format: Markdown
+          Job Description:${des} (start date: ${start_date}, end date: ${end_date})
 
 
           `
